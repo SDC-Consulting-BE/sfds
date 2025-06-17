@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:sfdsx/sfdsx.dart';
+import "package:sfds/sfds.dart";
 
 void main() {
   test('adds one to input values', () {
