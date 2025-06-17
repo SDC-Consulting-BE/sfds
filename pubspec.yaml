@@ -1,6 +1,6 @@
-name: sfdsx
+name: sfds
 description: "Steve's Flutter Design System"
-version: 0.0.1
+version: 0.0.2
 homepage:
 
 environment:
