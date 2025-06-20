@@ -1,42 +1,25 @@
-# Steve's Flutter Design System
+name: component_library
+description: "SFDS component library"
+publish_to: 'none'
 
-My personal design system to facilitate the creation of webapps using Flutter.
+version: 1.0.0
 
-## Table of contents
+environment:
+  sdk: ^3.8.0
 
-1. [Installing](#installing)
-2. [Project configuration](#project-configuration)
-   1. [Lints](#lints)
-   2. [Fonts](#fonts)
-
-## Installing
-
-Add the following dependency in pubspec.yaml:
-
-```
 dependencies:
+  flutter:
+    sdk: flutter
   sfds:
-    git:
-      url: https://github.com/SDC-Consulting-BE/sfds
-      ref: main
-```
+    path: ../
 
-## Project configuration
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
 
-### Lints
-
-Add the following include at the top of the analysis_options.yaml:
-
-```
-include: package:sfds/analysis_options.yaml
-```
-
-### Fonts
-
-Add the following entries in analysis_options.yaml:
-
-```
 flutter:
+  uses-material-design: true
   fonts:
     - family: base
       fonts:
@@ -65,4 +48,3 @@ flutter:
         - asset: packages/sfds/assets/fonts/Roboto/Roboto-BoldItalic.ttf
           weight: 700
           style: italic
-```
