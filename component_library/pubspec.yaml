@@ -1,0 +1,55 @@
+name: component_library
+description: "SFDS component library"
+publish_to: 'none'
+
+version: 1.0.0
+
+environment:
+  sdk: ^3.8.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  sfds:
+    path: ../
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: base
+      fonts:
+        - asset: packages/sfds/assets/font/thin.ttf
+          weight: 100
+        - asset: packages/sfds/assets/font/thinItalic.ttf
+          weight: 100
+          style: italic
+        - asset: packages/sfds/assets/font/light.ttf
+          weight: 300
+        - asset: packages/sfds/assets/font/lightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: packages/sfds/assets/font/regular.ttf
+          weight: 400
+        - asset: packages/sfds/assets/font/italic.ttf
+          weight: 400
+          style: italic
+        - asset: packages/sfds/assets/font/medium.ttf
+          weight: 500
+        - asset: packages/sfds/assets/font/mediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: packages/sfds/assets/font/bold.ttf
+          weight: 700
+        - asset: packages/sfds/assets/font/boldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: packages/sfds/assets/font/black.ttf
+          weight: 900
+        - asset: packages/sfds/assets/font/blackItalic.ttf
+          weight: 900
+          style: italic
