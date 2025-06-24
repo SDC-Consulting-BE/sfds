@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 import "package:sfds/theme.dart";
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class CardLibraryScreen extends StatelessWidget {
+  const CardLibraryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
       ),
       child: Center(
         child: Text(
-          "Hello world",
+          "Card Screen",
           style: theme.textTheme.displayLarge!.copyWith(color: themeExtension.warning.onContainer),
         ),
       ),
