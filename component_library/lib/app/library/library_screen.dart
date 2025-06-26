@@ -1,4 +1,6 @@
+import "package:component_library/app_routes.dart";
 import "package:flutter/material.dart";
+import "package:go_router/go_router.dart";
 import "package:sfds/widget.dart";
 
 class LibraryScreen extends StatelessWidget {
@@ -30,10 +32,13 @@ class _MockGrid extends StatelessWidget {
       childAspectRatio: 4,
     ),
     delegate: SliverChildBuilderDelegate(
-      (context, index) => Container(
-        alignment: Alignment.center,
-        color: Colors.teal[100 * (index % 9)],
-        child: Text("grid item $index"),
+      (context, index) => InkWell(
+        onTap: () => context.go(routeLibraryButtons),
+        child: Container(
+          alignment: Alignment.center,
+          color: Colors.teal[100 * (index % 9)],
+          child: Text("grid item $index"),
+        ),
       ),
       childCount: 52,
     ),

@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:sfds/src/constants.dart";
 import "package:sfds/src/util/collection_util.dart";
+import "package:sfds/src/util/text_style_util.dart";
 
 const _steveViewAppBarPaddingFactor = 1.314;
 const _steveViewAppBarExpansionFactor = 2.0;
@@ -22,7 +23,7 @@ class SteveView extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     var appBarTitleStyle = theme.textTheme.displayLarge!;
-    var appBarTitleStyleHeight = appBarTitleStyle.height! * appBarTitleStyle.fontSize!;
+    var appBarTitleStyleHeight = TextStyleUtil.getTrueHeight(appBarTitleStyle);
     var appBarHeight = appBarTitleStyleHeight * _steveViewAppBarPaddingFactor;
     var appBarVerticalPadding = (appBarHeight - appBarTitleStyleHeight) / 2;
     return Scaffold(
@@ -33,6 +34,7 @@ class SteveView extends StatelessWidget {
             collapsedHeight: appBarHeight,
             toolbarHeight: appBarHeight,
             expandedHeight: appBarHeight * _steveViewAppBarExpansionFactor,
+            leading: sizedBoxZero,
             flexibleSpace: FlexibleSpaceBar(
               titlePadding: EdgeInsets.symmetric(horizontal: _steveViewAppBarHorizontalSpacing, vertical: appBarVerticalPadding),
               expandedTitleScale: _steveViewAppBarExpansionFactor,
@@ -54,7 +56,7 @@ class SteveView extends StatelessWidget {
 class SteveViewAppBar {
   const SteveViewAppBar({
     required this.title,
-    required this.actions,
+    this.actions = const [],
   });
 
   final String title;
