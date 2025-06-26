@@ -22,7 +22,9 @@ class SteveView extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     var appBarTitleStyle = theme.textTheme.displayLarge!;
-    var appBarHeight = appBarTitleStyle.height! * appBarTitleStyle.fontSize! * _steveViewAppBarPaddingFactor;
+    var appBarTitleStyleHeight = appBarTitleStyle.height! * appBarTitleStyle.fontSize!;
+    var appBarHeight = appBarTitleStyleHeight * _steveViewAppBarPaddingFactor;
+    var appBarVerticalPadding = (appBarHeight - appBarTitleStyleHeight) / 2;
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -32,6 +34,7 @@ class SteveView extends StatelessWidget {
             toolbarHeight: appBarHeight,
             expandedHeight: appBarHeight * _steveViewAppBarExpansionFactor,
             flexibleSpace: FlexibleSpaceBar(
+              titlePadding: EdgeInsets.symmetric(horizontal: 16, vertical: appBarVerticalPadding),
               expandedTitleScale: _steveViewAppBarExpansionFactor,
               title: Text(appBar.title, style: appBarTitleStyle),
             ),
