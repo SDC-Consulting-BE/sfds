@@ -3,7 +3,6 @@ import "package:flutter/material.dart";
 const colorTransparant = Colors.transparent;
 
 const paddingA6 = EdgeInsets.all(6);
-const paddingR16 = EdgeInsets.only(right: 16);
 
 const sizedBoxW8 = SizedBox(width: 8);
 

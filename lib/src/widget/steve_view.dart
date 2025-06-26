@@ -4,7 +4,7 @@ import "package:sfds/src/util/collection_util.dart";
 
 const _steveViewAppBarPaddingFactor = 1.314;
 const _steveViewAppBarExpansionFactor = 2.0;
-const _steveViewAppBarActionsPadding = paddingR16;
+const _steveViewAppBarHorizontalSpacing = 16.0;
 const _steveViewAppBarIconsSizeFactor = 0.5;
 const _steveViewAppBarIconsSpacer = sizedBoxW8;
 
@@ -34,11 +34,11 @@ class SteveView extends StatelessWidget {
             toolbarHeight: appBarHeight,
             expandedHeight: appBarHeight * _steveViewAppBarExpansionFactor,
             flexibleSpace: FlexibleSpaceBar(
-              titlePadding: EdgeInsets.symmetric(horizontal: 16, vertical: appBarVerticalPadding),
+              titlePadding: EdgeInsets.symmetric(horizontal: _steveViewAppBarHorizontalSpacing, vertical: appBarVerticalPadding),
               expandedTitleScale: _steveViewAppBarExpansionFactor,
               title: Text(appBar.title, style: appBarTitleStyle),
             ),
-            actionsPadding: _steveViewAppBarActionsPadding,
+            actionsPadding: const EdgeInsets.only(right: _steveViewAppBarHorizontalSpacing),
             actionsIconTheme: IconThemeData(
               size: appBarHeight * _steveViewAppBarIconsSizeFactor,
             ),
@@ -51,14 +51,24 @@ class SteveView extends StatelessWidget {
   }
 }
 
+class SteveViewAppBar {
+  const SteveViewAppBar({
+    required this.title,
+    required this.actions,
+  });
+
+  final String title;
+  final List<SteveViewAppBarAction> actions;
+}
+
 const _steveViewActionDefaultScale = 1.0;
 const _steveViewActionHoverScale = 1.314;
 const _steveViewActionScaleAnimationDuration = durationMs100;
 const _steveViewActionSplashBorder = roundedRectangleBorderC12;
 const _steveViewActionPadding = paddingA6;
 
-class SteveViewAction extends StatefulWidget {
-  const SteveViewAction({
+class SteveViewAppBarAction extends StatefulWidget {
+  const SteveViewAppBarAction({
     super.key,
     required this.icon,
     required this.onPressed,
@@ -68,10 +78,10 @@ class SteveViewAction extends StatefulWidget {
   final VoidCallback onPressed;
 
   @override
-  State<SteveViewAction> createState() => _SteveViewActionState();
+  State<SteveViewAppBarAction> createState() => _SteveViewAppBarActionState();
 }
 
-class _SteveViewActionState extends State<SteveViewAction> {
+class _SteveViewAppBarActionState extends State<SteveViewAppBarAction> {
   var _hovered = false;
 
   @override
@@ -103,14 +113,4 @@ class _SteveViewActionState extends State<SteveViewAction> {
       _hovered = hovered;
     });
   }
-}
-
-class SteveViewAppBar {
-  const SteveViewAppBar({
-    required this.title,
-    required this.actions,
-  });
-
-  final String title;
-  final List<SteveViewAction> actions;
 }

@@ -9,9 +9,9 @@ class LibraryScreen extends StatelessWidget {
     appBar: SteveViewAppBar(
       title: "Component Library",
       actions: [
-        SteveViewAction(icon: Icons.sunny, onPressed: () {}),
-        SteveViewAction(icon: Icons.sunny_snowing, onPressed: () {}),
-        SteveViewAction(icon: Icons.snowing, onPressed: () {}),
+        SteveViewAppBarAction(icon: Icons.sunny, onPressed: () {}),
+        SteveViewAppBarAction(icon: Icons.sunny_snowing, onPressed: () {}),
+        SteveViewAppBarAction(icon: Icons.snowing, onPressed: () {}),
       ],
     ),
     slivers: const [_MockGrid()],
