@@ -1,4 +1,5 @@
-import "package:component_library/app/widget/mock_grid.dart";
+import "package:component_library/app/library/library_links.dart";
+import "package:component_library/app/library/widget/library_link_section.dart";
 import "package:flutter/material.dart";
 import "package:sfds/widget.dart";
 
@@ -15,8 +16,19 @@ class LibraryScreen extends StatelessWidget {
         SteveViewAppBarAction(icon: Icons.snowing, onPressed: () {}),
       ],
     ),
-    slivers: const [
-      MockGrid(),
+    slivers: [
+      const SteveSliverText(
+        text:
+            "The component library contains a categorized visual representation of all widgets contained in Steve's Flutter Design System, along with additional clarification where needed. For a guide on how to set up this system in your project(s), check out the readme.",
+      ),
+      ...LibraryLinkGroup.values
+          .map(_librarySection) //
+          .fold([], (previousValue, element) => [...previousValue, ...element]),
     ],
   );
+
+  List<Widget> _librarySection(LibraryLinkGroup group) => [
+    SteveSliverTitle(title: group.label),
+    LibraryLinkSection(links: group.links),
+  ];
 }

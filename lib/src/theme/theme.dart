@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
+import "package:sfds/src/constants.dart";
 import "package:sfds/src/theme/color_scheme_extension.dart";
+import "package:sfds/src/theme/theme_constants.dart";
 
 ThemeData theme(ColorScheme colorScheme) => ThemeData(
   brightness: colorScheme.brightness,
@@ -11,6 +13,11 @@ ThemeData theme(ColorScheme colorScheme) => ThemeData(
   scaffoldBackgroundColor: colorScheme.surface,
   canvasColor: colorScheme.surface,
   extensions: const [colorSchemeExtension],
+  cardTheme: const CardThemeData(
+    elevation: 0,
+    margin: paddingZero,
+    shape: themeCardDefaultShape,
+  ),
 );
 
 class ColorSchemeExtension extends ThemeExtension<ColorSchemeExtension> {

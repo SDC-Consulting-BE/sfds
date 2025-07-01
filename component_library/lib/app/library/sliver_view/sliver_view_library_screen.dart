@@ -1,12 +1,12 @@
 import "package:flutter/material.dart";
 import "package:sfds/widget.dart";
 
-class CardLibraryScreen extends StatelessWidget {
-  const CardLibraryScreen({super.key});
+class SliverViewLibraryScreen extends StatelessWidget {
+  const SliverViewLibraryScreen({super.key});
 
   @override
   Widget build(BuildContext context) => const SteveSliverView(
-    appBar: SteveSliverViewAppBar(title: "Cards"),
+    appBar: SteveSliverViewAppBar(title: "Sliver View"),
     slivers: [SteveSliverBreadcrumbs()],
   );
 }

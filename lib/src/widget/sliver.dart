@@ -45,6 +45,7 @@ class SteveSliverBreadcrumbs extends StatelessWidget {
 
   List<String> _routingSegments(GoRouter goRouter) => goRouter.routerDelegate.currentConfiguration.fullPath
       .split("/") //
+      .map((segment) => segment.replaceAll("_", " "))
       .where((segment) => segment.isNotEmpty)
       .toList();
 
@@ -183,5 +184,28 @@ class SteveSliverSpacing extends StatelessWidget {
   @override
   Widget build(BuildContext context) => SliverToBoxAdapter(
     child: SizedBox(height: height),
+  );
+}
+
+const _steveSliverGridPadding = paddingH18;
+
+class SteveSliverGrid extends StatelessWidget {
+  const SteveSliverGrid({
+    super.key,
+    required this.children,
+    required this.gridDelegate,
+  });
+
+  final List<Widget> children;
+  final SliverGridDelegate gridDelegate;
+
+  @override
+  Widget build(BuildContext context) => SliverPadding(
+    padding: _steveSliverGridPadding,
+    sliver: SliverGrid.builder(
+      gridDelegate: gridDelegate,
+      itemCount: children.length,
+      itemBuilder: (context, index) => children[index],
+    ),
   );
 }
