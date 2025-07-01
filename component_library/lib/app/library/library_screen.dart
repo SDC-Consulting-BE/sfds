@@ -15,6 +15,8 @@ class LibraryScreen extends StatelessWidget {
         SteveViewAppBarAction(icon: Icons.snowing, onPressed: () {}),
       ],
     ),
-    slivers: const [MockGrid()],
+    slivers: const [
+      MockGrid(),
+    ],
   );
 }

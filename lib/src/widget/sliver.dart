@@ -101,3 +101,44 @@ class _SteveSliverBreadcrumb extends StatelessWidget {
     );
   }
 }
+
+const _steveSliverTextDefaultPadding = paddingH24V12;
+
+class SteveSliverText extends StatelessWidget {
+  const SteveSliverText({
+    super.key,
+    required this.text,
+    this.textStyle,
+    this.padding,
+  });
+
+  final String text;
+  final TextStyle? textStyle;
+  final EdgeInsets? padding;
+
+  @override
+  Widget build(BuildContext context) => SliverPadding(
+    padding: padding ?? _steveSliverTextDefaultPadding,
+    sliver: SliverToBoxAdapter(
+      child: Text(
+        text,
+        style: textStyle,
+        textAlign: TextAlign.justify,
+      ),
+    ),
+  );
+}
+
+class SteveSliverSpacing extends StatelessWidget {
+  const SteveSliverSpacing({
+    super.key,
+    required this.height,
+  });
+
+  final double height;
+
+  @override
+  Widget build(BuildContext context) => SliverToBoxAdapter(
+    child: SizedBox(height: height),
+  );
+}
