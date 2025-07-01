@@ -3,20 +3,20 @@ import "package:sfds/src/constants.dart";
 import "package:sfds/src/util/collection_util.dart";
 import "package:sfds/src/util/text_style_util.dart";
 
-const _steveViewAppBarPaddingFactor = 1.314;
-const _steveViewAppBarExpansionFactor = 2.0;
-const _steveViewAppBarHorizontalSpacing = 16.0;
-const _steveViewAppBarIconsSizeFactor = 0.5;
-const _steveViewAppBarIconsSpacer = sizedBoxW8;
+const _steveSliverViewAppBarPaddingFactor = 1.314;
+const _steveSliverViewAppBarExpansionFactor = 2.0;
+const _steveSliverViewAppBarHorizontalSpacing = 16.0;
+const _steveSliverViewAppBarIconsSizeFactor = 0.5;
+const _steveSliverViewAppBarIconsSpacer = sizedBoxW8;
 
-class SteveView extends StatelessWidget {
-  const SteveView({
+class SteveSliverView extends StatelessWidget {
+  const SteveSliverView({
     super.key,
     required this.appBar,
     required this.slivers,
   });
 
-  final SteveViewAppBar appBar;
+  final SteveSliverViewAppBar appBar;
   final List<Widget> slivers;
 
   @override
@@ -24,7 +24,7 @@ class SteveView extends StatelessWidget {
     var theme = Theme.of(context);
     var appBarTitleStyle = theme.textTheme.displayLarge!;
     var appBarTitleStyleHeight = TextStyleUtil.getTrueHeight(appBarTitleStyle);
-    var appBarHeight = appBarTitleStyleHeight * _steveViewAppBarPaddingFactor;
+    var appBarHeight = appBarTitleStyleHeight * _steveSliverViewAppBarPaddingFactor;
     var appBarVerticalPadding = (appBarHeight - appBarTitleStyleHeight) / 2;
     return Scaffold(
       body: CustomScrollView(
@@ -33,18 +33,18 @@ class SteveView extends StatelessWidget {
             pinned: true,
             collapsedHeight: appBarHeight,
             toolbarHeight: appBarHeight,
-            expandedHeight: appBarHeight * _steveViewAppBarExpansionFactor,
+            expandedHeight: appBarHeight * _steveSliverViewAppBarExpansionFactor,
             leading: sizedBoxZero,
             flexibleSpace: FlexibleSpaceBar(
-              titlePadding: EdgeInsets.symmetric(horizontal: _steveViewAppBarHorizontalSpacing, vertical: appBarVerticalPadding),
-              expandedTitleScale: _steveViewAppBarExpansionFactor,
+              titlePadding: EdgeInsets.symmetric(horizontal: _steveSliverViewAppBarHorizontalSpacing, vertical: appBarVerticalPadding),
+              expandedTitleScale: _steveSliverViewAppBarExpansionFactor,
               title: Text(appBar.title, style: appBarTitleStyle),
             ),
-            actionsPadding: const EdgeInsets.only(right: _steveViewAppBarHorizontalSpacing),
+            actionsPadding: const EdgeInsets.only(right: _steveSliverViewAppBarHorizontalSpacing),
             actionsIconTheme: IconThemeData(
-              size: appBarHeight * _steveViewAppBarIconsSizeFactor,
+              size: appBarHeight * _steveSliverViewAppBarIconsSizeFactor,
             ),
-            actions: CollectionUtil.intersperse(_steveViewAppBarIconsSpacer, appBar.actions).toList(),
+            actions: CollectionUtil.intersperse(_steveSliverViewAppBarIconsSpacer, appBar.actions).toList(),
           ),
           ...slivers,
         ],
@@ -53,8 +53,8 @@ class SteveView extends StatelessWidget {
   }
 }
 
-class SteveViewAppBar {
-  const SteveViewAppBar({
+class SteveSliverViewAppBar {
+  const SteveSliverViewAppBar({
     required this.title,
     this.actions = const [],
   });
@@ -63,11 +63,11 @@ class SteveViewAppBar {
   final List<SteveViewAppBarAction> actions;
 }
 
-const _steveViewActionDefaultScale = 1.0;
-const _steveViewActionHoverScale = 1.314;
-const _steveViewActionScaleAnimationDuration = durationMs100;
-const _steveViewActionSplashBorder = roundedRectangleBorderC12;
-const _steveViewActionPadding = paddingA6;
+const _steveSliverViewActionDefaultScale = 1.0;
+const _steveSliverViewActionHoverScale = 1.314;
+const _steveSliverViewActionScaleAnimationDuration = durationMs100;
+const _steveSliverViewActionSplashBorder = roundedRectangleBorderC12;
+const _steveSliverViewActionPadding = paddingA6;
 
 class SteveViewAppBarAction extends StatefulWidget {
   const SteveViewAppBarAction({
@@ -91,16 +91,16 @@ class _SteveViewAppBarActionState extends State<SteveViewAppBarAction> {
     var theme = Theme.of(context);
     var hoveredColor = theme.colorScheme.primary;
     return AnimatedScale(
-      scale: _hovered ? _steveViewActionHoverScale : _steveViewActionDefaultScale,
-      duration: _steveViewActionScaleAnimationDuration,
+      scale: _hovered ? _steveSliverViewActionHoverScale : _steveSliverViewActionDefaultScale,
+      duration: _steveSliverViewActionScaleAnimationDuration,
       child: InkWell(
         onTap: widget.onPressed,
         onHover: _updateHovered,
         hoverColor: colorTransparant,
         highlightColor: colorTransparant,
-        customBorder: _steveViewActionSplashBorder,
+        customBorder: _steveSliverViewActionSplashBorder,
         child: Padding(
-          padding: _steveViewActionPadding,
+          padding: _steveSliverViewActionPadding,
           child: Icon(
             widget.icon,
             color: _hovered ? hoveredColor : null,

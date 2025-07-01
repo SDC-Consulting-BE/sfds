@@ -1,14 +1,13 @@
-import "package:component_library/app_routes.dart";
+import "package:component_library/app/widget/mock_grid.dart";
 import "package:flutter/material.dart";
-import "package:go_router/go_router.dart";
 import "package:sfds/widget.dart";
 
 class LibraryScreen extends StatelessWidget {
   const LibraryScreen({super.key});
 
   @override
-  Widget build(BuildContext context) => SteveView(
-    appBar: SteveViewAppBar(
+  Widget build(BuildContext context) => SteveSliverView(
+    appBar: SteveSliverViewAppBar(
       title: "Component Library",
       actions: [
         SteveViewAppBarAction(icon: Icons.sunny, onPressed: () {}),
@@ -16,31 +15,6 @@ class LibraryScreen extends StatelessWidget {
         SteveViewAppBarAction(icon: Icons.snowing, onPressed: () {}),
       ],
     ),
-    slivers: const [_MockGrid()],
-  );
-}
-
-class _MockGrid extends StatelessWidget {
-  const _MockGrid();
-
-  @override
-  Widget build(BuildContext context) => SliverGrid(
-    gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-      maxCrossAxisExtent: 600,
-      mainAxisSpacing: 10,
-      crossAxisSpacing: 10,
-      childAspectRatio: 4,
-    ),
-    delegate: SliverChildBuilderDelegate(
-      (context, index) => InkWell(
-        onTap: () => context.go(routeLibraryButtons),
-        child: Container(
-          alignment: Alignment.center,
-          color: Colors.teal[100 * (index % 9)],
-          child: Text("grid item $index"),
-        ),
-      ),
-      childCount: 52,
-    ),
+    slivers: const [MockGrid()],
   );
 }
