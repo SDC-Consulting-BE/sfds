@@ -4,6 +4,8 @@ const colorTransparant = Colors.transparent;
 
 const paddingA6 = EdgeInsets.all(6);
 const paddingH8 = EdgeInsets.symmetric(horizontal: 8);
+const paddingH20V10 = EdgeInsets.symmetric(horizontal: 20, vertical: 10);
+const paddingH22V11 = EdgeInsets.symmetric(horizontal: 22, vertical: 11);
 const paddingH24V12 = EdgeInsets.symmetric(horizontal: 24, vertical: 12);
 
 const sizedBoxZero = SizedBox();

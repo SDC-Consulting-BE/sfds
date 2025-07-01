@@ -102,6 +102,51 @@ class _SteveSliverBreadcrumb extends StatelessWidget {
   }
 }
 
+const _steveSliverTitleDefaultPadding = paddingH20V10;
+const _steveSliverSubtitleDefaultPadding = paddingH22V11;
+
+class SteveSliverTitle extends StatelessWidget {
+  const SteveSliverTitle({
+    super.key,
+    required this.title,
+    this.type = SteveSliverTitleType.title,
+  });
+
+  final String title;
+  final SteveSliverTitleType type;
+
+  @override
+  Widget build(BuildContext context) {
+    var theme = Theme.of(context);
+    return SliverPadding(
+      padding: type.padding,
+      sliver: SliverToBoxAdapter(
+        child: Text(
+          title,
+          style: type.textStyleFunction.call(theme),
+        ),
+      ),
+    );
+  }
+}
+
+enum SteveSliverTitleType {
+  title,
+  subtitle,
+}
+
+extension SteveSliverTitleTypeTextStyle on SteveSliverTitleType {
+  TextStyle Function(ThemeData theme) get textStyleFunction => switch (this) {
+    SteveSliverTitleType.title => (theme) => theme.textTheme.displayMedium!,
+    SteveSliverTitleType.subtitle => (theme) => theme.textTheme.displaySmall!,
+  };
+
+  EdgeInsets get padding => switch (this) {
+    SteveSliverTitleType.title => _steveSliverTitleDefaultPadding,
+    SteveSliverTitleType.subtitle => _steveSliverSubtitleDefaultPadding,
+  };
+}
+
 const _steveSliverTextDefaultPadding = paddingH24V12;
 
 class SteveSliverText extends StatelessWidget {
@@ -109,16 +154,14 @@ class SteveSliverText extends StatelessWidget {
     super.key,
     required this.text,
     this.textStyle,
-    this.padding,
   });
 
   final String text;
   final TextStyle? textStyle;
-  final EdgeInsets? padding;
 
   @override
   Widget build(BuildContext context) => SliverPadding(
-    padding: padding ?? _steveSliverTextDefaultPadding,
+    padding: _steveSliverTextDefaultPadding,
     sliver: SliverToBoxAdapter(
       child: Text(
         text,

@@ -18,7 +18,7 @@ class MockGrid extends StatelessWidget {
         onTap: () => context.go(routeLibraryButtons),
         child: Container(
           alignment: Alignment.center,
-          color: Colors.teal[100 * (index % 9)],
+          color: Colors.orange[100 * (index % 9)],
           child: Text("grid item $index"),
         ),
       ),
