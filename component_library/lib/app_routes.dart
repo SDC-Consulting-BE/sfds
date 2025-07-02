@@ -1,19 +1,22 @@
-import "package:component_library/app/library/button/button_library_screen.dart";
-import "package:component_library/app/library/card/card_library_screen.dart";
+import "package:component_library/app/library/layout/sliver_view_screen.dart";
 import "package:component_library/app/library/library_screen.dart";
-import "package:component_library/app/library/sliver_view/sliver_view_library_screen.dart";
+import "package:component_library/app/library/widgets/buttons_screen.dart";
+import "package:component_library/app/library/widgets/cards_screen.dart";
+import "package:component_library/app/library/widgets/utility_widgets_screen.dart";
 import "package:go_router/go_router.dart";
 
 const _subRouteHome = "/";
 const _subRouteLibrary = "/library";
-const _subRouteLibrarySliverView = "/sliver_view";
-const _subRouteLibraryButtons = "/buttons";
-const _subRouteLibraryCards = "/cards";
+const _subRouteSliverView = "/sliver_view";
+const _subRouteButtons = "/buttons";
+const _subRouteCards = "/cards";
+const _subRouteUtilityWidgets = "/utility_widgets";
 
 const routeLibrary = _subRouteLibrary;
-const routeLibrarySliverView = "$_subRouteLibrary$_subRouteLibrarySliverView";
-const routeLibraryButtons = "$_subRouteLibrary$_subRouteLibraryButtons";
-const routeLibraryCards = "$_subRouteLibrary$_subRouteLibraryCards";
+const routeLibrarySliverView = "$_subRouteLibrary$_subRouteSliverView";
+const routeLibraryButtons = "$_subRouteLibrary$_subRouteButtons";
+const routeLibraryCards = "$_subRouteLibrary$_subRouteCards";
+const routeLibraryUtilityWidgets = "$_subRouteLibrary$_subRouteUtilityWidgets";
 
 final router = GoRouter(
   initialLocation: _subRouteHome,
@@ -23,9 +26,10 @@ final router = GoRouter(
       path: _subRouteLibrary,
       builder: (_, _) => const LibraryScreen(),
       routes: [
-        GoRoute(path: _subRouteLibrarySliverView, builder: (_, _) => const SliverViewLibraryScreen()),
-        GoRoute(path: _subRouteLibraryButtons, builder: (_, _) => const ButtonLibraryScreen()),
-        GoRoute(path: _subRouteLibraryCards, builder: (_, _) => const CardLibraryScreen()),
+        GoRoute(path: _subRouteSliverView, builder: (_, _) => const SliverViewLibraryScreen()),
+        GoRoute(path: _subRouteButtons, builder: (_, _) => const ButtonLibraryScreen()),
+        GoRoute(path: _subRouteCards, builder: (_, _) => const CardLibraryScreen()),
+        GoRoute(path: _subRouteUtilityWidgets, builder: (_, _) => const UtilityWidgetsLibraryScreen()),
       ],
     ),
   ],

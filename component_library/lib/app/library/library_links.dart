@@ -1,4 +1,4 @@
-import "package:component_library/app/library/widget/library_link_section.dart";
+import "package:component_library/app/library/_widget/library_link_section.dart";
 import "package:component_library/app_constants.dart";
 import "package:component_library/app_routes.dart";
 
@@ -23,5 +23,6 @@ const Map<LibraryLinkGroup, List<LibraryLink>> _libraryLinks = {
   LibraryLinkGroup.widgets: [
     LibraryLink("Buttons", iconDataButtons, routeLibraryButtons),
     LibraryLink("Cards", iconDataCards, routeLibraryCards),
+    LibraryLink("Utility Widgets", iconDataUtilityWidgets, routeLibraryUtilityWidgets),
   ],
 };

@@ -1,5 +1,5 @@
+import "package:component_library/app/library/_widget/library_link_section.dart";
 import "package:component_library/app/library/library_links.dart";
-import "package:component_library/app/library/widget/library_link_section.dart";
 import "package:flutter/material.dart";
 import "package:sfds/widget.dart";
 
@@ -31,6 +31,7 @@ class LibraryScreen extends StatelessWidget {
           const TextSpan(text: " for a guide on how to set up this system in your project(s)."),
         ],
       ),
+      const SteveSliverText(text: "Information regarding utility classes and other code related subjects can also be found in the readme."),
       ...LibraryLinkGroup.values
           .map(_librarySection) //
           .fold([], (previousValue, element) => [...previousValue, ...element]),
