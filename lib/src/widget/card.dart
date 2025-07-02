@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:sfds/src/constants.dart";
 import "package:sfds/src/theme/theme_constants.dart";
+import "package:sfds/src/widget/utility.dart";
 
 class SteveCard extends StatelessWidget {
   const SteveCard({
@@ -16,11 +17,15 @@ class SteveCard extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return Card(
-      child: InkWell(
-        borderRadius: themeCardDefaultShape.borderRadius.resolve(themeDefaultTextDirection),
-        hoverColor: theme.colorScheme.surfaceDim,
-        splashColor: theme.colorScheme.onSurfaceVariant,
-        onTap: onTap,
+      child: ConditionalWidgetWrapper(
+        condition: onTap != null,
+        widgetWrapper: (child) => InkWell(
+          borderRadius: themeCardDefaultShape.borderRadius.resolve(themeDefaultTextDirection),
+          hoverColor: theme.colorScheme.surfaceDim,
+          splashColor: theme.colorScheme.onSurfaceVariant,
+          onTap: onTap,
+          child: child,
+        ),
         child: Padding(
           padding: paddingH12V8,
           child: child,

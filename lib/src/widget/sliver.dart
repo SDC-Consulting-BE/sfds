@@ -173,6 +173,31 @@ class SteveSliverText extends StatelessWidget {
   );
 }
 
+class SteveSliverRichText extends StatelessWidget {
+  const SteveSliverRichText({
+    super.key,
+    required this.inlineSpans,
+    this.baseTextStyle,
+  });
+
+  final List<InlineSpan> inlineSpans;
+  final TextStyle? baseTextStyle;
+
+  @override
+  Widget build(BuildContext context) => SliverPadding(
+      padding: _steveSliverTextDefaultPadding,
+      sliver: SliverToBoxAdapter(
+        child: RichText(
+          textAlign: TextAlign.justify,
+          text: TextSpan(
+            style: baseTextStyle,
+            children: inlineSpans,
+          ),
+        ),
+      ),
+    );
+}
+
 class SteveSliverSpacing extends StatelessWidget {
   const SteveSliverSpacing({
     super.key,

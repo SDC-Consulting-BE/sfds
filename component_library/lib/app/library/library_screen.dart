@@ -17,9 +17,19 @@ class LibraryScreen extends StatelessWidget {
       ],
     ),
     slivers: [
-      const SteveSliverText(
-        text:
-            "The component library contains a categorized visual representation of all widgets contained in Steve's Flutter Design System, along with additional clarification where needed. For a guide on how to set up this system in your project(s), check out the readme.",
+      SteveSliverRichText(
+        inlineSpans: [
+          const TextSpan(
+            text:
+                "The component library contains a categorized visual representation of all widgets contained in Steve's Flutter Design System, along with additional clarification where needed. Check out the readme at the ",
+          ),
+          SteveTextSpanHyperlink(
+            text: "GitHub repository",
+            url: "https://github.com/SDC-Consulting-BE/sfds",
+            context: context,
+          ),
+          const TextSpan(text: " for a guide on how to set up this system in your project(s)."),
+        ],
       ),
       ...LibraryLinkGroup.values
           .map(_librarySection) //
