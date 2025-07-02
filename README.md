@@ -2,6 +2,12 @@
 
 My personal design system to facilitate the creation of webapps using Flutter.
 
+Key packages used in the design system:
+
+- [shared_preferences](https://pub.dev/packages/shared_preferences) (persistent storage)
+- [go_router](https://pub.dev/packages/go_router) (routing)
+- [riverpod](https://pub.dev/packages/riverpod) (state management)
+
 ## Table of contents
 
 1. [Installing](#installing)
