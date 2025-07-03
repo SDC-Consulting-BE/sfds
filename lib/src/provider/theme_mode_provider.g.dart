@@ -38,7 +38,7 @@ final class SteveThemeModeProvider
   }
 }
 
-String _$steveThemeModeHash() => r'822e6b6c3ca74980a2e3bfb8ee78612394e60bb8';
+String _$steveThemeModeHash() => r'91a4918c7ebf083a69f62dd46cb4a6c68a9952ba';
 
 abstract class _$SteveThemeMode extends $Notifier<ThemeMode> {
   ThemeMode build();
