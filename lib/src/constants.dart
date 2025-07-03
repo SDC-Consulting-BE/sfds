@@ -1,5 +1,8 @@
 import "package:flutter/material.dart";
 
+const iconDataLightMode = Icons.light_mode;
+const iconDataDarkMode = Icons.dark_mode;
+
 const colorTransparant = Colors.transparent;
 
 const paddingZero = EdgeInsets.zero;

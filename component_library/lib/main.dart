@@ -8,7 +8,7 @@ import "package:sfds/provider.dart";
 import "package:sfds/theme.dart";
 
 void main() async {
-  AppConfigurator(const MyApp()) //
+  SteveAppConfigurator(const MyApp()) //
       .start();
 }
 

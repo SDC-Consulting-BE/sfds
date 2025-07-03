@@ -1,7 +1,7 @@
 import "dart:developer" as dev;
 
-class LogUtil {
-  const LogUtil._();
+class SteveLogUtil {
+  const SteveLogUtil._();
 
   static void info(String message) => _log(LogLevel.info, message);
 

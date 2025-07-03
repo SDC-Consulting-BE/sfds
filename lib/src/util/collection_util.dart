@@ -1,5 +1,5 @@
-class CollectionUtil {
-  CollectionUtil._();
+class SteveCollectionUtil {
+  SteveCollectionUtil._();
 
   static Iterable<T> intersperse<T>(T element, Iterable<T> iterable) sync* {
     var iterator = iterable.iterator;

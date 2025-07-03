@@ -1,7 +1,7 @@
 import "package:package_info_plus/package_info_plus.dart";
 import "package:sfds/config.dart";
 
-class AppInfoService implements AppConfigItem {
+class SteveAppInfoService implements SteveAppConfigItem {
   static late final PackageInfo _appInfo;
 
   @override

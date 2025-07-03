@@ -19,7 +19,7 @@ class SteveSliverBreadcrumbs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    var themeExtension = theme.extension<ColorSchemeExtension>()!;
+    var themeExtension = theme.extension<SteveColorSchemeExtension>()!;
     var goRouter = GoRouter.of(context);
     var segments = _routingSegments(goRouter);
     var breadcrumbsStyle = theme.textTheme.labelLarge!;
@@ -27,14 +27,14 @@ class SteveSliverBreadcrumbs extends StatelessWidget {
       color: themeExtension.hyperlink.color,
       decoration: TextDecoration.underline,
     );
-    var breadcrumbsStyleHeight = TextStyleUtil.getTrueHeight(breadcrumbsStyle);
+    var breadcrumbsStyleHeight = SteveTextStyleUtil.getTrueHeight(breadcrumbsStyle);
     var breadcrumbsHeight = breadcrumbsStyleHeight * _steveSliverBreadcrumbsPaddingFactor;
     var breadcrumbsVerticalPadding = (breadcrumbsHeight - breadcrumbsStyleHeight) / 2;
     return SliverPadding(
       padding: EdgeInsets.symmetric(horizontal: _steveSliverBreadcrumbsSpacing, vertical: breadcrumbsVerticalPadding),
       sliver: SliverToBoxAdapter(
         child: Row(
-          children: CollectionUtil.intersperse(
+          children: SteveCollectionUtil.intersperse(
             const _SteveSliverBreadcrumbsSeparator(),
             _breadcrumbWidgets(segments, breadcrumbsStyle, breadcrumbsLinkStyle),
           ).toList(),
@@ -89,16 +89,16 @@ class _SteveSliverBreadcrumb extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var navigator = Navigator.of(context);
-    return ConditionalWidgetWrapper(
+    return SteveConditionalWidgetWrapper(
       condition: pops != 0,
       widgetWrapper: (child) => MouseRegion(
         cursor: SystemMouseCursors.click,
         child: GestureDetector(
-          onTap: () => NavigationUtil.popMultiple(navigator, pops),
+          onTap: () => SteveNavigationUtil.popMultiple(navigator, pops),
           child: child,
         ),
       ),
-      child: Text(StringUtil.capitalize(segment), style: style),
+      child: Text(SteveStringUtil.capitalize(segment), style: style),
     );
   }
 }

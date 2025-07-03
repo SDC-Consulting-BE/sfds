@@ -14,8 +14,8 @@ class SteveTextSpanHyperlink extends TextSpan {
          text: text,
          style: TextStyle(
            decoration: TextDecoration.underline,
-           color: Theme.of(context).extension<ColorSchemeExtension>()!.hyperlink.color,
+           color: Theme.of(context).extension<SteveColorSchemeExtension>()!.hyperlink.color,
          ),
-         recognizer: TapGestureRecognizer()..onTap = () => unawaited(NavigationUtil.openUrlInNewTab(url)),
+         recognizer: TapGestureRecognizer()..onTap = () => unawaited(SteveNavigationUtil.openUrlInNewTab(url)),
        );
 }

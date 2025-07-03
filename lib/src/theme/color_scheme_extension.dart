@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:sfds/src/theme/theme.dart";
 
-const ColorSchemeExtension colorSchemeExtension = ColorSchemeExtension(
+const SteveColorSchemeExtension colorSchemeExtension = SteveColorSchemeExtension(
   success: success,
   warning: warning,
   hyperlink: hyperlink,
@@ -9,7 +9,7 @@ const ColorSchemeExtension colorSchemeExtension = ColorSchemeExtension(
 );
 
 // Seed: 4bb543
-const ExtendedColor success = ExtendedColor(
+const success = SteveExtendedColor(
   color: Color(0xff3e6837),
   onColor: Color(0xffffffff),
   container: Color(0xffbff0b1),
@@ -17,7 +17,7 @@ const ExtendedColor success = ExtendedColor(
 );
 
 // Seed: ffa500
-const ExtendedColor warning = ExtendedColor(
+const warning = SteveExtendedColor(
     color: Color(0xff815512),
     onColor: Color(0xffffffff),
     container: Color(0xffffddb7),
@@ -25,7 +25,7 @@ const ExtendedColor warning = ExtendedColor(
 );
 
 // Seed: 0000ee
-const ExtendedColor hyperlink = ExtendedColor(
+const hyperlink = SteveExtendedColor(
   color: Color(0xff555992),
   onColor: Color(0xffffffff),
   container: Color(0xffe0e0ff),
@@ -33,7 +33,7 @@ const ExtendedColor hyperlink = ExtendedColor(
 );
 
 // Seed: ffd700
-const ExtendedColor favorite = ExtendedColor(
+const favorite = SteveExtendedColor(
   color: Color(0xff6f5d0e),
   onColor: Color(0xffffffff),
   container: Color(0xfffae287),

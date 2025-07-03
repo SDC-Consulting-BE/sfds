@@ -20,26 +20,26 @@ ThemeData theme(ColorScheme colorScheme) => ThemeData(
   ),
 );
 
-class ColorSchemeExtension extends ThemeExtension<ColorSchemeExtension> {
-  const ColorSchemeExtension({
+class SteveColorSchemeExtension extends ThemeExtension<SteveColorSchemeExtension> {
+  const SteveColorSchemeExtension({
     required this.success,
     required this.warning,
     required this.hyperlink,
     required this.favorite,
   });
 
-  final ExtendedColor success;
-  final ExtendedColor warning;
-  final ExtendedColor hyperlink;
-  final ExtendedColor favorite;
+  final SteveExtendedColor success;
+  final SteveExtendedColor warning;
+  final SteveExtendedColor hyperlink;
+  final SteveExtendedColor favorite;
 
   @override
-  ColorSchemeExtension copyWith({
-    ExtendedColor? success,
-    ExtendedColor? warning,
-    ExtendedColor? hyperlink,
-    ExtendedColor? favorite,
-  }) => ColorSchemeExtension(
+  SteveColorSchemeExtension copyWith({
+    SteveExtendedColor? success,
+    SteveExtendedColor? warning,
+    SteveExtendedColor? hyperlink,
+    SteveExtendedColor? favorite,
+  }) => SteveColorSchemeExtension(
     success: success ?? this.success,
     warning: warning ?? this.warning,
     hyperlink: hyperlink ?? this.hyperlink,
@@ -47,11 +47,11 @@ class ColorSchemeExtension extends ThemeExtension<ColorSchemeExtension> {
   );
 
   @override
-  ColorSchemeExtension lerp(ThemeExtension? other, double t) {
-    if (other is! ColorSchemeExtension) {
+  SteveColorSchemeExtension lerp(ThemeExtension? other, double t) {
+    if (other is! SteveColorSchemeExtension) {
       return this;
     }
-    return ColorSchemeExtension(
+    return SteveColorSchemeExtension(
       success: success.lerp(other.success, t),
       warning: warning.lerp(other.warning, t),
       hyperlink: hyperlink.lerp(other.hyperlink, t),
@@ -60,8 +60,8 @@ class ColorSchemeExtension extends ThemeExtension<ColorSchemeExtension> {
   }
 }
 
-class ExtendedColor {
-  const ExtendedColor({
+class SteveExtendedColor {
+  const SteveExtendedColor({
     required this.color,
     required this.onColor,
     required this.container,
@@ -73,7 +73,7 @@ class ExtendedColor {
   final Color container;
   final Color onContainer;
 
-  ExtendedColor lerp(ExtendedColor other, double t) => ExtendedColor(
+  SteveExtendedColor lerp(SteveExtendedColor other, double t) => SteveExtendedColor(
     color: Color.lerp(color, other.color, t)!,
     onColor: Color.lerp(onColor, other.onColor, t)!,
     container: Color.lerp(container, other.container, t)!,

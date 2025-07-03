@@ -45,7 +45,7 @@ class SteveSliverViewAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     var appBarTitleStyle = theme.textTheme.displayLarge!;
-    var appBarTitleStyleHeight = TextStyleUtil.getTrueHeight(appBarTitleStyle);
+    var appBarTitleStyleHeight = SteveTextStyleUtil.getTrueHeight(appBarTitleStyle);
     var appBarHeight = appBarTitleStyleHeight * _steveSliverViewAppBarPaddingFactor;
     var appBarVerticalPadding = (appBarHeight - appBarTitleStyleHeight) / 2;
     return SliverAppBar(
@@ -63,7 +63,7 @@ class SteveSliverViewAppBar extends StatelessWidget {
       actionsIconTheme: IconThemeData(
         size: appBarHeight * _steveSliverViewAppBarIconsSizeFactor,
       ),
-      actions: CollectionUtil.intersperse(_steveSliverViewAppBarIconsSpacer, actions).toList(),
+      actions: SteveCollectionUtil.intersperse(_steveSliverViewAppBarIconsSpacer, actions).toList(),
     );
   }
 }
@@ -136,10 +136,10 @@ class SteveViewAppBarActionThemeSwitcher extends ConsumerWidget {
   }
 }
 
-extension ThemeModeIcon on ThemeMode {
+extension _ThemeModeIcon on ThemeMode {
   IconData get icon => switch(this) {
-    ThemeMode.light => Icons.light_mode,
-    ThemeMode.dark => Icons.dark_mode,
-    _ => throw Error(),
+    ThemeMode.light => iconDataLightMode,
+    ThemeMode.dark => iconDataDarkMode,
+    _ => throw UnsupportedError("ThemeMode system is not supported (and should not be possible)"),
   };
 }

@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 
-class ConditionalWidgetWrapper extends StatelessWidget {
-  const ConditionalWidgetWrapper({
+class SteveConditionalWidgetWrapper extends StatelessWidget {
+  const SteveConditionalWidgetWrapper({
     super.key,
     required this.condition,
     required this.child,

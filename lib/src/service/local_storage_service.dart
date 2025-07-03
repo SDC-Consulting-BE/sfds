@@ -4,7 +4,7 @@ import "package:sfds/config.dart";
 import "package:sfds/src/util/log_util.dart";
 import "package:shared_preferences/shared_preferences.dart";
 
-class LocalStorageService implements AppConfigItem {
+class SteveLocalStorageService implements SteveAppConfigItem {
   static const Set<String> _RESERVED_KEYS = {};
 
   static late final SharedPreferences _localStorage;
@@ -21,7 +21,7 @@ class LocalStorageService implements AppConfigItem {
   static bool isReservedKey(String key) {
     var isReservedKey = _RESERVED_KEYS.contains(key);
     if (isReservedKey) {
-      LogUtil.warning("$key is a reserved local storage key!");
+      SteveLogUtil.warning("$key is a reserved local storage key!");
     }
     return isReservedKey;
   }

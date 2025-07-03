@@ -17,7 +17,7 @@ class SteveCard extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return Card(
-      child: ConditionalWidgetWrapper(
+      child: SteveConditionalWidgetWrapper(
         condition: onTap != null,
         widgetWrapper: (child) => InkWell(
           borderRadius: themeCardDefaultShape.borderRadius.resolve(themeDefaultTextDirection),

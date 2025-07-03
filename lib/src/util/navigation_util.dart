@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 import "package:url_launcher/url_launcher.dart";
 
-class NavigationUtil {
-  const NavigationUtil._();
+class SteveNavigationUtil {
+  const SteveNavigationUtil._();
 
   static void popMultiple(NavigatorState navigator, int numberOfPops) {
     var count = 0;
