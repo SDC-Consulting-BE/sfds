@@ -12,7 +12,7 @@ ThemeData theme(ColorScheme colorScheme) => ThemeData(
   ),
   scaffoldBackgroundColor: colorScheme.surface,
   canvasColor: colorScheme.surface,
-  extensions: const [colorSchemeExtension],
+  extensions: [colorScheme.brightness.colorSchemeExtension],
   cardTheme: const CardThemeData(
     elevation: 0,
     margin: paddingZero,
