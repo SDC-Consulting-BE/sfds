@@ -6,7 +6,12 @@ class ButtonLibraryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => const SteveSliverView(
-    appBar: SteveSliverViewAppBar(title: "Buttons"),
+    appBar: SteveSliverViewAppBar(
+      title: "Buttons",
+      actions: [
+        SteveViewAppBarActionThemeSwitcher(),
+      ],
+    ),
     slivers: [SteveSliverBreadcrumbs()],
   );
 }

@@ -21,8 +21,8 @@ class SteveCard extends StatelessWidget {
         condition: onTap != null,
         widgetWrapper: (child) => InkWell(
           borderRadius: themeCardDefaultShape.borderRadius.resolve(themeDefaultTextDirection),
-          hoverColor: theme.colorScheme.surfaceDim,
-          splashColor: theme.colorScheme.onSurfaceVariant,
+          hoverColor: theme.colorScheme.primaryContainer,
+          splashColor: theme.colorScheme.inversePrimary,
           onTap: onTap,
           child: child,
         ),

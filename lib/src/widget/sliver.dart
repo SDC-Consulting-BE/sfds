@@ -190,7 +190,7 @@ class SteveSliverRichText extends StatelessWidget {
         child: RichText(
           textAlign: TextAlign.justify,
           text: TextSpan(
-            style: baseTextStyle,
+            style: baseTextStyle ?? DefaultTextStyle.of(context).style,
             children: inlineSpans,
           ),
         ),

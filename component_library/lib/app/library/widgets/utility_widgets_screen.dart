@@ -6,7 +6,12 @@ class UtilityWidgetsLibraryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => const SteveSliverView(
-    appBar: SteveSliverViewAppBar(title: "Utility Widgets"),
+    appBar: SteveSliverViewAppBar(
+      title: "Utility Widgets",
+      actions: [
+        SteveViewAppBarActionThemeSwitcher(),
+      ],
+    ),
     slivers: [SteveSliverBreadcrumbs()],
   );
 }
