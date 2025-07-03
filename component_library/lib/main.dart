@@ -1,12 +1,13 @@
 import "package:component_library/app_color_scheme.dart";
+import "package:component_library/app_constants.dart";
 import "package:component_library/app_routes.dart";
 import "package:flutter/material.dart";
-import "package:flutter_web_plugins/flutter_web_plugins.dart";
+import "package:sfds/config.dart";
 import "package:sfds/theme.dart";
 
-void main() {
-  usePathUrlStrategy();
-  runApp(const MyApp());
+void main() async {
+  AppConfigurator(const MyApp()) //
+      .start();
 }
 
 class MyApp extends StatelessWidget {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp.router(
     debugShowCheckedModeBanner: false,
-    title: "SFDS Component Library",
+    title: appTitle,
     themeMode: ThemeMode.system,
     theme: theme(light()),
     darkTheme: theme(dark()),
