@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   sfds:
     path: ../
+  flutter_riverpod: ^3.0.0-dev.16
   go_router: ^16.0.0
 
 dev_dependencies:

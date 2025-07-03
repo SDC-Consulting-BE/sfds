@@ -8,12 +8,10 @@ class LibraryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => SteveSliverView(
-    appBar: SteveSliverViewAppBar(
+    appBar: const SteveSliverViewAppBar(
       title: "Component Library",
       actions: [
-        SteveViewAppBarAction(icon: Icons.sunny, onPressed: () {}),
-        SteveViewAppBarAction(icon: Icons.sunny_snowing, onPressed: () {}),
-        SteveViewAppBarAction(icon: Icons.snowing, onPressed: () {}),
+        SteveViewAppBarActionThemeSwitcher(),
       ],
     ),
     slivers: [

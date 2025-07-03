@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:sfds/provider.dart";
 import "package:sfds/src/constants.dart";
 import "package:sfds/src/util/collection_util.dart";
 import "package:sfds/src/util/text_style_util.dart";
@@ -37,7 +39,7 @@ class SteveSliverViewAppBar extends StatelessWidget {
   });
 
   final String title;
-  final List<SteveViewAppBarAction> actions;
+  final List<Widget> actions;
 
   @override
   Widget build(BuildContext context) {
@@ -118,4 +120,26 @@ class _SteveViewAppBarActionState extends State<SteveViewAppBarAction> {
       _hovered = hovered;
     });
   }
+}
+
+class SteveViewAppBarActionThemeSwitcher extends ConsumerWidget {
+  const SteveViewAppBarActionThemeSwitcher({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    var themeModeNotifier = ref.read(steveThemeModeProvider.notifier);
+    var themeMode = ref.watch(steveThemeModeProvider);
+    return SteveViewAppBarAction(
+      icon: themeMode.icon,
+      onPressed: themeModeNotifier.flipThemeMode,
+    );
+  }
+}
+
+extension ThemeModeIcon on ThemeMode {
+  IconData get icon => switch(this) {
+    ThemeMode.light => Icons.light_mode,
+    ThemeMode.dark => Icons.dark_mode,
+    _ => throw Error(),
+  };
 }
