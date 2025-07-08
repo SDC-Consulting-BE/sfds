@@ -10,10 +10,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   sfds:
     path: ../
   flutter_riverpod: ^3.0.0-dev.16
   go_router: ^16.0.0
+  intl: ^0.20.2
 
 dev_dependencies:
   flutter_test:
@@ -21,6 +24,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  generate: true
   fonts:
     - family: base
       fonts:
