@@ -1,12 +1,15 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:flutter_web_plugins/flutter_web_plugins.dart";
+import "package:go_router/go_router.dart";
+import "package:sfds/provider.dart";
 import "package:sfds/service.dart";
+import "package:sfds/theme.dart";
 
 class SteveAppConfigurator {
-  SteveAppConfigurator(this.app);
+  SteveAppConfigurator(this.appGenerator);
 
-  final Widget app;
+  final Widget Function() appGenerator;
   final List<SteveAppConfigItem> _configItems = [
     SteveLocalStorageService(),
     SteveAppInfoService(),
@@ -23,7 +26,34 @@ class SteveAppConfigurator {
     _runApp();
   }
 
-  void _runApp() => runApp(ProviderScope(child: app));
+  void _runApp() => runApp(ProviderScope(child: appGenerator.call()));
+}
+
+class SteveApp extends ConsumerWidget {
+  const SteveApp({
+    required this.appTitle,
+    required this.lightColorScheme,
+    required this.darkColorScheme,
+    required this.router,
+  });
+
+  final String appTitle;
+  final ColorScheme lightColorScheme;
+  final ColorScheme darkColorScheme;
+  final GoRouter router;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    var themeMode = ref.watch(steveThemeModeProvider);
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      title: appTitle,
+      themeMode: themeMode,
+      theme: theme(lightColorScheme),
+      darkTheme: theme(darkColorScheme),
+      routerConfig: router,
+    );
+  }
 }
 
 abstract interface class SteveAppConfigItem {
