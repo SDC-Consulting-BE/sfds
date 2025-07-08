@@ -7,8 +7,10 @@ void main() async {
   SteveAppConfigurator(
     () => SteveApp(
       appTitle: appTitle,
-      lightColorScheme: lightColorScheme,
-      darkColorScheme: darkColorScheme,
+      theme: const SteveAppTheme(
+        light: lightColorScheme,
+        dark: darkColorScheme,
+      ),
       router: router,
     ),
   ).start();

@@ -3,7 +3,7 @@ import "package:sfds/src/constants.dart";
 import "package:sfds/src/theme/color_scheme_extension.dart";
 import "package:sfds/src/theme/theme_constants.dart";
 
-ThemeData theme(ColorScheme colorScheme) => ThemeData(
+ThemeData themeData(ColorScheme colorScheme) => ThemeData(
   brightness: colorScheme.brightness,
   colorScheme: colorScheme,
   textTheme: const TextTheme().apply(
