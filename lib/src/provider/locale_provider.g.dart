@@ -74,11 +74,9 @@ final class SteveLocaleFamily extends $Family with $ClassFamilyOverride<SteveLoc
 
 abstract class _$SteveLocale extends $Notifier<Locale> {
   late final _$args = ref.$arg as SteveAppI18n;
-
   SteveAppI18n get i18n => _$args;
 
   Locale build(SteveAppI18n i18n);
-
   @$mustCallSuper
   @override
   void runBuild() {
