@@ -1,7 +1,3 @@
 {
-  "title": "Component Library",
-  "helloWorld": "Hello!",
-  "@helloWorld": {
-    "description": "The conventional newborn programmer greeting"
-  }
+  "title": "Component Library"
 }

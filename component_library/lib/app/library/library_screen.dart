@@ -14,7 +14,7 @@ class LibraryScreen extends StatelessWidget {
       appBar: SteveSliverViewAppBar(
         title: localization.title,
         actions: const [
-          SteveViewAppBarActionLocaleSwitcher(),
+          SteveViewAppBarActionLocaleSwitcher(supportedLocales: Localization.supportedLocales),
           SteveViewAppBarActionThemeSwitcher(),
         ],
       ),
