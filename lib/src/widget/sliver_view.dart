@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:sfds/provider.dart";
 import "package:sfds/src/constants.dart";
+import "package:sfds/src/provider/locale_provider.dart";
 import "package:sfds/src/util/collection_util.dart";
 import "package:sfds/src/util/text_style_util.dart";
 
@@ -74,14 +75,41 @@ const _steveSliverViewActionScaleAnimationDuration = durationMs100;
 const _steveSliverViewActionSplashBorder = roundedRectangleBorderC12;
 const _steveSliverViewActionPadding = paddingA6;
 
+enum SteveViewAppBarActionButtonType {
+  icon,
+  locale,
+}
+
 class SteveViewAppBarAction extends StatefulWidget {
-  const SteveViewAppBarAction({
+  const SteveViewAppBarAction._({
     super.key,
-    required this.icon,
+    required this.type,
+    this.icon,
+    this.locale,
     required this.onPressed,
   });
 
-  final IconData icon;
+  const SteveViewAppBarAction.icon({
+    required IconData icon,
+    required VoidCallback onPressed,
+  }) : this._(
+         type: SteveViewAppBarActionButtonType.icon,
+         icon: icon,
+         onPressed: onPressed,
+       );
+
+  const SteveViewAppBarAction._locale({
+    required Locale locale,
+    required VoidCallback onPressed,
+  }) : this._(
+         type: SteveViewAppBarActionButtonType.locale,
+         locale: locale,
+         onPressed: onPressed,
+       );
+
+  final SteveViewAppBarActionButtonType type;
+  final IconData? icon;
+  final Locale? locale;
   final VoidCallback onPressed;
 
   @override
@@ -92,10 +120,7 @@ class _SteveViewAppBarActionState extends State<SteveViewAppBarAction> {
   var _hovered = false;
 
   @override
-  Widget build(BuildContext context) {
-    var theme = Theme.of(context);
-    var hoveredColor = theme.colorScheme.primary;
-    return AnimatedScale(
+  Widget build(BuildContext context) => AnimatedScale(
       scale: _hovered ? _steveSliverViewActionHoverScale : _steveSliverViewActionDefaultScale,
       duration: _steveSliverViewActionScaleAnimationDuration,
       child: InkWell(
@@ -106,13 +131,33 @@ class _SteveViewAppBarActionState extends State<SteveViewAppBarAction> {
         customBorder: _steveSliverViewActionSplashBorder,
         child: Padding(
           padding: _steveSliverViewActionPadding,
-          child: Icon(
-            widget.icon,
-            color: _hovered ? hoveredColor : null,
-          ),
+          child: _buttonForType(),
         ),
       ),
     );
+
+  Widget _buttonForType() {
+    var theme = Theme.of(context);
+    var hoveredColor = theme.colorScheme.primary;
+    return switch (widget.type) {
+      SteveViewAppBarActionButtonType.icon => Icon(
+        widget.icon,
+        color: _hovered ? hoveredColor : null,
+      ),
+      SteveViewAppBarActionButtonType.locale => SizedBox(
+        width: 42,
+        height: 42,
+        child: FittedBox(
+          fit: BoxFit.fitHeight,
+          child: Text(
+            widget.locale!.languageCode,
+            style: TextStyle(
+              color: _hovered ? hoveredColor : null,
+            ),
+          ),
+        ),
+      ),
+    };
   }
 
   void _updateHovered(bool hovered) {
@@ -129,7 +174,7 @@ class SteveViewAppBarActionThemeSwitcher extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     var themeModeNotifier = ref.read(steveThemeModeProvider.notifier);
     var themeMode = ref.watch(steveThemeModeProvider);
-    return SteveViewAppBarAction(
+    return SteveViewAppBarAction.icon(
       icon: themeMode.icon,
       onPressed: themeModeNotifier.flipThemeMode,
     );
@@ -137,9 +182,23 @@ class SteveViewAppBarActionThemeSwitcher extends ConsumerWidget {
 }
 
 extension _ThemeModeIcon on ThemeMode {
-  IconData get icon => switch(this) {
+  IconData get icon => switch (this) {
     ThemeMode.light => iconDataLightMode,
     ThemeMode.dark => iconDataDarkMode,
     _ => throw UnsupportedError("ThemeMode system is not supported (and should not be possible)"),
   };
+}
+
+class SteveViewAppBarActionLocaleSwitcher extends ConsumerWidget {
+  const SteveViewAppBarActionLocaleSwitcher({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    var localeNotifier = ref.read(steveLocaleProvider.notifier);
+    var locale = ref.watch(steveLocaleProvider);
+    return SteveViewAppBarAction._locale(
+      locale: locale ?? const Locale("en"),
+      onPressed: localeNotifier.cycleLocale,
+    );
+  }
 }

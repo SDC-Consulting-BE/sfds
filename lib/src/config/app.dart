@@ -21,7 +21,7 @@ class SteveApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var themeMode = ref.watch(steveThemeModeProvider);
-    var locale = ref.watch(steveLocaleProvider.call(i18n));
+    var locale = ref.watch(steveLocaleProvider);
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       onGenerateTitle: appTitle,
