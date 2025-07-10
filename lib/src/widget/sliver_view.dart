@@ -86,7 +86,8 @@ class SteveViewAppBarAction extends StatefulWidget {
     required this.type,
     this.icon,
     this.locale,
-    required this.onPressed,
+    this.onPressed,
+    this.onLocaleSelect,
   });
 
   const SteveViewAppBarAction.icon({
@@ -100,17 +101,18 @@ class SteveViewAppBarAction extends StatefulWidget {
 
   const SteveViewAppBarAction._locale({
     required Locale locale,
-    required VoidCallback onPressed,
+    void Function(Locale)? onLocaleSelect,
   }) : this._(
          type: SteveViewAppBarActionButtonType.locale,
          locale: locale,
-         onPressed: onPressed,
+         onLocaleSelect: onLocaleSelect,
        );
 
   final SteveViewAppBarActionButtonType type;
   final IconData? icon;
   final Locale? locale;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
+  final void Function(Locale)? onLocaleSelect;
 
   @override
   State<SteveViewAppBarAction> createState() => _SteveViewAppBarActionState();
@@ -121,20 +123,20 @@ class _SteveViewAppBarActionState extends State<SteveViewAppBarAction> {
 
   @override
   Widget build(BuildContext context) => AnimatedScale(
-      scale: _hovered ? _steveSliverViewActionHoverScale : _steveSliverViewActionDefaultScale,
-      duration: _steveSliverViewActionScaleAnimationDuration,
-      child: InkWell(
-        onTap: widget.onPressed,
-        onHover: _updateHovered,
-        hoverColor: colorTransparant,
-        highlightColor: colorTransparant,
-        customBorder: _steveSliverViewActionSplashBorder,
-        child: Padding(
-          padding: _steveSliverViewActionPadding,
-          child: _buttonForType(),
-        ),
+    scale: _hovered ? _steveSliverViewActionHoverScale : _steveSliverViewActionDefaultScale,
+    duration: _steveSliverViewActionScaleAnimationDuration,
+    child: InkWell(
+      onTap: widget.onPressed,
+      onHover: _updateHovered,
+      hoverColor: colorTransparant,
+      highlightColor: colorTransparant,
+      customBorder: _steveSliverViewActionSplashBorder,
+      child: Padding(
+        padding: _steveSliverViewActionPadding,
+        child: _buttonForType(),
       ),
-    );
+    ),
+  );
 
   Widget _buttonForType() {
     var theme = Theme.of(context);
@@ -144,15 +146,28 @@ class _SteveViewAppBarActionState extends State<SteveViewAppBarAction> {
         widget.icon,
         color: _hovered ? hoveredColor : null,
       ),
-      SteveViewAppBarActionButtonType.locale => SizedBox(
-        width: 42,
-        height: 42,
-        child: FittedBox(
-          fit: BoxFit.fitHeight,
-          child: Text(
-            widget.locale!.languageCode,
-            style: TextStyle(
-              color: _hovered ? hoveredColor : null,
+      SteveViewAppBarActionButtonType.locale => Theme(
+        data: theme.copyWith(),
+        child: PopupMenuButton<Locale>(
+          initialValue: widget.locale,
+          onSelected: widget.onLocaleSelect,
+          itemBuilder: (context) => [
+            const PopupMenuItem(value: Locale("de"), child: Text("de - Deutsch")),
+            const PopupMenuItem(value: Locale("en"), child: Text("en - English")),
+            const PopupMenuItem(value: Locale("fr"), child: Text("fr - Francais")),
+            const PopupMenuItem(value: Locale("nl"), child: Text("nl - Nederlands")),
+          ],
+          child: SizedBox(
+            width: 42,
+            height: 42,
+            child: FittedBox(
+              fit: BoxFit.fitHeight,
+              child: Text(
+                widget.locale!.languageCode,
+                style: TextStyle(
+                  color: _hovered ? hoveredColor : null,
+                ),
+              ),
             ),
           ),
         ),
@@ -195,10 +210,10 @@ class SteveViewAppBarActionLocaleSwitcher extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var localeNotifier = ref.read(steveLocaleProvider.notifier);
-    var locale = ref.watch(steveLocaleProvider);
+    var locale = ref.watch(steveLocaleProvider) ?? Localizations.localeOf(context);
     return SteveViewAppBarAction._locale(
-      locale: locale ?? const Locale("en"),
-      onPressed: localeNotifier.cycleLocale,
+      locale: locale,
+      onLocaleSelect: localeNotifier.selectLocale,
     );
   }
 }

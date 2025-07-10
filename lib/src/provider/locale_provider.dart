@@ -17,18 +17,11 @@ class SteveLocale extends _$SteveLocale {
     return storedLanguageCode != null ? Locale(storedLanguageCode) : null;
   }
 
-  void cycleLocale() {
-    state = (state != null ? state!.cycled : const Locale("en"));
-    unawaited(SteveLocalStorageService.writeString(_KEY_STEVE_LOCALE, state!.languageCode));
+  void selectLocale(Locale locale) {
+    if (state == locale) {
+      return;
+    }
+    state = locale;
+    unawaited(SteveLocalStorageService.writeString(_KEY_STEVE_LOCALE, locale.languageCode));
   }
-}
-
-extension _LocaleCycler on Locale {
-  Locale get cycled => switch(languageCode) {
-    "de" => const Locale("en"),
-    "en" => const Locale("fr"),
-    "fr" => const Locale("nl"),
-    "nl" => const Locale("de"),
-    _ => throw UnsupportedError("Language code $languageCode is not supported (and should not be possible)"),
-  };
 }

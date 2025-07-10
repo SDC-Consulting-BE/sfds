@@ -38,7 +38,7 @@ final class SteveLocaleProvider
   }
 }
 
-String _$steveLocaleHash() => r'f6067b7dcc60931f783abb940d294971fb928109';
+String _$steveLocaleHash() => r'8010912f677eca8b9ab5150cda0507ca4eb73a16';
 
 abstract class _$SteveLocale extends $Notifier<Locale?> {
   Locale? build();
