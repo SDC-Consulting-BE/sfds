@@ -74,6 +74,7 @@ const _steveSliverViewActionHoverScale = 1.314;
 const _steveSliverViewActionScaleAnimationDuration = durationMs100;
 const _steveSliverViewActionSplashBorder = roundedRectangleBorderC12;
 const _steveSliverViewActionPadding = paddingA6;
+const _steveSliverViewActionSize = 42.0;
 
 class SteveViewAppBarAction extends StatefulWidget {
   const SteveViewAppBarAction({
@@ -145,8 +146,6 @@ extension _ThemeModeIcon on ThemeMode {
   };
 }
 
-// TODO(sdecleene): nested widget to reduce load
-// TODO(sdecleene): extract shared logic with "action
 class SteveViewAppBarActionLocaleSwitcher extends ConsumerStatefulWidget {
   const SteveViewAppBarActionLocaleSwitcher({
     super.key,
@@ -178,30 +177,37 @@ class _SteveViewAppBarActionLocaleSwitcherState extends ConsumerState<SteveViewA
     return AnimatedScale(
       scale: _hovered ? _steveSliverViewActionHoverScale : _steveSliverViewActionDefaultScale,
       duration: _steveSliverViewActionScaleAnimationDuration,
-      child: InkWell(
-        onTap: () {},
-        onHover: _updateHovered,
-        hoverColor: colorTransparant,
-        highlightColor: colorTransparant,
-        customBorder: _steveSliverViewActionSplashBorder,
-        child: Padding(
-          padding: _steveSliverViewActionPadding,
-          child: PopupMenuButton<Locale>(
-            initialValue: locale,
-            onSelected: localeNotifier.selectLocale,
-            itemBuilder: (context) => widget.supportedLocales.map((supportedLocale) => PopupMenuItem<Locale>(
-              value: supportedLocale,
-              child: Text("${supportedLocale.languageCode} - ${_localeLanguageDescriptions[supportedLocale.languageCode] ?? "???"}"),
-            )).toList(),
-            child: SizedBox(
-              width: 42,
-              height: 42,
-              child: FittedBox(
-                fit: BoxFit.fitHeight,
-                child: Text(
-                  locale.languageCode,
-                  style: TextStyle(
-                    color: _hovered ? hoveredColor : null,
+      child: Theme(
+        data: theme.copyWith(
+          hoverColor: colorTransparant,
+        ),
+        child: InkWell(
+          onTap: () {},
+          onHover: _updateHovered,
+          hoverColor: colorTransparant,
+          highlightColor: colorTransparant,
+          customBorder: _steveSliverViewActionSplashBorder,
+          child: Padding(
+            padding: _steveSliverViewActionPadding,
+            child: PopupMenuButton<Locale>(
+              initialValue: locale,
+              tooltip: "",
+              onSelected: localeNotifier.selectLocale,
+              itemBuilder: (context) =>
+                  widget.supportedLocales.map((supportedLocale) =>
+                      PopupMenuItem<Locale>(
+                        value: supportedLocale,
+                        child: Text("${supportedLocale.languageCode} - ${_localeLanguageDescriptions[supportedLocale.languageCode] ?? "???"}"),
+                      )).toList(),
+              child: SizedBox.square(
+                dimension: _steveSliverViewActionSize,
+                child: FittedBox(
+                  fit: BoxFit.fitHeight,
+                  child: Text(
+                    locale.languageCode,
+                    style: TextStyle(
+                      color: _hovered ? hoveredColor : null,
+                    ),
                   ),
                 ),
               ),
