@@ -7,6 +7,13 @@ import "package:sfds/service.dart";
 
 part "locale_provider.g.dart";
 
+const steveLocaleLanguageDescriptions = {
+  "de": "Deutsch",
+  "en": "English",
+  "fr": "Français",
+  "nl": "Nederlands",
+};
+
 @riverpod
 class SteveLocale extends _$SteveLocale {
   static const _KEY_STEVE_LOCALE = "steveLanguageCode";

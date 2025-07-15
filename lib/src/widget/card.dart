@@ -14,16 +14,12 @@ class SteveCard extends StatelessWidget {
   final VoidCallback? onTap;
 
   @override
-  Widget build(BuildContext context) {
-    var theme = Theme.of(context);
-    return Card(
-      child: SteveConditionalWidgetWrapper(
+  Widget build(BuildContext context) => Card(
+    child: SteveConditionalWidgetWrapper(
         condition: onTap != null,
         widgetWrapper: (child) => InkWell(
-          borderRadius: themeCardDefaultShape.borderRadius.resolve(themeDefaultTextDirection),
-          hoverColor: theme.colorScheme.primaryContainer,
-          splashColor: theme.colorScheme.inversePrimary,
-          onTap: onTap,
+        borderRadius: themeDefaultShape.borderRadius.resolve(themeDefaultTextDirection),
+        onTap: onTap,
           child: child,
         ),
         child: Padding(
@@ -32,5 +28,4 @@ class SteveCard extends StatelessWidget {
         ),
       ),
     );
-  }
 }

@@ -158,57 +158,44 @@ class SteveViewAppBarActionLocaleSwitcher extends ConsumerStatefulWidget {
   ConsumerState createState() => _SteveViewAppBarActionLocaleSwitcherState();
 }
 
-const _localeLanguageDescriptions = {
-  "de": "Deutsch",
-  "en": "English",
-  "fr": "Français",
-  "nl": "Nederlands",
-};
-
 class _SteveViewAppBarActionLocaleSwitcherState extends ConsumerState<SteveViewAppBarActionLocaleSwitcher> {
+  final _key = GlobalKey();
+
   var _hovered = false;
 
   @override
   Widget build(BuildContext context) {
-    var localeNotifier = ref.read(steveLocaleProvider.notifier);
-    var locale = ref.watch(steveLocaleProvider) ?? Localizations.localeOf(context);
+    var currentLocale = ref.watch(steveLocaleProvider) ?? Localizations.localeOf(context);
     var theme = Theme.of(context);
     var hoveredColor = theme.colorScheme.primary;
     return AnimatedScale(
       scale: _hovered ? _steveSliverViewActionHoverScale : _steveSliverViewActionDefaultScale,
       duration: _steveSliverViewActionScaleAnimationDuration,
-      child: Theme(
-        data: theme.copyWith(
-          hoverColor: colorTransparant,
+      child: InkWell(
+        onTap: () => showDialog(
+          context: context,
+          useSafeArea: false,
+          builder: (context) => _SteveViewAppBarActionLocaleSwitcherDialog(
+            callersRenderBox: _key.currentContext!.findRenderObject()! as RenderBox,
+            supportedLocales: widget.supportedLocales,
+            currentLocale: currentLocale,
+          ),
         ),
-        child: InkWell(
-          onTap: () {},
-          onHover: _updateHovered,
-          hoverColor: colorTransparant,
-          highlightColor: colorTransparant,
-          customBorder: _steveSliverViewActionSplashBorder,
-          child: Padding(
-            padding: _steveSliverViewActionPadding,
-            child: PopupMenuButton<Locale>(
-              initialValue: locale,
-              tooltip: "",
-              onSelected: localeNotifier.selectLocale,
-              itemBuilder: (context) =>
-                  widget.supportedLocales.map((supportedLocale) =>
-                      PopupMenuItem<Locale>(
-                        value: supportedLocale,
-                        child: Text("${supportedLocale.languageCode} - ${_localeLanguageDescriptions[supportedLocale.languageCode] ?? "???"}"),
-                      )).toList(),
-              child: SizedBox.square(
-                dimension: _steveSliverViewActionSize,
-                child: FittedBox(
-                  fit: BoxFit.fitHeight,
-                  child: Text(
-                    locale.languageCode,
-                    style: TextStyle(
-                      color: _hovered ? hoveredColor : null,
-                    ),
-                  ),
+        onHover: _updateHovered,
+        hoverColor: colorTransparant,
+        highlightColor: colorTransparant,
+        customBorder: _steveSliverViewActionSplashBorder,
+        child: Padding(
+          padding: _steveSliverViewActionPadding,
+          child: SizedBox.square(
+            dimension: _steveSliverViewActionSize,
+            child: FittedBox(
+              key: _key,
+              fit: BoxFit.fitHeight,
+              child: Text(
+                currentLocale.languageCode,
+                style: TextStyle(
+                  color: _hovered ? hoveredColor : null,
                 ),
               ),
             ),
@@ -222,5 +209,61 @@ class _SteveViewAppBarActionLocaleSwitcherState extends ConsumerState<SteveViewA
     setState(() {
       _hovered = hovered;
     });
+  }
+}
+
+const _steveViewAppBarActionLocaleSwitcherDialogSelectedIconSize = 24.0;
+
+class _SteveViewAppBarActionLocaleSwitcherDialog extends ConsumerWidget {
+  const _SteveViewAppBarActionLocaleSwitcherDialog({
+    required this.callersRenderBox,
+    required this.supportedLocales,
+    required this.currentLocale,
+  });
+
+  final RenderBox callersRenderBox;
+  final List<Locale> supportedLocales;
+  final Locale currentLocale;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    var localeNotifier = ref.read(steveLocaleProvider.notifier);
+    var callersOffset = callersRenderBox.localToGlobal(Offset.zero);
+    var nonCurrentLocales = supportedLocales.where((supportedLocale) => currentLocale != supportedLocale);
+    var navigator = Navigator.of(context);
+    var mediaQuery = MediaQuery.of(context);
+    return Dialog(
+      alignment: Alignment.topRight,
+      insetPadding: EdgeInsets.only(
+        top: callersOffset.dy,
+        right: (mediaQuery.size.width - callersOffset.dx) - _steveSliverViewActionSize - _steveSliverViewActionPadding.horizontal,
+      ),
+      child: SizedBox(
+        width: 0,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: SteveCollectionUtil.intersperse(
+            divider,
+            [currentLocale, ...nonCurrentLocales].map(
+              (locale) => ListTile(
+                onTap: () {
+                  localeNotifier.selectLocale(locale);
+                  navigator.pop();
+                },
+                enabled: currentLocale != locale,
+                leading: Text(locale.languageCode),
+                title: Text("${steveLocaleLanguageDescriptions[locale.languageCode]}"),
+                trailing: currentLocale == locale
+                    ? const Icon(
+                        iconDataSelected,
+                        size: _steveViewAppBarActionLocaleSwitcherDialogSelectedIconSize,
+                      )
+                    : null,
+              ),
+            ),
+          ).toList(),
+        ),
+      ),
+    );
   }
 }

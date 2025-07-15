@@ -12,11 +12,20 @@ ThemeData themeData(ColorScheme colorScheme) => ThemeData(
   ),
   scaffoldBackgroundColor: colorScheme.surface,
   canvasColor: colorScheme.surface,
+  hoverColor: colorScheme.primaryContainer,
+  splashColor: colorScheme.inversePrimary,
   extensions: [colorScheme.brightness.colorSchemeExtension],
   cardTheme: const CardThemeData(
-    elevation: 0,
+    elevation: themeDefaultElevation,
     margin: paddingZero,
-    shape: themeCardDefaultShape,
+    shape: themeDefaultShape,
+  ),
+  listTileTheme: const ListTileThemeData(
+    shape: themeDefaultShape,
+  ),
+  dialogTheme: const DialogThemeData(
+    elevation: themeDefaultElevation,
+    shape: themeDefaultShape,
   ),
 );
 
