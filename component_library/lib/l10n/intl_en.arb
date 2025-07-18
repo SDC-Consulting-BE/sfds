@@ -1,3 +1,12 @@
 {
-  "title": "Component Library"
+  "title": "Component Library",
+  "description_line1_preLink": "The component library contains a categorized visual representation of all widgets contained in Steve's Flutter Design System, along with additional clarification where needed. Check out the readme at the ",
+  "description_line1_postLink": " for a detailed guide on how to set up this system in your project(s).",
+  "description_line2": "Information regarding utility classes and other code related subjects can also be found in the readme.",
+  "library_layout": "Layout",
+  "library_layout_sliverView": "Sliver View",
+  "library_widgets": "Widgets",
+  "library_widgets_buttons": "Buttons",
+  "library_widgets_cards": "Cards",
+  "library_widgets_utilityWidgets": "Utility Widgets"
 }

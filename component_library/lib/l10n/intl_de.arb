@@ -1,3 +1,12 @@
 {
-  "title": "Komponentenkatalog"
+  "title": "Komponentenbibliothek",
+  "description_line1_preLink": "Die Komponentenbibliothek enthält eine kategorisierte visuelle Darstellung aller Widgets, die in Steves Flutter Design System enthalten sind, zusammen mit zusätzlichen Erklärungen, wo nötig. In der Readme-Datei im ",
+  "description_line1_postLink": " Sie eine ausführliche Anleitung, wie Sie dieses System in Ihrem Projekt einrichten können.",
+  "description_line2": "Informationen zu Utility-Klassen und anderen codebezogenen Themen finden Sie auch in der Readme-Datei.",
+  "library_layout": "Layout",
+  "library_layout_sliverView": "Sliver Anzeige",
+  "library_widgets": "Widgets",
+  "library_widgets_buttons": "Knöpfe",
+  "library_widgets_cards": "Karten",
+  "library_widgets_utilityWidgets": "Nutzwidgets"
 }

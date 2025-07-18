@@ -21,28 +21,30 @@ class LibraryScreen extends StatelessWidget {
       slivers: [
         SteveSliverRichText(
           inlineSpans: [
-            const TextSpan(
-              text:
-                  "The component library contains a categorized visual representation of all widgets contained in Steve's Flutter Design System, along with additional clarification where needed. Check out the readme at the ",
+            TextSpan(
+              text: localization.description_line1_preLink,
             ),
             SteveTextSpanHyperlink(
               text: "GitHub repository",
               url: "https://github.com/SDC-Consulting-BE/sfds",
               context: context,
             ),
-            const TextSpan(text: " for a guide on how to set up this system in your project(s)."),
+            TextSpan(text: localization.description_line1_postLink),
           ],
         ),
-        const SteveSliverText(text: "Information regarding utility classes and other code related subjects can also be found in the readme."),
+        SteveSliverText(text: localization.description_line2),
         ...LibraryLinkGroup.values
-            .map(_librarySection) //
+            .map((linkGroup) => _librarySection(linkGroup, localization)) //
             .fold([], (previousValue, element) => [...previousValue, ...element]),
       ],
     );
   }
 
-  List<Widget> _librarySection(LibraryLinkGroup group) => [
-    SteveSliverTitle(title: group.label),
+  List<Widget> _librarySection(
+    LibraryLinkGroup group,
+    Localization localization,
+  ) => [
+    SteveSliverTitle(title: group.label.call(localization)),
     LibraryLinkSection(links: group.links),
   ];
 }

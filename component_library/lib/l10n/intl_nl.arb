@@ -1,3 +1,12 @@
 {
-  "title": "Component Catalogus"
+  "title": "Componentenbibliotheek",
+  "description_line1_preLink": "De componentenbibliotheek bevat een gecategoriseerde visuele weergave van alle widgets in Steve's Flutter Design System, samen met extra uitleg waar nodig. Bekijk de readme op de ",
+  "description_line1_postLink": " voor een gedetailleerde handleiding over hoe je dit systeem in je project(en) kunt opzetten.",
+  "description_line2": "Informatie over utility classes en andere code-gerelateerde onderwerpen is ook te vinden in de readme.",
+  "library_layout": "Layout",
+  "library_layout_sliverView": "Sliver Weergave",
+  "library_widgets": "Widgets",
+  "library_widgets_buttons": "Knoppen",
+  "library_widgets_cards": "Kaarten",
+  "library_widgets_utilityWidgets": "Nutswidgets"
 }

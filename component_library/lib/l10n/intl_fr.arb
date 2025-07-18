@@ -1,3 +1,12 @@
 {
-  "title": "Catalogue de composants"
+  "title": "Bibliothèque de composants",
+  "description_line1_preLink": "La bibliothèque de composants contient une représentation visuelle catégorisée de tous les widgets contenus dans le système de conception Flutter de Steve, ainsi que des clarifications supplémentaires si nécessaire. Consultez le readme sur le ",
+  "description_line1_postLink": " pour un guide détaillé sur la façon de mettre en place ce système dans votre (vos) projet(s).",
+  "description_line2": "Des informations concernant les classes utilitaires et d'autres sujets liés au code peuvent également être trouvées dans le fichier readme.",
+  "library_layout": "Layout",
+  "library_layout_sliverView": "Vue de sliver",
+  "library_widgets": "Widgets",
+  "library_widgets_buttons": "Boutons",
+  "library_widgets_cards": "Cartes",
+  "library_widgets_utilityWidgets": "Widgets d'utilité"
 }
