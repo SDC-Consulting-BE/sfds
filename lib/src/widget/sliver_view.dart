@@ -69,14 +69,7 @@ class SteveSliverViewAppBar extends StatelessWidget {
   }
 }
 
-const _steveSliverViewActionDefaultScale = 1.0;
-const _steveSliverViewActionHoverScale = 1.314;
-const _steveSliverViewActionScaleAnimationDuration = durationMs100;
-const _steveSliverViewActionSplashBorder = roundedRectangleBorderC12;
-const _steveSliverViewActionPadding = paddingA6;
-const _steveSliverViewActionSize = 42.0;
-
-class SteveViewAppBarAction extends StatefulWidget {
+class SteveViewAppBarAction extends StatelessWidget {
   const SteveViewAppBarAction({
     super.key,
     required this.icon,
@@ -87,35 +80,60 @@ class SteveViewAppBarAction extends StatefulWidget {
   final VoidCallback onPressed;
 
   @override
-  State<SteveViewAppBarAction> createState() => _SteveViewAppBarActionState();
+  Widget build(BuildContext context) => _SteveViewAppBarAction(
+    onPressed: onPressed,
+    child: Icon(icon),
+  );
 }
 
-class _SteveViewAppBarActionState extends State<SteveViewAppBarAction> {
+const _steveSliverViewActionDefaultScale = 1.0;
+const _steveSliverViewActionHoverScale = 1.314;
+const _steveSliverViewActionScaleAnimationDuration = durationMs100;
+const _steveSliverViewActionSplashBorder = roundedRectangleBorderC12;
+const _steveSliverViewActionPadding = paddingA6;
+const _steveSliverViewActionSize = 42.0;
+
+class _SteveViewAppBarAction extends StatefulWidget {
+  const _SteveViewAppBarAction({
+    this.boxKey,
+    required this.onPressed,
+    required this.child,
+  });
+
+  final GlobalKey? boxKey;
+  final VoidCallback onPressed;
+  final Widget child;
+
+  @override
+  State<_SteveViewAppBarAction> createState() => _SteveViewAppBarActionState();
+}
+
+class _SteveViewAppBarActionState extends State<_SteveViewAppBarAction> {
   var _hovered = false;
 
   @override
-  Widget build(BuildContext context) {
-    var theme = Theme.of(context);
-    var hoveredColor = theme.colorScheme.primary;
-    return AnimatedScale(
-      scale: _hovered ? _steveSliverViewActionHoverScale : _steveSliverViewActionDefaultScale,
-      duration: _steveSliverViewActionScaleAnimationDuration,
-      child: InkWell(
-        onTap: widget.onPressed,
-        onHover: _updateHovered,
-        hoverColor: colorTransparant,
-        highlightColor: colorTransparant,
-        customBorder: _steveSliverViewActionSplashBorder,
-        child: Padding(
-          padding: _steveSliverViewActionPadding,
-          child: Icon(
-            widget.icon,
-            color: _hovered ? hoveredColor : null,
+  Widget build(BuildContext context) => AnimatedScale(
+    scale: _hovered ? _steveSliverViewActionHoverScale : _steveSliverViewActionDefaultScale,
+    duration: _steveSliverViewActionScaleAnimationDuration,
+    child: InkWell(
+      onTap: widget.onPressed,
+      onHover: _updateHovered,
+      hoverColor: colorTransparant,
+      highlightColor: colorTransparant,
+      customBorder: _steveSliverViewActionSplashBorder,
+      child: Padding(
+        padding: _steveSliverViewActionPadding,
+        child: SizedBox.square(
+          dimension: _steveSliverViewActionSize,
+          child: FittedBox(
+            key: widget.boxKey,
+            fit: BoxFit.fitHeight,
+            child: widget.child,
           ),
         ),
       ),
-    );
-  }
+    ),
+  );
 
   void _updateHovered(bool hovered) {
     setState(() {
@@ -146,7 +164,7 @@ extension _ThemeModeIcon on ThemeMode {
   };
 }
 
-class SteveViewAppBarActionLocaleSwitcher extends ConsumerStatefulWidget {
+class SteveViewAppBarActionLocaleSwitcher extends ConsumerWidget {
   const SteveViewAppBarActionLocaleSwitcher({
     super.key,
     required this.supportedLocales,
@@ -155,60 +173,30 @@ class SteveViewAppBarActionLocaleSwitcher extends ConsumerStatefulWidget {
   final List<Locale> supportedLocales;
 
   @override
-  ConsumerState createState() => _SteveViewAppBarActionLocaleSwitcherState();
-}
-
-class _SteveViewAppBarActionLocaleSwitcherState extends ConsumerState<SteveViewAppBarActionLocaleSwitcher> {
-  final _key = GlobalKey();
-
-  var _hovered = false;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    var key = GlobalKey();
     var currentLocale = ref.watch(steveLocaleProvider) ?? Localizations.localeOf(context);
-    var theme = Theme.of(context);
-    var hoveredColor = theme.colorScheme.primary;
-    return AnimatedScale(
-      scale: _hovered ? _steveSliverViewActionHoverScale : _steveSliverViewActionDefaultScale,
-      duration: _steveSliverViewActionScaleAnimationDuration,
-      child: InkWell(
-        onTap: () => showDialog(
-          context: context,
-          useSafeArea: false,
-          builder: (context) => _SteveViewAppBarActionLocaleSwitcherDialog(
-            callersRenderBox: _key.currentContext!.findRenderObject()! as RenderBox,
-            supportedLocales: widget.supportedLocales,
-            currentLocale: currentLocale,
-          ),
-        ),
-        onHover: _updateHovered,
-        hoverColor: colorTransparant,
-        highlightColor: colorTransparant,
-        customBorder: _steveSliverViewActionSplashBorder,
-        child: Padding(
-          padding: _steveSliverViewActionPadding,
-          child: SizedBox.square(
-            dimension: _steveSliverViewActionSize,
-            child: FittedBox(
-              key: _key,
-              fit: BoxFit.fitHeight,
-              child: Text(
-                currentLocale.languageCode,
-                style: TextStyle(
-                  color: _hovered ? hoveredColor : null,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
+    return _SteveViewAppBarAction(
+      boxKey: key,
+      onPressed: () => _showLocaleSelectionDialog(context, key, currentLocale),
+      child: Text(currentLocale.languageCode),
     );
   }
 
-  void _updateHovered(bool hovered) {
-    setState(() {
-      _hovered = hovered;
-    });
+  Future<void> _showLocaleSelectionDialog(
+    BuildContext context,
+    GlobalKey key,
+    Locale currentLocale,
+  ) async {
+    showDialog(
+      context: context,
+      useSafeArea: false,
+      builder: (context) => _SteveViewAppBarActionLocaleSwitcherDialog(
+        callersRenderBox: key.currentContext!.findRenderObject()! as RenderBox,
+        supportedLocales: supportedLocales,
+        currentLocale: currentLocale,
+      ),
+    );
   }
 }
 
