@@ -9,7 +9,7 @@ class UtilityWidgetsLibraryScreen extends StatelessWidget {
     appBar: SteveSliverViewAppBar(
       title: "Utility Widgets",
       actions: [
-        SteveViewAppBarActionThemeSwitcher(),
+        SteveSliverViewAppBarActionThemeSwitcher(),
       ],
     ),
     slivers: [SteveSliverBreadcrumbs()],

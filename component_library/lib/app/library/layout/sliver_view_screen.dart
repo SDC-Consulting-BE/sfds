@@ -12,7 +12,7 @@ class SliverViewLibraryScreen extends StatelessWidget {
       appBar: SteveSliverViewAppBar(
         title: localization.library_layout,
         actions: const [
-          SteveViewAppBarActionThemeSwitcher(),
+          SteveSliverViewAppBarActionThemeSwitcher(),
         ],
       ),
       slivers: const [

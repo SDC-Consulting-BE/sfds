@@ -9,7 +9,7 @@ class CardLibraryScreen extends StatelessWidget {
     appBar: SteveSliverViewAppBar(
       title: "Cards",
       actions: [
-        SteveViewAppBarActionThemeSwitcher(),
+        SteveSliverViewAppBarActionThemeSwitcher(),
       ],
     ),
     slivers: [SteveSliverBreadcrumbs()],

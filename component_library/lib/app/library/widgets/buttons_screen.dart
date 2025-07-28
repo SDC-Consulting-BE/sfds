@@ -9,7 +9,7 @@ class ButtonLibraryScreen extends StatelessWidget {
     appBar: SteveSliverViewAppBar(
       title: "Buttons",
       actions: [
-        SteveViewAppBarActionThemeSwitcher(),
+        SteveSliverViewAppBarActionThemeSwitcher(),
       ],
     ),
     slivers: [SteveSliverBreadcrumbs()],

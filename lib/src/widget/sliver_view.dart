@@ -69,8 +69,8 @@ class SteveSliverViewAppBar extends StatelessWidget {
   }
 }
 
-class SteveViewAppBarAction extends StatelessWidget {
-  const SteveViewAppBarAction({
+class SteveSliverViewAppBarAction extends StatelessWidget {
+  const SteveSliverViewAppBarAction({
     super.key,
     required this.icon,
     required this.onPressed,
@@ -80,7 +80,7 @@ class SteveViewAppBarAction extends StatelessWidget {
   final VoidCallback onPressed;
 
   @override
-  Widget build(BuildContext context) => _SteveViewAppBarAction(
+  Widget build(BuildContext context) => _SteveSliverViewAppBarAction(
     onPressed: onPressed,
     child: Icon(icon),
   );
@@ -93,8 +93,8 @@ const _steveSliverViewActionSplashBorder = roundedRectangleBorderC12;
 const _steveSliverViewActionPadding = paddingA6;
 const _steveSliverViewActionSize = 42.0;
 
-class _SteveViewAppBarAction extends StatefulWidget {
-  const _SteveViewAppBarAction({
+class _SteveSliverViewAppBarAction extends StatefulWidget {
+  const _SteveSliverViewAppBarAction({
     this.boxKey,
     required this.onPressed,
     required this.child,
@@ -105,10 +105,10 @@ class _SteveViewAppBarAction extends StatefulWidget {
   final Widget child;
 
   @override
-  State<_SteveViewAppBarAction> createState() => _SteveViewAppBarActionState();
+  State<_SteveSliverViewAppBarAction> createState() => _SteveSliverViewAppBarActionState();
 }
 
-class _SteveViewAppBarActionState extends State<_SteveViewAppBarAction> {
+class _SteveSliverViewAppBarActionState extends State<_SteveSliverViewAppBarAction> {
   var _hovered = false;
 
   @override
@@ -142,14 +142,14 @@ class _SteveViewAppBarActionState extends State<_SteveViewAppBarAction> {
   }
 }
 
-class SteveViewAppBarActionThemeSwitcher extends ConsumerWidget {
-  const SteveViewAppBarActionThemeSwitcher({super.key});
+class SteveSliverViewAppBarActionThemeSwitcher extends ConsumerWidget {
+  const SteveSliverViewAppBarActionThemeSwitcher({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var themeModeNotifier = ref.read(steveThemeModeProvider.notifier);
     var themeMode = ref.watch(steveThemeModeProvider);
-    return SteveViewAppBarAction(
+    return SteveSliverViewAppBarAction(
       icon: themeMode.icon,
       onPressed: themeModeNotifier.flipThemeMode,
     );
@@ -164,8 +164,8 @@ extension _ThemeModeIcon on ThemeMode {
   };
 }
 
-class SteveViewAppBarActionLocaleSwitcher extends ConsumerWidget {
-  const SteveViewAppBarActionLocaleSwitcher({
+class SteveSliverViewAppBarActionLocaleSwitcher extends ConsumerWidget {
+  const SteveSliverViewAppBarActionLocaleSwitcher({
     super.key,
     required this.supportedLocales,
   });
@@ -176,7 +176,7 @@ class SteveViewAppBarActionLocaleSwitcher extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     var key = GlobalKey();
     var currentLocale = ref.watch(steveLocaleProvider) ?? Localizations.localeOf(context);
-    return _SteveViewAppBarAction(
+    return _SteveSliverViewAppBarAction(
       boxKey: key,
       onPressed: () => _showLocaleSelectionDialog(context, key, currentLocale),
       child: Text(currentLocale.languageCode),
@@ -191,7 +191,7 @@ class SteveViewAppBarActionLocaleSwitcher extends ConsumerWidget {
     showDialog(
       context: context,
       useSafeArea: false,
-      builder: (context) => _SteveViewAppBarActionLocaleSwitcherDialog(
+      builder: (context) => _SteveSliverViewAppBarActionLocaleSwitcherDialog(
         callersRenderBox: key.currentContext!.findRenderObject()! as RenderBox,
         supportedLocales: supportedLocales,
         currentLocale: currentLocale,
@@ -200,10 +200,10 @@ class SteveViewAppBarActionLocaleSwitcher extends ConsumerWidget {
   }
 }
 
-const _steveViewAppBarActionLocaleSwitcherDialogSelectedIconSize = 24.0;
+const _steveSliverViewAppBarActionLocaleSwitcherDialogSelectedIconSize = 24.0;
 
-class _SteveViewAppBarActionLocaleSwitcherDialog extends ConsumerWidget {
-  const _SteveViewAppBarActionLocaleSwitcherDialog({
+class _SteveSliverViewAppBarActionLocaleSwitcherDialog extends ConsumerWidget {
+  const _SteveSliverViewAppBarActionLocaleSwitcherDialog({
     required this.callersRenderBox,
     required this.supportedLocales,
     required this.currentLocale,
@@ -244,7 +244,7 @@ class _SteveViewAppBarActionLocaleSwitcherDialog extends ConsumerWidget {
                 trailing: currentLocale == locale
                     ? const Icon(
                         iconDataSelected,
-                        size: _steveViewAppBarActionLocaleSwitcherDialogSelectedIconSize,
+                        size: _steveSliverViewAppBarActionLocaleSwitcherDialogSelectedIconSize,
                       )
                     : null,
               ),
