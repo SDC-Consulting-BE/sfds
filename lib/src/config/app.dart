@@ -8,15 +8,19 @@ import "package:sfds/theme.dart";
 class SteveApp extends ConsumerWidget {
   const SteveApp({
     required this.appTitle,
-    required this.theme,
-    required this.routing,
-    required this.i18n,
+    required this.lightColorScheme,
+    required this.darkColorScheme,
+    required this.router,
+    required this.delegates,
+    required this.locales,
   });
 
   final String Function(BuildContext context) appTitle;
-  final SteveAppTheme theme;
-  final SteveAppRouting routing;
-  final SteveAppI18n i18n;
+  final ColorScheme lightColorScheme;
+  final ColorScheme darkColorScheme;
+  final GoRouter router;
+  final Iterable<LocalizationsDelegate> delegates;
+  final Iterable<Locale> locales;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -26,40 +30,12 @@ class SteveApp extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       onGenerateTitle: appTitle,
       themeMode: themeMode,
-      theme: themeData(theme.light),
-      darkTheme: themeData(theme.dark),
-      routerConfig: routing.router,
-      localizationsDelegates: i18n.delegates,
-      supportedLocales: i18n.locales,
+      theme: themeData(lightColorScheme),
+      darkTheme: themeData(darkColorScheme),
+      routerConfig: router,
+      localizationsDelegates: delegates,
+      supportedLocales: locales,
       locale: locale,
     );
   }
-}
-
-class SteveAppTheme {
-  const SteveAppTheme({
-    required this.light,
-    required this.dark,
-  });
-
-  final ColorScheme light;
-  final ColorScheme dark;
-}
-
-class SteveAppRouting {
-  const SteveAppRouting({
-    required this.router,
-  });
-
-  final GoRouter router;
-}
-
-class SteveAppI18n {
-  const SteveAppI18n({
-    required this.delegates,
-    required this.locales,
-  });
-
-  final Iterable<LocalizationsDelegate> delegates;
-  final Iterable<Locale> locales;
 }

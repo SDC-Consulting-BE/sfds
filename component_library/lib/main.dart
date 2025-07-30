@@ -5,19 +5,11 @@ import "package:sfds/config.dart";
 
 void main() async {
   SteveAppConfigurator(
-    () => SteveApp(
-      appTitle: (context) => Localization.of(context).title,
-      theme: const SteveAppTheme(
-        light: lightColorScheme,
-        dark: darkColorScheme,
-      ),
-      routing: SteveAppRouting(
-        router: router,
-      ),
-      i18n: const SteveAppI18n(
-        delegates: Localization.localizationsDelegates,
-        locales: Localization.supportedLocales,
-      ),
-    ),
+    title: (context) => Localization.of(context).title,
+    lightColorScheme: lightColorScheme,
+    darkColorScheme: darkColorScheme,
+    router: router,
+    delegates: Localization.localizationsDelegates,
+    locales: Localization.supportedLocales,
   ).start();
 }

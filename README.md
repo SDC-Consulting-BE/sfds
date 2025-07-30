@@ -2,7 +2,7 @@
 
 My personal design system to facilitate the creation of webapps using Flutter.
 
-Key packages used in the design system:
+Key packages used in the design system (not covered in this readme):
 
 - [package_info_plus](https://pub.dev/packages/package_info_plus)
 - [shared_preferences](https://pub.dev/packages/shared_preferences)
@@ -21,10 +21,12 @@ Key packages used in the design system:
       1. [Theme mode switching](#theme-mode-switching)
       2. [Color Scheme Extension](#color-scheme-extension)
    5. [Routing](#routing)
+      1. [Navigating to different screens](#navigating-to-different-screens)
    6. [Localization](#localization)
       1. [Fetching translations](#fetching-translations)
       2. [Locale switching](#locale-switching)
    7. [The SteveApp](#the-steveapp)
+      1. [Adding configuration items](#adding-configuration-items) 
 3. [Services](#services)
 4. [Providers](#providers)
 5. [Utilities](#utilities)
@@ -43,13 +45,26 @@ dependencies:
 
 ## Project configuration
 
+The Component Library code can be used as a functional implementation / reference sheet of the design system.
+
 ### Lints
+
+Add the following dependencies to the _pubspec.yaml_:
+
+``` yaml
+dev_dependencies:
+   build_runner: ^2.5.4
+   flutter_lints: ^6.0.0
+```
 
 Place the following include at the top of the _analysis_options.yaml_:
 
 ``` yaml
 include: package:sfds/analysis_options.yaml
 ```
+
+This will enable my personalized linter rules, including custom lints for _riverpod_.
+It will work as is and requires no additional code in the _analysis_options.yaml_.
 
 ### Fonts
 
@@ -94,11 +109,21 @@ flutter:
 
 ### Riverpod
 
-Add the _riverpod_ dependency to the _pubspec.yaml_:
+Add the _riverpod_ dependencies to the _pubspec.yaml_:
 
 ``` yaml
-flutter_riverpod: ^3.0.0-dev.16
+dependencies:
+   flutter_riverpod: ^3.0.0-dev.16
+   riverpod_annotation: ^3.0.0-dev.16
+   
+dev_dependencies:
+   build_runner: ^2.5.4
+   custom_lint: ^0.7.5
+   riverpod_generator: ^3.0.0-dev.16
+   riverpod_lint: ^3.0.0-dev.16
 ```
+
+To only make use of the predefined _riverpod_ providers - and none of your own - the _flutter_riverpod_ alone dependency is sufficient.
 
 ### Color scheme
 
@@ -124,11 +149,11 @@ const lightColorScheme = ColorScheme(
 );
 ```
 
-Linking the color scheme with the main app is handled later, in [The SteveApp](#the-steveapp).
+Linking the color scheme with the main app is handled later in [The SteveApp](#the-steveapp).
 
 #### Theme mode switching
 
-To switch the current theme mode, simply use the _SteveThemeModeProvider_ and call the _flipThemeMode()_ method. e.g.:
+To switch the current theme mode, simply use the _SteveThemeModeProvider_ and call the _flipThemeMode()_ method:
 
 ``` dart
 ref.read(steveThemeModeProvider.notifier).flipThemeMode();
@@ -187,6 +212,16 @@ Visit the [GoRouter documentation](https://pub.dev/documentation/go_router/lates
 
 Linking the routing with the main app is handled later, in [The SteveApp](#the-steveapp).
 
+#### Navigating to different screens
+
+Navigation can be handled by making use of the _go_ extension method on the context:
+
+``` dart
+context.go(uri)
+```
+
+Traditional navigation methods such as _NavigationState.pop()_ are still usable.
+
 ### Localization
 
 Start with adding the _generate: true_ flag to the _pubpsec.yaml_ file:
@@ -215,13 +250,14 @@ preferred-supported-locales: en
 nullable-getter: false
 ```
 
-Following this configuration, add a _l10n_ folder in your _lib_ folder. For every supported language add a _.arb_ (translations) file in this folder:
+Following this configuration, add a _l10n_ folder in your _lib_ folder. 
+For every supported language add a _.arb_ (translations) file in this folder with a file name like:
 
 ``` text
 intl_{countryCode}.arb
 ```
 
-For example, for German translations, that file would be named _intl_de.arb_.
+For example - for German translations - that file would be named _intl_de.arb_.
 
 Translations can be placed in these files and will programatically and automatically become available while developing (code will be generated in the _lib/l10n/generated_ folder).
 
@@ -230,7 +266,7 @@ the [officiel Flutter documentation](https://docs.flutter.dev/ui/accessibility-a
 
 #### Fetching translations
 
-Getting translations is as easy as getting a Localization object, and subsequently getting the required property from it. e.g.:
+Getting translations is as easy as getting a _Localization_ object, and subsequently getting the required property from it:
 
 ``` dart
 Localization.of(context).title
@@ -238,6 +274,7 @@ Localization.of(context).title
 
 > [!IMPORTANT]
 > For performance reasons, always reuse the Localization.of(context) in every individual widget.
+> The same goes for other objects that require a context, such as ThemeData, NavigationState, ... .
 
 #### Locale switching
 
@@ -250,6 +287,37 @@ ref.read(steveLocaleProvider.notifier).selectLocale(locale);
 Alternatively, use one of the locale selection widgets provided, such as the _SteveSliverViewAppBarActionLocaleSwitcher_.
 
 ### The SteveApp
+
+The _SteveApp_ widget is where it all comes together.
+It can be setup using the _SteveAppConfigurator_, where you can pass on the previously defined properties, followed by calling the _start()_ method:
+
+``` dart
+import "package:your_package/app_color_scheme.dart";
+import "package:your_package/app_routes.dart";
+import "package:your_package/l10n/generated/app_localizations.dart";
+import "package:sfds/config.dart";
+
+SteveAppConfigurator(
+   title: (context) => Localization.of(context).title,
+   lightColorScheme: lightColorScheme,
+   darkColorScheme: darkColorScheme,
+   router: router,
+   delegates: Localization.localizationsDelegates,
+   locales: Localization.supportedLocales,
+).start();
+```
+
+#### Adding configuration items
+
+The _SteveAppConfigurator_ exposed another method - _.withAppService(SteveAppConfigItem appService)_ - that allows the addition of user defined services that need to be setup when starting the app.
+
+This method takes a _SteveAppConfigItem_ as argument. _SteveAppConfigItem_ is an abstract class that can be extended and only has one asynchronous method to be overriden; _.configure()_:
+
+``` dart
+abstract interface class SteveAppConfigItem {
+  Future<void> configure();
+}
+```
 
 ## Services
 
