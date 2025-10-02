@@ -36,10 +36,12 @@ const _steveSliverViewAppBarIconsSpacer = sizedBoxW8;
 class SteveSliverViewAppBar extends StatelessWidget {
   const SteveSliverViewAppBar({
     required this.title,
+    this.pinned = true,
     this.actions = const [],
   });
 
   final String title;
+  final bool pinned;
   final List<Widget> actions;
 
   @override
@@ -50,7 +52,7 @@ class SteveSliverViewAppBar extends StatelessWidget {
     var appBarHeight = appBarTitleStyleHeight * _steveSliverViewAppBarPaddingFactor;
     var appBarVerticalPadding = (appBarHeight - appBarTitleStyleHeight) / 2;
     return SliverAppBar(
-      pinned: true,
+      pinned: pinned,
       collapsedHeight: appBarHeight,
       toolbarHeight: appBarHeight,
       expandedHeight: appBarHeight * _steveSliverViewAppBarExpansionFactor,

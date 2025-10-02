@@ -20,11 +20,11 @@ ThemeData themeData(ColorScheme colorScheme) => ThemeData(
     margin: paddingZero,
     shape: themeDefaultShape,
   ),
-  listTileTheme: const ListTileThemeData(
-    shape: themeDefaultShape,
-  ),
   dialogTheme: const DialogThemeData(
     elevation: themeDefaultElevation,
+    shape: themeDefaultShape,
+  ),
+  listTileTheme: const ListTileThemeData(
     shape: themeDefaultShape,
   ),
 );

@@ -185,17 +185,17 @@ class SteveSliverRichText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => SliverPadding(
-      padding: _steveSliverTextDefaultPadding,
-      sliver: SliverToBoxAdapter(
-        child: RichText(
-          textAlign: TextAlign.justify,
-          text: TextSpan(
-            style: baseTextStyle ?? DefaultTextStyle.of(context).style,
-            children: inlineSpans,
-          ),
+    padding: _steveSliverTextDefaultPadding,
+    sliver: SliverToBoxAdapter(
+      child: RichText(
+        textAlign: TextAlign.justify,
+        text: TextSpan(
+          style: baseTextStyle ?? DefaultTextStyle.of(context).style,
+          children: inlineSpans,
         ),
       ),
-    );
+    ),
+  );
 }
 
 class SteveSliverSpacing extends StatelessWidget {
@@ -231,6 +231,25 @@ class SteveSliverGrid extends StatelessWidget {
       gridDelegate: gridDelegate,
       itemCount: children.length,
       itemBuilder: (context, index) => children[index],
+    ),
+  );
+}
+
+const _steveSliverToBoxAdapterPadding = paddingH20;
+
+class SteveSliverToBoxAdapter extends StatelessWidget {
+  const SteveSliverToBoxAdapter({
+    super.key,
+    required this.child,
+  });
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) => SliverPadding(
+    padding: _steveSliverToBoxAdapterPadding,
+    sliver: SliverToBoxAdapter(
+      child: child,
     ),
   );
 }
