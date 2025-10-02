@@ -47,6 +47,13 @@ dependencies:
 
 The Component Library code can be used as a functional implementation / reference sheet of the design system.
 
+> [!IMPORTANT]
+> Due to some versioning issues, it is advised to add a dependency override to the _pubspec.yaml_:
+> ``` yaml
+> dependency_overrides:
+>  test_api: ^0.7.7
+> ```
+
 ### Lints
 
 Add the following dependencies to the _pubspec.yaml_:
