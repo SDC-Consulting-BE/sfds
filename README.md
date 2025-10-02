@@ -47,13 +47,6 @@ dependencies:
 
 The Component Library code can be used as a functional implementation / reference sheet of the design system.
 
-> [!IMPORTANT]
-> Due to some versioning issues, it is advised to add a dependency override to the _pubspec.yaml_:
-> ``` yaml
-> dependency_overrides:
->  test_api: ^0.7.7
-> ```
-
 ### Lints
 
 Add the following dependencies to the _pubspec.yaml_:
@@ -129,6 +122,13 @@ dev_dependencies:
    riverpod_generator: ^3.0.1
    riverpod_lint: ^3.0.1
 ```
+
+> [!IMPORTANT]
+> Due to some versioning issues, it is advised to add a dependency override to the _pubspec.yaml_:
+> ``` yaml
+> dependency_overrides:
+>  test_api: ^0.7.7
+> ```
 
 To only make use of the predefined _riverpod_ providers - and none of your own - the _flutter_riverpod_ alone dependency is sufficient.
 
