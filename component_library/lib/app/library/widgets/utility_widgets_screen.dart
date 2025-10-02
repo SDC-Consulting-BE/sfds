@@ -1,3 +1,4 @@
+import "package:component_library/app_constants.dart";
 import "package:component_library/l10n/generated/app_localizations.dart";
 import "package:flutter/material.dart";
 import "package:sfds/widget.dart";
@@ -49,6 +50,7 @@ class _SteveConditionalWidgetWrapperExampleState extends State<_SteveConditional
         value: _wrapped,
         onChanged: _flipWrapped,
       ),
+      sizedBoxW4,
       SteveConditionalWidgetWrapper(
         condition: _wrapped,
         widgetWrapper: (child) => Tooltip(
@@ -57,7 +59,7 @@ class _SteveConditionalWidgetWrapperExampleState extends State<_SteveConditional
         ),
         child: ElevatedButton(
           onPressed: () {},
-          child: const Text("ElevatedButton"),
+          child: const Text("Button"),
         ),
       ),
     ],

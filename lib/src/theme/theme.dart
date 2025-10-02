@@ -20,12 +20,51 @@ ThemeData themeData(ColorScheme colorScheme) => ThemeData(
     margin: paddingZero,
     shape: themeDefaultShape,
   ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ButtonStyle(
+      elevation: const WidgetStatePropertyAll(themeDefaultElevation),
+      minimumSize: const WidgetStatePropertyAll(Size(1, themeDefaultButtonHeight)),
+      shape: const WidgetStatePropertyAll(themeDefaultShape),
+      backgroundColor: WidgetStateProperty.fromMap({
+        WidgetState.disabled: null,
+        WidgetState.any: colorScheme.secondary,
+      }),
+      foregroundColor: WidgetStateProperty.fromMap({
+        WidgetState.disabled: null,
+        WidgetState.any: colorScheme.onSecondary,
+      }),
+      overlayColor: WidgetStateProperty.fromMap({
+        WidgetState.disabled: null,
+        WidgetState.pressed: colorScheme.brightness == Brightness.light ? colorScheme.secondaryContainer.withValues(alpha: 0.2) : colorScheme.secondaryContainer.withValues(alpha: 0.3),
+        WidgetState.hovered: colorScheme.brightness == Brightness.light ? Colors.white.withValues(alpha: 0.15) : Colors.black.withValues(alpha: 0.15),
+        WidgetState.any: null,
+      }),
+    ),
+  ),
   dialogTheme: const DialogThemeData(
     elevation: themeDefaultElevation,
     shape: themeDefaultShape,
   ),
   listTileTheme: const ListTileThemeData(
     shape: themeDefaultShape,
+  ),
+  switchTheme: SwitchThemeData(
+    splashRadius: 0,
+    trackOutlineWidth: const WidgetStatePropertyAll(themeDefaultBorderWidth),
+    trackColor: WidgetStateProperty.fromMap({
+      WidgetState.disabled: null,
+      WidgetState.selected: colorScheme.secondary,
+      WidgetState.any: null,
+    }),
+    thumbColor: WidgetStateProperty.fromMap({
+      WidgetState.disabled: null,
+      WidgetState.selected: colorScheme.onSecondary,
+      WidgetState.any: colorScheme.secondary,
+    }),
+    trackOutlineColor: WidgetStateProperty.fromMap({
+      WidgetState.disabled: null,
+      WidgetState.any: colorScheme.secondary,
+    }),
   ),
 );
 
