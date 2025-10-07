@@ -20,10 +20,14 @@ ThemeData themeData(ColorScheme colorScheme) => ThemeData(
     margin: paddingZero,
     shape: themeDefaultShape,
   ),
+  dialogTheme: const DialogThemeData(
+    elevation: themeDefaultElevation,
+    shape: themeDefaultShape,
+  ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
       elevation: const WidgetStatePropertyAll(themeDefaultElevation),
-      minimumSize: const WidgetStatePropertyAll(Size(1, themeDefaultButtonHeight)),
+      fixedSize: const WidgetStatePropertyAll(Size.fromHeight(themeDefaultButtonHeight)),
       shape: const WidgetStatePropertyAll(themeDefaultShape),
       backgroundColor: WidgetStateProperty.fromMap({
         WidgetState.disabled: null,
@@ -41,12 +45,29 @@ ThemeData themeData(ColorScheme colorScheme) => ThemeData(
       }),
     ),
   ),
-  dialogTheme: const DialogThemeData(
-    elevation: themeDefaultElevation,
-    shape: themeDefaultShape,
-  ),
   listTileTheme: const ListTileThemeData(
     shape: themeDefaultShape,
+  ),
+  outlinedButtonTheme: OutlinedButtonThemeData(
+    style: ButtonStyle(
+      elevation: const WidgetStatePropertyAll(themeDefaultElevation),
+      fixedSize: const WidgetStatePropertyAll(Size.fromHeight(themeDefaultButtonHeight)),
+      shape: const WidgetStatePropertyAll(themeDefaultShape),
+      foregroundColor: WidgetStateProperty.fromMap({
+        WidgetState.disabled: null,
+        WidgetState.any: colorScheme.secondary,
+      }),
+      overlayColor: WidgetStateProperty.fromMap({
+        WidgetState.disabled: null,
+        WidgetState.pressed: colorScheme.secondary.withValues(alpha: 0.1),
+        WidgetState.hovered: colorScheme.brightness == Brightness.light ? colorScheme.secondary.withValues(alpha: 0.15) : colorScheme.secondaryContainer.withValues(alpha: 0.35),
+        WidgetState.any: null,
+      }),
+      side: WidgetStateProperty.fromMap({
+        WidgetState.disabled: null,
+        WidgetState.any: BorderSide(color: colorScheme.secondary, width: themeDefaultBorderWidth),
+      }),
+    ),
   ),
   switchTheme: SwitchThemeData(
     splashRadius: 0,
@@ -65,6 +86,23 @@ ThemeData themeData(ColorScheme colorScheme) => ThemeData(
       WidgetState.disabled: null,
       WidgetState.any: colorScheme.secondary,
     }),
+  ),
+  textButtonTheme: TextButtonThemeData(
+    style: ButtonStyle(
+      elevation: const WidgetStatePropertyAll(themeDefaultElevation),
+      fixedSize: const WidgetStatePropertyAll(Size.fromHeight(themeDefaultButtonHeight)),
+      shape: const WidgetStatePropertyAll(themeDefaultShape),
+      foregroundColor: WidgetStateProperty.fromMap({
+        WidgetState.disabled: null,
+        WidgetState.any: colorScheme.secondary,
+      }),
+      overlayColor: WidgetStateProperty.fromMap({
+        WidgetState.disabled: null,
+        WidgetState.pressed: colorScheme.secondary.withValues(alpha: 0.1),
+        WidgetState.hovered: colorScheme.brightness == Brightness.light ? colorScheme.secondary.withValues(alpha: 0.15) : colorScheme.secondaryContainer.withValues(alpha: 0.35),
+        WidgetState.any: null,
+      }),
+    ),
   ),
 );
 
