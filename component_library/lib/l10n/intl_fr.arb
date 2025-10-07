@@ -4,12 +4,13 @@
   "description_line1_postLink": " pour un guide détaillé sur la façon de mettre en place ce système dans votre (vos) projet(s).",
   "description_line2": "Des informations concernant les classes utilitaires et d'autres sujets liés au code peuvent également être trouvées dans le fichier readme.",
   "library_layout": "Layout",
-  "library_layout_sliverView": "Vue de sliver",
+  "library_layout_sliverView": "Sliver View",
   "library_widgets": "Widgets",
-  "library_widgets_buttons": "Boutons",
-  "library_widgets_cards": "Cartes",
+  "library_widgets_buttons": "Buttons",
+  "library_widgets_cards": "Cards",
   "library_widgets_cards_tappable": "tapable",
-  "library_widgets_utilityWidgets": "Widgets d'utilité",
+  "library_widgets_rich_text": "Rich Text",
+  "library_widgets_utilityWidgets": "Utility Widgets",
   "library_widgets_utility_conditional_tooltip": "Exemple: Ajoute conditionnellement une info-bulle",
   "lorem_ipsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 }

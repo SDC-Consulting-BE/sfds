@@ -11,7 +11,7 @@ class SliverViewLibraryScreen extends StatelessWidget {
     var theme = Theme.of(context);
     return SteveSliverView(
       appBar: SteveSliverViewAppBar(
-        title: localization.library_layout,
+        title: localization.library_layout_sliverView,
         actions: const [
           SteveSliverViewAppBarActionThemeSwitcher(),
         ],

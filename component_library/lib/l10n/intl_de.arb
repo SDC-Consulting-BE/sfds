@@ -4,12 +4,13 @@
   "description_line1_postLink": " Sie eine ausführliche Anleitung, wie Sie dieses System in Ihrem Projekt einrichten können.",
   "description_line2": "Informationen zu Utility-Klassen und anderen codebezogenen Themen finden Sie auch in der Readme-Datei.",
   "library_layout": "Layout",
-  "library_layout_sliverView": "Sliver Anzeige",
+  "library_layout_sliverView": "Sliver View",
   "library_widgets": "Widgets",
-  "library_widgets_buttons": "Knöpfe",
-  "library_widgets_cards": "Karten",
+  "library_widgets_buttons": "Buttons",
+  "library_widgets_cards": "Cards",
   "library_widgets_cards_tappable": "antippbar",
-  "library_widgets_utilityWidgets": "Nutzwidgets",
+  "library_widgets_rich_text": "Rich Text",
+  "library_widgets_utilityWidgets": "Utility Widgets",
   "library_widgets_utility_conditional_tooltip": "Beispiel: Fügt bedingt einen Tooltip hinzu",
   "lorem_ipsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 }

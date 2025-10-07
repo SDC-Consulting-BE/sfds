@@ -14,9 +14,7 @@ extension LibraryLinkGroupLabel on LibraryLinkGroup {
     LibraryLinkGroup.widgets => (localization) => localization.library_widgets,
   };
 
-  List<LibraryLink> getLinks(Localization localization) =>
-      _libraryLinks[this]! //
-        ..sort((link1, link2) => link1.titleExtractor.call(localization).compareTo(link2.titleExtractor.call(localization)));
+  List<LibraryLink> get links => _libraryLinks[this]!;
 }
 
 final Map<LibraryLinkGroup, List<LibraryLink>> _libraryLinks = {
@@ -26,6 +24,7 @@ final Map<LibraryLinkGroup, List<LibraryLink>> _libraryLinks = {
   LibraryLinkGroup.widgets: [
     LibraryLink((localization) => localization.library_widgets_buttons, iconDataButtons, routeLibraryButtons),
     LibraryLink((localization) => localization.library_widgets_cards, iconDataCards, routeLibraryCards),
+    LibraryLink((localization) => localization.library_widgets_rich_text, iconDataRichText, routeLibraryRichText),
     LibraryLink((localization) => localization.library_widgets_utilityWidgets, iconDataUtilityWidgets, routeLibraryUtilityWidgets),
   ],
 };
