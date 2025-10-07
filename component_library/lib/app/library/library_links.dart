@@ -14,7 +14,9 @@ extension LibraryLinkGroupLabel on LibraryLinkGroup {
     LibraryLinkGroup.widgets => (localization) => localization.library_widgets,
   };
 
-  List<LibraryLink> get links => _libraryLinks[this]!;
+  List<LibraryLink> getLinks(Localization localization) =>
+      _libraryLinks[this]! //
+        ..sort((link1, link2) => link1.titleExtractor.call(localization).compareTo(link2.titleExtractor.call(localization)));
 }
 
 final Map<LibraryLinkGroup, List<LibraryLink>> _libraryLinks = {

@@ -45,6 +45,6 @@ class LibraryScreen extends StatelessWidget {
     Localization localization,
   ) => [
     SteveSliverTitle(title: group.label.call(localization)),
-    LibraryLinkSection(links: group.links),
+    LibraryLinkSection(links: group.getLinks(localization)),
   ];
 }
