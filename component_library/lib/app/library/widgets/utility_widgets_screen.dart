@@ -10,9 +10,9 @@ class UtilityWidgetsLibraryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var localization = Localization.of(context);
     return SteveSliverView(
-      appBar: const SteveSliverViewAppBar(
-        title: "Utility Widgets",
-        actions: [
+      appBar: SteveSliverViewAppBar(
+        title: localization.library_widgets_utility_widgets,
+        actions: const [
           SteveSliverViewAppBarActionThemeSwitcher(),
         ],
       ),
