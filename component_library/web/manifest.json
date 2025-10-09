@@ -1,11 +1,11 @@
 {
-    "name": "component_library",
-    "short_name": "component_library",
+    "name": "Component Library",
+    "short_name": "Component Library",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "SFDS component library",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
