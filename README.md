@@ -344,7 +344,13 @@ SteveAppInfoService.version
 
 ### Local Storage Service
 
-Can be used to interact (read and write) with the local storage. Can handle all primitive types (bool, int, double, String, List<String>).
+Can be used to interact (read and write) with the local storage. Can handle all primitive types:
+
++ bool
++ int
++ double
++ String
++ List<String>
 
 ``` dart
 SteveLocalStorageService.containsKey(key);
