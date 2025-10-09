@@ -113,14 +113,14 @@ Add the _riverpod_ dependencies to the _pubspec.yaml_:
 
 ``` yaml
 dependencies:
-   flutter_riverpod: ^3.0.2
-   riverpod_annotation: ^3.0.2
+   flutter_riverpod: ^3.0.3
+   riverpod_annotation: ^3.0.3
    
 dev_dependencies:
    build_runner: ^2.9.0
    custom_lint: ^0.8.1
-   riverpod_generator: ^3.0.2
-   riverpod_lint: ^3.0.2
+   riverpod_generator: ^3.0.3
+   riverpod_lint: ^3.0.3
 ```
 
 > [!IMPORTANT]
