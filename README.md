@@ -328,6 +328,33 @@ abstract interface class SteveAppConfigItem {
 
 ## Services
 
+Preconfigured services providing basic functionalities.
+
+The source code can be found [here](lib/src/service).
+
+### App Info Service
+
+Can be used to read application information from within the web app.
+
+``` dart
+SteveAppInfoService.appName
+SteveAppInfoService.packageName
+SteveAppInfoService.version
+```
+
+### Local Storage Service
+
+Can be used to interact (read and write) with the local storage. Can handle all primitive types (bool, int, double, String, List<String>).
+
+``` dart
+SteveLocalStorageService.containsKey(key);
+SteveLocalStorageService.doesNotContainKey(key);
+SteveLocalStorageService.remove(key);
+SteveLocalStorageService.read{Type}(key);
+SteveLocalStorageService.write{Type}(key, value);
+SteveLocalStorageService.write{Type}IfAbsent(key, value);
+```
+
 ## Providers
 
 Riverpod based providers to handle concepts that influence the application state.
@@ -358,28 +385,12 @@ themeModeNotifier.flipThemeMode(); -- flips the current theme mode (light theme 
 
 Assistive utilities that can be used to improve maintainability and handle boilerplate code.
 
-The source code can be found [here](lib/src/util).
+The source contains extensive documentation.
 
-### Collection Util
+The documented source code can be found [here](lib/src/util).
 
-+ __Iterable\<T\> intersperse(T element, Iterable<T> iterable):__
-  Inserts the given _element_ between any two elements of the given _iterable_.
-
-### Log Util
-
-+ __void info(String message):__ logs the given _message_ as general __info__ .
-+ __void warning(String message):__ logs the given _message_ as a __warning__.
-+ __void error(String message):__ log the given _message_ as an __error__.
-
-### Navigation Util
-
-+ __void popMultiple(NavigatorState navigator, int numberOfPops):__ Pops multiple pages on the _navigator_ based on the given _numberOfPops_.
-+ __Future<void> openUrlInNewTab(String url):__ Opens the given _url_ in a new browser tab.
-
-### String Util
-
-+ __String capitalize(String input):__ Transforms the _input_ to capitalize the first letter and have all other characters be lower case.
-
-### Text Style Util
-
-+ __double getTrueHeight(TextStyle textStyle):__ Calculates the true visual height of the given _textStyle_.
++ [Collection Util](lib/src/util/collection_util.dart)
++ [Log Util](lib/src/util/log_util.dart)
++ [Navigation Util](lib/src/util/navigation_util.dart)
++ [String Util](lib/src/util/string_util.dart)
++ [Text Style Util](lib/src/util/text_style_util.dart)
