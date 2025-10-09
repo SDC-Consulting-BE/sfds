@@ -330,11 +330,35 @@ abstract interface class SteveAppConfigItem {
 
 ## Providers
 
+Riverpod based providers to handle concepts that influence the application state.
+
+The source code can be found [here](lib/src/provider).
+
+### Locale Provider
+
+Can be used to manage the selected locale.
+
+``` dart
+var locale = ref.watch(steveLocaleProvider); -- value
+var localeNotifier = ref.read(steveLocaleProvider.notifier); -- notifier
+localeNotifier.selectLocale(locale); -- updates the current locale and updates the screen
+```
+
+### Theme Mode Provider
+
+Can be used to manage the current theme mode (light theme / dark theme).
+
+``` dart
+var themeMode = ref.watch(steveThemeModeProvider);
+var themeModeNotifier = ref.read(steveThemeModeProvider.notifier); -- notifier
+themeModeNotifier.flipThemeMode(); -- flips the current theme mode (light theme <-> dark theme)
+```
+
 ## Utilities
 
 Assistive utilities that can be used to improve maintainability and handle boilerplate code.
 
-The source code can be found [here](lib/src/util)
+The source code can be found [here](lib/src/util).
 
 ### Collection Util
 
