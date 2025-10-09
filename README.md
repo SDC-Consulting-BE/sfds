@@ -350,7 +350,7 @@ Can be used to interact (read and write) with the local storage. Can handle all 
 + int
 + double
 + String
-+ List`<String`>
++ List\<String\>
 
 ``` dart
 SteveLocalStorageService.containsKey(key);
