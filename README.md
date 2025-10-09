@@ -331,3 +331,31 @@ abstract interface class SteveAppConfigItem {
 ## Providers
 
 ## Utilities
+
+Assistive utilities that can be used to improve maintainability and handle boilerplate code.
+
+The source code can be found [here](lib/src/util)
+
+### Collection Util
+
++ __Iterable\<T\> intersperse(T element, Iterable<T> iterable):__
+  Inserts the given _element_ between any two elements of the given _iterable_.
+
+### Log Util
+
++ __void info(String message):__ logs the given _message_ as general __info__ .
++ __void warning(String message):__ logs the given _message_ as a __warning__.
++ __void error(String message):__ log the given _message_ as an __error__.
+
+### Navigation Util
+
++ __void popMultiple(NavigatorState navigator, int numberOfPops):__ Pops multiple pages on the _navigator_ based on the given _numberOfPops_.
++ __Future<void> openUrlInNewTab(String url):__ Opens the given _url_ in a new browser tab.
+
+### String Util
+
++ __String capitalize(String input):__ Transforms the _input_ to capitalize the first letter and have all other characters be lower case.
+
+### Text Style Util
+
++ __double getTrueHeight(TextStyle textStyle):__ Calculates the true visual height of the given _textStyle_.
