@@ -1,0 +1,69 @@
+name: project_h
+description: "Project H"
+publish_to: 'none'
+
+version: 1.0.0
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  sfds:
+    path: ../../
+  flutter_riverpod: ^3.0.3
+  go_router: ^16.2.4
+  intl: ^0.20.2
+  riverpod_annotation: ^3.0.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^2.9.0
+  custom_lint: ^0.8.1
+  flutter_lints: ^6.0.0
+  riverpod_generator: ^3.0.3
+  riverpod_lint: ^3.0.3
+
+dependency_overrides:
+  test_api: ^0.7.7
+
+flutter:
+  uses-material-design: true
+  generate: true
+  fonts:
+    - family: base
+      fonts:
+        - asset: packages/sfds/assets/font/thin.ttf
+          weight: 100
+        - asset: packages/sfds/assets/font/thinItalic.ttf
+          weight: 100
+          style: italic
+        - asset: packages/sfds/assets/font/light.ttf
+          weight: 300
+        - asset: packages/sfds/assets/font/lightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: packages/sfds/assets/font/regular.ttf
+          weight: 400
+        - asset: packages/sfds/assets/font/italic.ttf
+          weight: 400
+          style: italic
+        - asset: packages/sfds/assets/font/medium.ttf
+          weight: 500
+        - asset: packages/sfds/assets/font/mediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: packages/sfds/assets/font/bold.ttf
+          weight: 700
+        - asset: packages/sfds/assets/font/boldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: packages/sfds/assets/font/black.ttf
+          weight: 900
+        - asset: packages/sfds/assets/font/blackItalic.ttf
+          weight: 900
+          style: italic

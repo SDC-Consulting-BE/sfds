@@ -238,10 +238,12 @@ flutter:
    generate: true
 ```
 
-Then add the _intl_ dependency in the _pubspec.yaml_ file:
+Then add the _intl_ and _flutter_localizations_ dependencies in the _pubspec.yaml_ file:
 
 ``` yaml
 dependencies:
+   flutter_localizations:
+      sdk: flutter
    intl: ^0.20.2
 ```
 
@@ -270,6 +272,10 @@ Translations can be placed in these files and will programatically and automatic
 
 Information regarding the _l10n.yaml_ file, or anything related to translations, can be found in
 the [officiel Flutter documentation](https://docs.flutter.dev/ui/accessibility-and-internationalization/internationalization).
+
+> [!IMPORTANT]
+> When setting up the project, it might be necessary to run the following command to generate the files for the first time:
+> > flutter gen-l10n
 
 #### Fetching translations
 
@@ -304,14 +310,16 @@ import "package:your_package/app_routes.dart";
 import "package:your_package/l10n/generated/app_localizations.dart";
 import "package:sfds/config.dart";
 
-SteveAppConfigurator(
-   title: (context) => Localization.of(context).title,
-   lightColorScheme: lightColorScheme,
-   darkColorScheme: darkColorScheme,
-   router: router,
-   delegates: Localization.localizationsDelegates,
-   locales: Localization.supportedLocales,
-).start();
+void main() async {
+   SteveAppConfigurator(
+      title: (context) => Localization.of(context).title,
+      lightColorScheme: lightColorScheme,
+      darkColorScheme: darkColorScheme,
+      router: router,
+      delegates: Localization.localizationsDelegates,
+      locales: Localization.supportedLocales,
+   ).start();
+}
 ```
 
 #### Adding configuration items
