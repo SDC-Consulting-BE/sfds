@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:go_router/go_router.dart";
 import "package:project_h/l10n/generated/app_localizations.dart";
 import "package:sfds/widget.dart";
 
@@ -8,7 +9,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var localization = Localization.of(context);
-    var theme = Theme.of(context);
     return SteveSliverView(
       appBar: SteveSliverViewAppBar(
         title: localization.title,
@@ -18,9 +18,21 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       slivers: [
-        SteveSliverText(
-          text: "Future content here!",
-          textStyle: theme.textTheme.headlineLarge,
+        SteveSliverGrid(
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 240,
+            crossAxisSpacing: 12,
+            mainAxisSpacing: 12,
+            childAspectRatio: 3,
+          ),
+          children: [
+            SteveCard(
+              onTap: () => context.go("/dashboard"),
+              child: const Center(
+                child: Text("Dashboard"),
+              ),
+            ),
+          ],
         ),
       ],
     );

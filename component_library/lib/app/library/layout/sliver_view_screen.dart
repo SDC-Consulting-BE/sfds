@@ -1,6 +1,5 @@
 import "package:component_library/l10n/generated/app_localizations.dart";
 import "package:flutter/material.dart";
-import "package:sfds/service.dart";
 import "package:sfds/widget.dart";
 
 class SliverViewLibraryScreen extends StatelessWidget {
@@ -8,9 +7,6 @@ class SliverViewLibraryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(SteveAppInfoService.appName);
-    print(SteveAppInfoService.packageName);
-    print(SteveAppInfoService.version);
     var localization = Localization.of(context);
     var theme = Theme.of(context);
     return SteveSliverView(

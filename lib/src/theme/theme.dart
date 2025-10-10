@@ -15,10 +15,12 @@ ThemeData themeData(ColorScheme colorScheme) => ThemeData(
   hoverColor: colorScheme.primaryContainer,
   splashColor: colorScheme.inversePrimary,
   extensions: [colorScheme.brightness.colorSchemeExtension],
-  cardTheme: const CardThemeData(
+  cardTheme: CardThemeData(
     elevation: themeDefaultElevation,
     margin: paddingZero,
     shape: themeDefaultShape,
+    color: colorScheme.surfaceContainer,
+    // color: colorScheme.brightness == Brightness.light ? colorScheme.surfaceDim : colorScheme.surfaceBright,
   ),
   dialogTheme: const DialogThemeData(
     elevation: themeDefaultElevation,
