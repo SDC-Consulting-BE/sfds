@@ -391,12 +391,38 @@ themeModeNotifier.flipThemeMode(); -- flips the current theme mode (light theme 
 
 Assistive utilities that can be used to improve maintainability and handle boilerplate code.
 
-The source contains extensive documentation.
+The source code can be found [here](lib/src/util).
 
-The documented source code can be found [here](lib/src/util).
+### Collection Util
 
-+ [Collection Util](lib/src/util/collection_util.dart)
-+ [Log Util](lib/src/util/log_util.dart)
-+ [Navigation Util](lib/src/util/navigation_util.dart)
-+ [String Util](lib/src/util/string_util.dart)
-+ [Text Style Util](lib/src/util/text_style_util.dart)
+intersperse
+: Inserts a given element between each element of the given iterable
+
+### Log Util
+
+info
+: Logs the given message as log level info (value 800)
+
+warning
+: Logs the given message as log level warning (value 900)
+
+error
+: Logs the given message as log level error (value 1000)
+
+### Navigation Util
+
+popMultiple
+: Pops the top-most route off the given navigator a given number of times
+
+openUrlInNewTab
+: Opens the given URL in a new browser tab
+
+### String Util
+
+capitalize
+: Capitalizes the first character of the given input and leaves all other characters as lower case
+
+### Text Style Util
+
+getTrueHeight
+: Calculates the height of the given text style
