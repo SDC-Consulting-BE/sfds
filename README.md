@@ -395,34 +395,26 @@ The source code can be found [here](lib/src/util).
 
 ### Collection Util
 
-intersperse
-: Inserts a given element between each element of the given iterable
+__intersperse:__ Inserts a given element between each element of the given iterable
 
 ### Log Util
 
-info
-: Logs the given message as log level info (value 800)
+__info:__ Logs the given message as log level info (value 800)
 
-warning
-: Logs the given message as log level warning (value 900)
+__warning:__ Logs the given message as log level warning (value 900)
 
-error
-: Logs the given message as log level error (value 1000)
+__error:__ Logs the given message as log level error (value 1000)
 
 ### Navigation Util
 
-popMultiple
-: Pops the top-most route off the given navigator a given number of times
+__popMultiple:__ Pops the top-most route off the given navigator a given number of times
 
-openUrlInNewTab
-: Opens the given URL in a new browser tab
+__openUrlInNewTab:__ Opens the given URL in a new browser tab
 
 ### String Util
 
-capitalize
-: Capitalizes the first character of the given input and leaves all other characters as lower case
+__capitalize:__ Capitalizes the first character of the given input and leaves all other characters as lower case
 
 ### Text Style Util
 
-getTrueHeight
-: Calculates the height of the given text style
+__getTrueHeight:__ Calculates the height of the given text style
