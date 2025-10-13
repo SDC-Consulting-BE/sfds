@@ -103,9 +103,11 @@ class SliverViewLibraryScreen extends StatelessWidget {
             (index) => SteveCard(child: Text("Grid #$index")),
           ),
         ),
-        const SteveSliverSpacing(
-          height: 20,
+        const SteveSliverTitle(
+          title: "SteveSliverBottomSpacing",
+          type: SteveSliverTitleType.subtitle,
         ),
+        const SteveSliverBottomSpacing(),
       ],
     );
   }

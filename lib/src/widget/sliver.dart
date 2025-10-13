@@ -212,6 +212,15 @@ class SteveSliverSpacing extends StatelessWidget {
   );
 }
 
+const _steveSliverBottomSpacing = 12.0;
+
+class SteveSliverBottomSpacing extends SteveSliverSpacing {
+  const SteveSliverBottomSpacing()
+    : super(
+        height: _steveSliverBottomSpacing,
+      );
+}
+
 const _steveSliverGridPadding = paddingH18;
 
 class SteveSliverGrid extends StatelessWidget {

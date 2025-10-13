@@ -53,11 +53,9 @@ class _SteveCardExampleContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    return Center(
-      child: Text(
-        text,
-        style: theme.textTheme.displayMedium,
-      ),
+    return SteveCenteredText(
+      text: text,
+      textStyle: theme.textTheme.displayMedium,
     );
   }
 }

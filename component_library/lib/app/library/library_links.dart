@@ -26,6 +26,8 @@ final Map<LibraryLinkGroup, List<LibraryLink>> _libraryLinks = {
     LibraryLink((localization) => localization.library_widgets_cards, iconDataCards, routeLibraryCards),
     LibraryLink((localization) => localization.library_widgets_form_elements, iconDataFormElements, routeLibraryFormElements),
     LibraryLink((localization) => localization.library_widgets_rich_text, iconDataRichText, routeLibraryRichText),
+    LibraryLink((localization) => localization.library_widgets_text, iconDataText, routeLibraryText),
+    LibraryLink((localization) => localization.library_widgets_text_style, iconDataTextStyle, routeLibraryTextStyle),
     LibraryLink((localization) => localization.library_widgets_utility_widgets, iconDataUtilityWidgets, routeLibraryUtilityWidgets),
   ],
 };
