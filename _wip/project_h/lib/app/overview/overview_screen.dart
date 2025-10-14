@@ -11,6 +11,7 @@ class OverviewScreen extends StatelessWidget {
     return SteveSliverView(
       appBar: SteveSliverViewAppBar(
         title: localization.overview,
+        showBackNavigation: true,
         actions: const [
           SteveSliverViewAppBarActionLocaleSwitcher(supportedLocales: Localization.supportedLocales),
           SteveSliverViewAppBarActionThemeSwitcher(),

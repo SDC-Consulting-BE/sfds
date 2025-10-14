@@ -11,6 +11,7 @@ class DashboardScreen extends StatelessWidget {
     return SteveSliverView(
       appBar: SteveSliverViewAppBar(
         title: localization.dashboard,
+        showBackNavigation: true,
         actions: const [
           SteveSliverViewAppBarActionLocaleSwitcher(supportedLocales: Localization.supportedLocales),
           SteveSliverViewAppBarActionThemeSwitcher(),

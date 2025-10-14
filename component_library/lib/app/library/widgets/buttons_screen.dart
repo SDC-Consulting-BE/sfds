@@ -12,6 +12,7 @@ class ButtonsLibraryScreen extends StatelessWidget {
     return SteveSliverView(
       appBar: SteveSliverViewAppBar(
         title: localization.library_widgets_buttons,
+        showBackNavigation: true,
         actions: const [
           SteveSliverViewAppBarActionThemeSwitcher(),
         ],

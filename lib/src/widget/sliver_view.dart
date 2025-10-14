@@ -37,11 +37,13 @@ class SteveSliverViewAppBar extends StatelessWidget {
   const SteveSliverViewAppBar({
     required this.title,
     this.pinned = true,
+    this.showBackNavigation = false,
     this.actions = const [],
   });
 
   final String title;
   final bool pinned;
+  final bool showBackNavigation;
   final List<Widget> actions;
 
   @override
@@ -57,10 +59,18 @@ class SteveSliverViewAppBar extends StatelessWidget {
       toolbarHeight: appBarHeight,
       expandedHeight: appBarHeight * _steveSliverViewAppBarExpansionFactor,
       leading: sizedBoxZero,
+      titleSpacing: -40,
+      title: showBackNavigation
+          ? SteveSliverViewAppBarAction(
+              icon: Icons.chevron_left,
+              onPressed: Navigator.of(context).pop,
+            )
+          : null,
       flexibleSpace: FlexibleSpaceBar(
         titlePadding: EdgeInsets.symmetric(horizontal: _steveSliverViewAppBarHorizontalSpacing, vertical: appBarVerticalPadding),
         expandedTitleScale: _steveSliverViewAppBarExpansionFactor,
         title: Text(title, style: appBarTitleStyle),
+        centerTitle: true,
       ),
       actionsPadding: const EdgeInsets.only(right: _steveSliverViewAppBarHorizontalSpacing),
       actionsIconTheme: IconThemeData(

@@ -12,6 +12,7 @@ class SliverViewLibraryScreen extends StatelessWidget {
     return SteveSliverView(
       appBar: SteveSliverViewAppBar(
         title: localization.library_layout_sliverView,
+        showBackNavigation: true,
         actions: const [
           SteveSliverViewAppBarActionThemeSwitcher(),
         ],
@@ -21,6 +22,7 @@ class SliverViewLibraryScreen extends StatelessWidget {
         SteveSliverViewAppBar(
           title: "SteveSliverViewAppBar",
           pinned: false,
+          showBackNavigation: true,
           actions: [
             Tooltip(
               message: "SteveSliverViewAppBarAction",
