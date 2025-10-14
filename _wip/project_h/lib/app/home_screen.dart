@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
-import "package:go_router/go_router.dart";
+import "package:project_h/app/_widget/home_screen_navigation_card.dart";
 import "package:project_h/app/home_screen_links.dart";
-import "package:project_h/app_constants.dart";
 import "package:project_h/l10n/generated/app_localizations.dart";
 import "package:sfds/widget.dart";
 
@@ -29,7 +28,7 @@ class HomeScreen extends StatelessWidget {
           ),
           children: homeScreenLinks
               .map(
-                (link) => _HomeScreenNavigationCard(
+                (link) => HomeScreenNavigationCard(
                   title: link.titleExtractor.call(localization),
                   icon: link.icon,
                   route: link.routerLink,
@@ -40,29 +39,4 @@ class HomeScreen extends StatelessWidget {
       ],
     );
   }
-}
-
-class _HomeScreenNavigationCard extends StatelessWidget {
-  const _HomeScreenNavigationCard({
-    required this.title,
-    required this.icon,
-    required this.route,
-  });
-
-  final String title;
-  final IconData icon;
-  final String route;
-
-  @override
-  Widget build(BuildContext context) => SteveCard(
-    onTap: () => context.go(route),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(icon),
-        sizedBoxW8,
-        Text(title),
-      ],
-    ),
-  );
 }

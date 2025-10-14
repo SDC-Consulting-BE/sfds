@@ -1,5 +1,7 @@
 {
   "title": "Project H",
   "dashboard": "Dashboard",
+  "dashboard_overdue_tasks": "Achterstallige taken",
+  "dashboard_task_summary": "Takenoverzicht",
   "overview": "Overzicht"
 }
