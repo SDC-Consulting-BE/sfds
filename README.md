@@ -36,12 +36,18 @@ Key packages used in the design system (not covered in this readme):
 Add the following dependency in _pubspec.yaml_:
 
 ``` yaml
+environment:
+  sdk: ^3.10.0
+  
 dependencies:
   sfds:
     git:
       url: https://github.com/SDC-Consulting-BE/sfds
       ref: main
 ```
+
+> [!IMPORTANT]
+> SFDS makes use of Flutter 3.38.1, which comes with Dart 3.10.0
 
 ## Project configuration
 
@@ -53,7 +59,7 @@ Add the following dependencies to the _pubspec.yaml_:
 
 ``` yaml
 dev_dependencies:
-   build_runner: ^2.9.0
+   build_runner: ^2.10.3
    flutter_lints: ^6.0.0
 ```
 
@@ -117,18 +123,11 @@ dependencies:
    riverpod_annotation: ^3.0.3
    
 dev_dependencies:
-   build_runner: ^2.9.0
+   build_runner: ^2.10.3
    custom_lint: ^0.8.1
    riverpod_generator: ^3.0.3
    riverpod_lint: ^3.0.3
 ```
-
-> [!IMPORTANT]
-> Due to some versioning issues, it is advised to add a dependency override to the _pubspec.yaml_:
-> ``` yaml
-> dependency_overrides:
->  test_api: ^0.7.7
-> ```
 
 To only make use of the predefined _riverpod_ providers - and none of your own - the _flutter_riverpod_ alone dependency is sufficient.
 
@@ -191,7 +190,7 @@ Start with adding the _go_router_ dependency to the _pubspec.yaml_:
 
 ``` yaml
 dependencies:
-   go_router: ^16.2.4
+   go_router: ^17.0.0
 ```
 
 Create an _app_routes.dart_ file in the _lib_ folder and define a _GoRouter_ in that file, e.g.:
