@@ -26,8 +26,8 @@ class SteveThemeMode extends _$SteveThemeMode {
 
 extension _ThemeModeFlipper on ThemeMode {
   ThemeMode get flipped => switch (this) {
-    ThemeMode.light => ThemeMode.dark,
-    ThemeMode.dark => ThemeMode.light,
+    .light => .dark,
+    .dark => .light,
     _ => throw UnsupportedError("ThemeMode system is not supported (and should not be possible)"),
   };
 }

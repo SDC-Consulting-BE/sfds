@@ -6,7 +6,7 @@ class SteveAppInfoService implements SteveAppConfigItem {
 
   @override
   Future<void> configure() async {
-    _appInfo = await PackageInfo.fromPlatform();
+    _appInfo = await .fromPlatform();
   }
 
   static String get appName => _appInfo.appName;

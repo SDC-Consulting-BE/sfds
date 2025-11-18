@@ -29,20 +29,20 @@ ThemeData themeData(ColorScheme colorScheme) => ThemeData(
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
       elevation: const WidgetStatePropertyAll(themeDefaultElevation),
-      fixedSize: const WidgetStatePropertyAll(Size.fromHeight(themeDefaultButtonHeight)),
+      fixedSize: const WidgetStatePropertyAll(.fromHeight(themeDefaultButtonHeight)),
       shape: const WidgetStatePropertyAll(themeDefaultShape),
-      backgroundColor: WidgetStateProperty.fromMap({
+      backgroundColor: .fromMap({
         WidgetState.disabled: null,
         WidgetState.any: colorScheme.secondary,
       }),
-      foregroundColor: WidgetStateProperty.fromMap({
+      foregroundColor: .fromMap({
         WidgetState.disabled: null,
         WidgetState.any: colorScheme.onSecondary,
       }),
-      overlayColor: WidgetStateProperty.fromMap({
+      overlayColor: .fromMap({
         WidgetState.disabled: null,
-        WidgetState.pressed: colorScheme.brightness == Brightness.light ? colorScheme.secondaryContainer.withValues(alpha: 0.2) : colorScheme.secondaryContainer.withValues(alpha: 0.3),
-        WidgetState.hovered: colorScheme.brightness == Brightness.light ? Colors.white.withValues(alpha: 0.15) : Colors.black.withValues(alpha: 0.15),
+        WidgetState.pressed: colorScheme.brightness == .light ? colorScheme.secondaryContainer.withValues(alpha: 0.2) : colorScheme.secondaryContainer.withValues(alpha: 0.3),
+        WidgetState.hovered: colorScheme.brightness == .light ? Colors.white.withValues(alpha: 0.15) : Colors.black.withValues(alpha: 0.15),
         WidgetState.any: null,
       }),
     ),
@@ -53,19 +53,19 @@ ThemeData themeData(ColorScheme colorScheme) => ThemeData(
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: ButtonStyle(
       elevation: const WidgetStatePropertyAll(themeDefaultElevation),
-      fixedSize: const WidgetStatePropertyAll(Size.fromHeight(themeDefaultButtonHeight)),
+      fixedSize: const WidgetStatePropertyAll(.fromHeight(themeDefaultButtonHeight)),
       shape: const WidgetStatePropertyAll(themeDefaultShape),
-      foregroundColor: WidgetStateProperty.fromMap({
+      foregroundColor: .fromMap({
         WidgetState.disabled: null,
         WidgetState.any: colorScheme.secondary,
       }),
-      overlayColor: WidgetStateProperty.fromMap({
+      overlayColor: .fromMap({
         WidgetState.disabled: null,
         WidgetState.pressed: colorScheme.secondary.withValues(alpha: 0.1),
-        WidgetState.hovered: colorScheme.brightness == Brightness.light ? colorScheme.secondary.withValues(alpha: 0.15) : colorScheme.secondaryContainer.withValues(alpha: 0.35),
+        WidgetState.hovered: colorScheme.brightness == .light ? colorScheme.secondary.withValues(alpha: 0.15) : colorScheme.secondaryContainer.withValues(alpha: 0.35),
         WidgetState.any: null,
       }),
-      side: WidgetStateProperty.fromMap({
+      side: .fromMap({
         WidgetState.disabled: null,
         WidgetState.any: BorderSide(color: colorScheme.secondary, width: themeDefaultBorderWidth),
       }),
@@ -74,17 +74,17 @@ ThemeData themeData(ColorScheme colorScheme) => ThemeData(
   switchTheme: SwitchThemeData(
     splashRadius: 0,
     trackOutlineWidth: const WidgetStatePropertyAll(themeDefaultBorderWidth),
-    trackColor: WidgetStateProperty.fromMap({
+    trackColor: .fromMap({
       WidgetState.disabled: null,
       WidgetState.selected: colorScheme.secondary,
       WidgetState.any: null,
     }),
-    thumbColor: WidgetStateProperty.fromMap({
+    thumbColor: .fromMap({
       WidgetState.disabled: null,
       WidgetState.selected: colorScheme.onSecondary,
       WidgetState.any: colorScheme.secondary,
     }),
-    trackOutlineColor: WidgetStateProperty.fromMap({
+    trackOutlineColor: .fromMap({
       WidgetState.disabled: null,
       WidgetState.any: colorScheme.secondary,
     }),
@@ -92,13 +92,13 @@ ThemeData themeData(ColorScheme colorScheme) => ThemeData(
   textButtonTheme: TextButtonThemeData(
     style: ButtonStyle(
       elevation: const WidgetStatePropertyAll(themeDefaultElevation),
-      fixedSize: const WidgetStatePropertyAll(Size.fromHeight(themeDefaultButtonHeight)),
+      fixedSize: const WidgetStatePropertyAll(.fromHeight(themeDefaultButtonHeight)),
       shape: const WidgetStatePropertyAll(themeDefaultShape),
-      foregroundColor: WidgetStateProperty.fromMap({
+      foregroundColor: .fromMap({
         WidgetState.disabled: null,
         WidgetState.any: colorScheme.secondary,
       }),
-      overlayColor: WidgetStateProperty.fromMap({
+      overlayColor: .fromMap({
         WidgetState.disabled: null,
         WidgetState.pressed: colorScheme.secondary.withValues(alpha: 0.1),
         WidgetState.hovered: colorScheme.brightness == Brightness.light ? colorScheme.secondary.withValues(alpha: 0.15) : colorScheme.secondaryContainer.withValues(alpha: 0.35),
@@ -162,9 +162,9 @@ class SteveExtendedColor {
   final Color onContainer;
 
   SteveExtendedColor lerp(SteveExtendedColor other, double t) => SteveExtendedColor(
-    color: Color.lerp(color, other.color, t)!,
-    onColor: Color.lerp(onColor, other.onColor, t)!,
-    container: Color.lerp(container, other.container, t)!,
-    onContainer: Color.lerp(onContainer, other.onContainer, t)!,
+    color: .lerp(color, other.color, t)!,
+    onColor: .lerp(onColor, other.onColor, t)!,
+    container: .lerp(container, other.container, t)!,
+    onContainer: .lerp(onContainer, other.onContainer, t)!,
   );
 }

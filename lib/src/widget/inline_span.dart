@@ -13,7 +13,7 @@ class SteveTextSpanHyperlink extends TextSpan {
   }) : super(
          text: text,
          style: TextStyle(
-           decoration: TextDecoration.underline,
+           decoration: .underline,
            color: Theme.of(context).extension<SteveColorSchemeExtension>()!.hyperlink.color,
          ),
          recognizer: TapGestureRecognizer()..onTap = () => unawaited(SteveNavigationUtil.openUrlInNewTab(url)),

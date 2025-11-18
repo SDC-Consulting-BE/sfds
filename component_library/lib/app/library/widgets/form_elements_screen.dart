@@ -21,7 +21,7 @@ class FormElementsLibraryScreen extends StatelessWidget {
         SteveSliverBreadcrumbs(),
         SteveSliverTitle(
           title: "Switch",
-          type: SteveSliverTitleType.subtitle,
+          type: .subtitle,
         ),
         _FormElementsSwitchExample(),
       ],

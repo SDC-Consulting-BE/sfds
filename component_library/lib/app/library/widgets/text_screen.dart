@@ -21,7 +21,7 @@ class TextLibraryScreen extends StatelessWidget {
         const SteveSliverBreadcrumbs(),
         const SteveSliverTitle(
           title: "SteveCenteredText",
-          type: SteveSliverTitleType.subtitle,
+          type: .subtitle,
         ),
         SteveSliverText(
           text: localization.library_widgets_text_centered_text,

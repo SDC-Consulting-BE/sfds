@@ -31,7 +31,7 @@ class SteveSliverBreadcrumbs extends StatelessWidget {
     var breadcrumbsHeight = breadcrumbsStyleHeight * _steveSliverBreadcrumbsPaddingFactor;
     var breadcrumbsVerticalPadding = (breadcrumbsHeight - breadcrumbsStyleHeight) / 2;
     return SliverPadding(
-      padding: EdgeInsets.symmetric(horizontal: _steveSliverBreadcrumbsSpacing, vertical: breadcrumbsVerticalPadding),
+      padding: .symmetric(horizontal: _steveSliverBreadcrumbsSpacing, vertical: breadcrumbsVerticalPadding),
       sliver: SliverToBoxAdapter(
         child: Row(
           children: SteveCollectionUtil.intersperse(
@@ -110,7 +110,7 @@ class SteveSliverTitle extends StatelessWidget {
   const SteveSliverTitle({
     super.key,
     required this.title,
-    this.type = SteveSliverTitleType.title,
+    this.type = .title,
   });
 
   final String title;
@@ -138,13 +138,13 @@ enum SteveSliverTitleType {
 
 extension SteveSliverTitleTypeTextStyle on SteveSliverTitleType {
   TextStyle Function(ThemeData theme) get textStyleFunction => switch (this) {
-    SteveSliverTitleType.title => (theme) => theme.textTheme.displayMedium!,
-    SteveSliverTitleType.subtitle => (theme) => theme.textTheme.displaySmall!,
+    .title => (theme) => theme.textTheme.displayMedium!,
+    .subtitle => (theme) => theme.textTheme.displaySmall!,
   };
 
   EdgeInsets get padding => switch (this) {
-    SteveSliverTitleType.title => _steveSliverTitleDefaultPadding,
-    SteveSliverTitleType.subtitle => _steveSliverSubtitleDefaultPadding,
+    .title => _steveSliverTitleDefaultPadding,
+    .subtitle => _steveSliverSubtitleDefaultPadding,
   };
 }
 
@@ -167,7 +167,7 @@ class SteveSliverText extends StatelessWidget {
       child: Text(
         text,
         style: textStyle,
-        textAlign: TextAlign.justify,
+        textAlign: .justify,
       ),
     ),
   );
@@ -188,7 +188,7 @@ class SteveSliverRichText extends StatelessWidget {
     padding: _steveSliverTextDefaultPadding,
     sliver: SliverToBoxAdapter(
       child: RichText(
-        textAlign: TextAlign.justify,
+        textAlign: .justify,
         text: TextSpan(
           style: baseTextStyle ?? DefaultTextStyle.of(context).style,
           children: inlineSpans,

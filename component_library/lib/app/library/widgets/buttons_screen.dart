@@ -21,7 +21,7 @@ class ButtonsLibraryScreen extends StatelessWidget {
         const SteveSliverBreadcrumbs(),
         const SteveSliverTitle(
           title: "Flutter Buttons",
-          type: SteveSliverTitleType.subtitle,
+          type: .subtitle,
         ),
         SteveSliverGrid(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

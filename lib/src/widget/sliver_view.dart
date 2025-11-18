@@ -67,12 +67,12 @@ class SteveSliverViewAppBar extends StatelessWidget {
             )
           : null,
       flexibleSpace: FlexibleSpaceBar(
-        titlePadding: EdgeInsets.symmetric(horizontal: _steveSliverViewAppBarHorizontalSpacing, vertical: appBarVerticalPadding),
+        titlePadding: .symmetric(horizontal: _steveSliverViewAppBarHorizontalSpacing, vertical: appBarVerticalPadding),
         expandedTitleScale: _steveSliverViewAppBarExpansionFactor,
         title: Text(title, style: appBarTitleStyle),
         centerTitle: true,
       ),
-      actionsPadding: const EdgeInsets.only(right: _steveSliverViewAppBarHorizontalSpacing),
+      actionsPadding: const .only(right: _steveSliverViewAppBarHorizontalSpacing),
       actionsIconTheme: IconThemeData(
         size: appBarHeight * _steveSliverViewAppBarIconsSizeFactor,
       ),
@@ -139,7 +139,7 @@ class _SteveSliverViewAppBarActionState extends State<_SteveSliverViewAppBarActi
           dimension: _steveSliverViewActionSize,
           child: FittedBox(
             key: widget.boxKey,
-            fit: BoxFit.fitHeight,
+            fit: .fitHeight,
             child: widget.child,
           ),
         ),
@@ -170,8 +170,8 @@ class SteveSliverViewAppBarActionThemeSwitcher extends ConsumerWidget {
 
 extension _ThemeModeIcon on ThemeMode {
   IconData get icon => switch (this) {
-    ThemeMode.light => iconDataLightMode,
-    ThemeMode.dark => iconDataDarkMode,
+    .light => iconDataLightMode,
+    .dark => iconDataDarkMode,
     _ => throw UnsupportedError("ThemeMode system is not supported (and should not be possible)"),
   };
 }
@@ -233,7 +233,7 @@ class _SteveSliverViewAppBarActionLocaleSwitcherDialog extends ConsumerWidget {
     var navigator = Navigator.of(context);
     var mediaQuery = MediaQuery.of(context);
     return Dialog(
-      alignment: Alignment.topRight,
+      alignment: .topRight,
       insetPadding: EdgeInsets.only(
         top: callersOffset.dy,
         right: (mediaQuery.size.width - callersOffset.dx) - _steveSliverViewActionSize - _steveSliverViewActionPadding.horizontal,
@@ -241,7 +241,7 @@ class _SteveSliverViewAppBarActionLocaleSwitcherDialog extends ConsumerWidget {
       child: SizedBox(
         width: 0,
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: .min,
           children: SteveCollectionUtil.intersperse(
             divider,
             [currentLocale, ...nonCurrentLocales].map(

@@ -3,8 +3,8 @@ import "package:sfds/src/theme/theme.dart";
 
 extension SteveColorSchemeExtensionForBrightness on Brightness {
   SteveColorSchemeExtension get colorSchemeExtension => switch(this) {
-    Brightness.light => _colorSchemeExtensionLight,
-    Brightness.dark => _colorSchemeExtensionDark,
+    .light => _colorSchemeExtensionLight,
+    .dark => _colorSchemeExtensionDark,
   };
 }
 

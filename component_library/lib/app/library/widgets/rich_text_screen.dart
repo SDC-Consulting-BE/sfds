@@ -20,7 +20,7 @@ class RichTextLibraryScreen extends StatelessWidget {
         const SteveSliverBreadcrumbs(),
         const SteveSliverTitle(
           title: "SteveTextSpanHyperlink",
-          type: SteveSliverTitleType.subtitle,
+          type: .subtitle,
         ),
         SteveSliverRichText(
           inlineSpans: [

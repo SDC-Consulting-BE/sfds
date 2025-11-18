@@ -72,10 +72,10 @@ class _TaskSummaryGrid extends StatelessWidget {
         18,
         (_) => DecoratedBox(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: .circular(12),
             gradient: LinearGradient(
-              begin: AlignmentGeometry.topLeft,
-              end: AlignmentGeometry.bottomRight,
+              begin: .topLeft,
+              end: .bottomRight,
               colors: [theme.colorScheme.secondaryContainer, theme.colorScheme.tertiaryContainer],
             ),
           ),

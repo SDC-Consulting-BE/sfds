@@ -10,8 +10,8 @@ class OverdueTaskCard extends StatelessWidget {
     return SteveCard(
       onTap: () {},
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: .center,
+        crossAxisAlignment: .start,
         children: [
           Text("Task description", style: theme.textTheme.titleLarge),
           Text("Due XX days ago", style: theme.textTheme.labelMedium),

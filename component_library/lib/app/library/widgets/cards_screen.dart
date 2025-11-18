@@ -20,7 +20,7 @@ class CardsLibraryScreen extends StatelessWidget {
         const SteveSliverBreadcrumbs(),
         const SteveSliverTitle(
           title: "SteveCard",
-          type: SteveSliverTitleType.subtitle,
+          type: .subtitle,
         ),
         SteveSliverGrid(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

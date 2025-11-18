@@ -20,14 +20,14 @@ class TextStyleLibraryScreen extends StatelessWidget {
         SteveSliverBreadcrumbs(),
         SteveSliverTitle(
           title: "Text Styles",
-          type: SteveSliverTitleType.subtitle,
+          type: .subtitle,
         ),
         SteveSliverToBoxAdapter(
           child: _TextStylesColumn(),
         ),
         SteveSliverTitle(
           title: "Font Weights & Styles",
-          type: SteveSliverTitleType.subtitle,
+          type: .subtitle,
         ),
         SteveSliverToBoxAdapter(
           child: _FontWeightsColumn(),
@@ -45,7 +45,7 @@ class _TextStylesColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: .start,
       children: [
         Text("Display Large", style: theme.textTheme.displayLarge),
         Text("Display Medium", style: theme.textTheme.displayMedium),
@@ -74,37 +74,55 @@ class _FontWeightsColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: .start,
       children: [
-        Text("(W100) Thin", style: theme.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w100)),
+        Text(
+          "(W100) Thin",
+          style: theme.textTheme.titleLarge!.copyWith(fontWeight: .w100),
+        ),
         Text(
           "(W100) Thin Italic",
-          style: theme.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w100, fontStyle: FontStyle.italic),
+          style: theme.textTheme.titleLarge!.copyWith(fontWeight: .w100, fontStyle: .italic),
         ),
-        Text("(W300) Light", style: theme.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w300)),
+        Text(
+          "(W300) Light",
+          style: theme.textTheme.titleLarge!.copyWith(fontWeight: .w300),
+        ),
         Text(
           "(W300) Light italic",
-          style: theme.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w300, fontStyle: FontStyle.italic),
+          style: theme.textTheme.titleLarge!.copyWith(fontWeight: .w300, fontStyle: .italic),
         ),
-        Text("(W400) Regular", style: theme.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w400)),
+        Text(
+          "(W400) Regular",
+          style: theme.textTheme.titleLarge!.copyWith(fontWeight: .w400),
+        ),
         Text(
           "(W400) Regular italic",
-          style: theme.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w400, fontStyle: FontStyle.italic),
+          style: theme.textTheme.titleLarge!.copyWith(fontWeight: .w400, fontStyle: .italic),
         ),
-        Text("(W500) Medium", style: theme.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w500)),
+        Text(
+          "(W500) Medium",
+          style: theme.textTheme.titleLarge!.copyWith(fontWeight: .w500),
+        ),
         Text(
           "(W500) Medium italic",
-          style: theme.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w500, fontStyle: FontStyle.italic),
+          style: theme.textTheme.titleLarge!.copyWith(fontWeight: .w500, fontStyle: .italic),
         ),
-        Text("(W700) Bold", style: theme.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w700)),
+        Text(
+          "(W700) Bold",
+          style: theme.textTheme.titleLarge!.copyWith(fontWeight: .w700),
+        ),
         Text(
           "(W700) Bold italic",
-          style: theme.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w700, fontStyle: FontStyle.italic),
+          style: theme.textTheme.titleLarge!.copyWith(fontWeight: .w700, fontStyle: .italic),
         ),
-        Text("(W900) Black", style: theme.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w900)),
+        Text(
+          "(W900) Black",
+          style: theme.textTheme.titleLarge!.copyWith(fontWeight: .w900),
+        ),
         Text(
           "(W900) Black italic",
-          style: theme.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w900, fontStyle: FontStyle.italic),
+          style: theme.textTheme.titleLarge!.copyWith(fontWeight: .w900, fontStyle: .italic),
         ),
       ],
     );

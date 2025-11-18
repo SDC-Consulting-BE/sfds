@@ -21,7 +21,7 @@ class UtilityWidgetsLibraryScreen extends StatelessWidget {
         const SteveSliverBreadcrumbs(),
         const SteveSliverTitle(
           title: "SteveConditionalWidgetWrapper",
-          type: SteveSliverTitleType.subtitle,
+          type: .subtitle,
         ),
         SteveSliverText(
           text: localization.library_widgets_utility_conditional_tooltip,

@@ -19,7 +19,7 @@ class HomeScreenNavigationCard extends StatelessWidget {
   Widget build(BuildContext context) => SteveCard(
     onTap: () => context.go(route),
     child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: .center,
       children: [
         Icon(icon),
         sizedBoxW8,

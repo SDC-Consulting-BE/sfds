@@ -9,7 +9,7 @@ class SteveLocalStorageService implements SteveAppConfigItem {
 
   @override
   Future<void> configure() async {
-    _localStorage = await SharedPreferences.getInstance();
+    _localStorage = await .getInstance();
   }
 
   static bool containsKey(String key) => _localStorage.containsKey(key);

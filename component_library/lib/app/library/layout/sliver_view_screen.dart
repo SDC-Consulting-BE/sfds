@@ -45,11 +45,11 @@ class SliverViewLibraryScreen extends StatelessWidget {
         ),
         const SteveSliverTitle(
           title: "SteveSliverTitle (title)",
-          type: SteveSliverTitleType.title,
+          type: .title,
         ),
         const SteveSliverTitle(
           title: "SteveSliverTitle (subtitle)",
-          type: SteveSliverTitleType.subtitle,
+          type: .subtitle,
         ),
         SteveSliverText(
           text: "SteveSliverText - ${localization.lorem_ipsum}",
@@ -58,7 +58,7 @@ class SliverViewLibraryScreen extends StatelessWidget {
           inlineSpans: [
             TextSpan(
               text: "SteveSliverRichText",
-              style: theme.textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w700),
+              style: theme.textTheme.bodyMedium!.copyWith(fontWeight: .w700),
             ),
             const TextSpan(
               text: " - ",
@@ -73,25 +73,25 @@ class SliverViewLibraryScreen extends StatelessWidget {
             ),
             TextSpan(
               text: localization.lorem_ipsum,
-              style: theme.textTheme.bodyMedium!.copyWith(fontStyle: FontStyle.italic),
+              style: theme.textTheme.bodyMedium!.copyWith(fontStyle: .italic),
             ),
           ],
         ),
         const SteveSliverTitle(
           title: "SteveSliverBreadcrumbs",
-          type: SteveSliverTitleType.subtitle,
+          type: .subtitle,
         ),
         const SteveSliverBreadcrumbs(),
         const SteveSliverTitle(
           title: "SteveSliverSpacing",
-          type: SteveSliverTitleType.subtitle,
+          type: .subtitle,
         ),
         const SteveSliverSpacing(
           height: 50,
         ),
         const SteveSliverTitle(
           title: "SteveSliverGrid",
-          type: SteveSliverTitleType.subtitle,
+          type: .subtitle,
         ),
         SteveSliverGrid(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -107,7 +107,7 @@ class SliverViewLibraryScreen extends StatelessWidget {
         ),
         const SteveSliverTitle(
           title: "SteveSliverBottomSpacing",
-          type: SteveSliverTitleType.subtitle,
+          type: .subtitle,
         ),
         const SteveSliverBottomSpacing(),
       ],

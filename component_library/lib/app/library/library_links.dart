@@ -10,8 +10,8 @@ enum LibraryLinkGroup {
 
 extension LibraryLinkGroupLabel on LibraryLinkGroup {
   String Function(Localization) get label => switch (this) {
-    LibraryLinkGroup.layout => (localization) => localization.library_layout,
-    LibraryLinkGroup.widgets => (localization) => localization.library_widgets,
+    .layout => (localization) => localization.library_layout,
+    .widgets => (localization) => localization.library_widgets,
   };
 
   List<LibraryLink> get links => _libraryLinks[this]!;
