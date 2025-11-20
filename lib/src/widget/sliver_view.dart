@@ -98,6 +98,108 @@ class SteveSliverViewAppBarAction extends StatelessWidget {
   );
 }
 
+class SteveSliverViewAppBarDropDown extends StatelessWidget {
+  const SteveSliverViewAppBarDropDown({
+    super.key,
+    required this.visual,
+    required this.items,
+  });
+
+  final Widget visual;
+  final Iterable<SteveSliverViewAppBarDropDownTile> items;
+
+  @override
+  Widget build(BuildContext context) {
+    var key = GlobalKey();
+    return _SteveSliverViewAppBarAction(
+      boxKey: key,
+      onPressed: () => _showSelectionDialog(context, key),
+      child: visual,
+    );
+  }
+
+  Future<void> _showSelectionDialog(
+    BuildContext context,
+    GlobalKey key,
+  ) async {
+    showDialog(
+      context: context,
+      useSafeArea: false,
+      builder: (context) => _SteveSliverViewAppBarDropDownDialog(
+        callersRenderBox: key.currentContext!.findRenderObject()! as RenderBox,
+        items: items,
+      ),
+    );
+  }
+}
+
+const _steveSliverViewAppBarDropDownTileSelectedIconSize = 24.0;
+
+class SteveSliverViewAppBarDropDownTile extends StatelessWidget {
+  const SteveSliverViewAppBarDropDownTile({
+    super.key,
+    this.dense = false,
+    this.selected = false,
+    required this.onTap,
+    required this.leading,
+    required this.title,
+    this.subtitle,
+  });
+
+  final bool dense;
+  final bool selected;
+  final VoidCallback? onTap;
+  final Widget leading;
+  final String title;
+  final String? subtitle;
+
+  @override
+  Widget build(BuildContext context) => ListTile(
+    dense: dense,
+    enabled: !selected,
+    leading: leading,
+    onTap: onTap,
+    title: Text(title),
+    subtitle: subtitle != null ? Text(subtitle!) : null,
+    trailing: selected
+        ? const Icon(
+            iconDataSelected,
+            size: _steveSliverViewAppBarDropDownTileSelectedIconSize,
+          )
+        : null,
+  );
+}
+
+class _SteveSliverViewAppBarDropDownDialog extends StatelessWidget {
+  const _SteveSliverViewAppBarDropDownDialog({
+    required this.callersRenderBox,
+    required this.items,
+  });
+
+  final RenderBox callersRenderBox;
+  final Iterable<SteveSliverViewAppBarDropDownTile> items;
+
+  @override
+  Widget build(BuildContext context) {
+    var callersOffset = callersRenderBox.localToGlobal(Offset.zero);
+    var mediaQuery = MediaQuery.of(context);
+    return Dialog(
+      alignment: .topRight,
+      insetPadding: .only(
+        top: callersOffset.dy,
+        right: (mediaQuery.size.width - callersOffset.dx) - _steveSliverViewActionSize - _steveSliverViewActionPadding.horizontal,
+      ),
+      child: SizedBox(
+        width: 0,
+        child: Column(
+          mainAxisSize: .min,
+          children: SteveCollectionUtil.intersperse(divider, items).toList(),
+        ),
+      ),
+    );
+  }
+}
+
 const _steveSliverViewActionDefaultScale = 1.0;
 const _steveSliverViewActionHoverScale = 1.314;
 const _steveSliverViewActionScaleAnimationDuration = durationMs100;
@@ -186,82 +288,21 @@ class SteveSliverViewAppBarActionLocaleSwitcher extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var key = GlobalKey();
-    var currentLocale = ref.watch(steveLocaleProvider) ?? Localizations.localeOf(context);
-    return _SteveSliverViewAppBarAction(
-      boxKey: key,
-      onPressed: () => _showLocaleSelectionDialog(context, key, currentLocale),
-      child: Text(currentLocale.languageCode),
-    );
-  }
-
-  Future<void> _showLocaleSelectionDialog(
-    BuildContext context,
-    GlobalKey key,
-    Locale currentLocale,
-  ) async {
-    showDialog(
-      context: context,
-      useSafeArea: false,
-      builder: (context) => _SteveSliverViewAppBarActionLocaleSwitcherDialog(
-        callersRenderBox: key.currentContext!.findRenderObject()! as RenderBox,
-        supportedLocales: supportedLocales,
-        currentLocale: currentLocale,
-      ),
-    );
-  }
-}
-
-const _steveSliverViewAppBarActionLocaleSwitcherDialogSelectedIconSize = 24.0;
-
-class _SteveSliverViewAppBarActionLocaleSwitcherDialog extends ConsumerWidget {
-  const _SteveSliverViewAppBarActionLocaleSwitcherDialog({
-    required this.callersRenderBox,
-    required this.supportedLocales,
-    required this.currentLocale,
-  });
-
-  final RenderBox callersRenderBox;
-  final List<Locale> supportedLocales;
-  final Locale currentLocale;
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
     var localeNotifier = ref.read(steveLocaleProvider.notifier);
-    var callersOffset = callersRenderBox.localToGlobal(Offset.zero);
+    var currentLocale = ref.watch(steveLocaleProvider) ?? Localizations.localeOf(context);
     var nonCurrentLocales = supportedLocales.where((supportedLocale) => currentLocale != supportedLocale);
     var navigator = Navigator.of(context);
-    var mediaQuery = MediaQuery.of(context);
-    return Dialog(
-      alignment: .topRight,
-      insetPadding: EdgeInsets.only(
-        top: callersOffset.dy,
-        right: (mediaQuery.size.width - callersOffset.dx) - _steveSliverViewActionSize - _steveSliverViewActionPadding.horizontal,
-      ),
-      child: SizedBox(
-        width: 0,
-        child: Column(
-          mainAxisSize: .min,
-          children: SteveCollectionUtil.intersperse(
-            divider,
-            [currentLocale, ...nonCurrentLocales].map(
-              (locale) => ListTile(
-                onTap: () {
-                  localeNotifier.selectLocale(locale);
-                  navigator.pop();
-                },
-                enabled: currentLocale != locale,
-                leading: Text(locale.languageCode),
-                title: Text("${steveLocaleLanguageDescriptions[locale.languageCode]}"),
-                trailing: currentLocale == locale
-                    ? const Icon(
-                        iconDataSelected,
-                        size: _steveSliverViewAppBarActionLocaleSwitcherDialogSelectedIconSize,
-                      )
-                    : null,
-              ),
-            ),
-          ).toList(),
+    return SteveSliverViewAppBarDropDown(
+      visual: Text(currentLocale.languageCode),
+      items: [currentLocale, ...nonCurrentLocales].map(
+        (locale) => SteveSliverViewAppBarDropDownTile(
+          selected: currentLocale == locale,
+          onTap: () {
+            localeNotifier.selectLocale(locale);
+            navigator.pop();
+          },
+          leading: Text(locale.languageCode),
+          title: "${steveLocaleLanguageDescriptions[locale.languageCode]}",
         ),
       ),
     );

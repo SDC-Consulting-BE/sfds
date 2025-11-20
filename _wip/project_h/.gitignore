@@ -32,3 +32,6 @@ build/
 
 # i18n related
 lib/l10n/generated/**
+
+# Generated files
+*.g.dart
