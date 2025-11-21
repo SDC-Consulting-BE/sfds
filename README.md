@@ -347,8 +347,7 @@ dependencies:
     firebase_core: ^4.2.1
 ```
 
-Next up, generate your firebase options using FlutterFire (through the flutterfire configure command) or by manually creating a FirebaseOptions object.
-This object has the following signature:
+Next up, [generate your firebase options](https://firebase.google.com/docs/flutter/setup). After following the instructions you will end up with a FirebaseOptions object, which has the following signature:
 
 ``` dart
 FirebaseOptions(
