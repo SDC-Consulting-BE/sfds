@@ -26,7 +26,8 @@ Key packages used in the design system (not covered in this readme):
       1. [Fetching translations](#fetching-translations)
       2. [Locale switching](#locale-switching)
    7. [The SteveApp](#the-steveapp)
-      1. [Adding configuration items](#adding-configuration-items) 
+      1. [Adding configuration items](#adding-configuration-items)
+   8. [Firebase](#firebase)
 3. [Services](#services)
 4. [Providers](#providers)
 5. [Utilities](#utilities)
@@ -59,7 +60,7 @@ Add the following dependencies to the _pubspec.yaml_:
 
 ``` yaml
 dev_dependencies:
-   build_runner: ^2.10.3
+   build_runner: ^2.10.4
    flutter_lints: ^6.0.0
 ```
 
@@ -123,7 +124,7 @@ dependencies:
    riverpod_annotation: ^3.0.3
    
 dev_dependencies:
-   build_runner: ^2.10.3
+   build_runner: ^2.10.4
    custom_lint: ^0.8.1
    riverpod_generator: ^3.0.3
    riverpod_lint: ^3.0.3
@@ -331,6 +332,40 @@ This method takes a _SteveAppConfigItem_ as argument. _SteveAppConfigItem_ is an
 abstract interface class SteveAppConfigItem {
   Future<void> configure();
 }
+```
+
+## Firebase
+
+An out of the box integration with Google's Firebase is provided.
+
+### Setup
+
+Add the following dependency in _pubspec.yaml_:
+
+``` dart
+dependencies:
+    firebase_core: ^4.2.1
+```
+
+Next up, generate your firebase options using FlutterFire (through the flutterfire configure command) or by manually creating a FirebaseOptions object.
+This object has the following signature:
+
+``` dart
+FirebaseOptions(
+  apiKey: "AIzaSyBmZ3ylPW1zEFuOmZSkuSdxav13wZl0lFg",
+  appId: "1:1079590605662:web:3bb7fd3b26135261e575cf",
+  messagingSenderId: "1079513605662",
+  projectId: "your-project-id",
+  authDomain: "your-project-id.firebaseapp.com",
+  storageBucket: "your-project-id.appspot.com",
+  measurementId: "G-4L9WRZ6RJ5",
+);
+```
+
+Finally, pass these options to the _SteveAppConfigurator's .withFirebase(FirebaseOptions firebaseOptions)_ method:
+
+``` dart
+..withFirebase(firebaseOptions)
 ```
 
 ## Services
