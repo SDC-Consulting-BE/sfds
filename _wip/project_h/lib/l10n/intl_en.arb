@@ -1,6 +1,7 @@
 {
   "title": "Project H",
   "dashboard": "Dashboard",
+  "dashboard_personally_assigned_tasks": "My assigned tasks",
   "dashboard_overdue_tasks": "Overdue tasks",
   "dashboard_task_summary": "Task overview",
   "overview": "Overview"

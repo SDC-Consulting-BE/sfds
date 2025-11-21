@@ -8,3 +8,5 @@ const iconDataMember = Icons.account_box_rounded;
 const iconHousehold = Icon(iconDataHousehold);
 
 const sizedBoxW8 = SizedBox(width: 8);
+
+const durationMs300 = Duration(milliseconds: 300);

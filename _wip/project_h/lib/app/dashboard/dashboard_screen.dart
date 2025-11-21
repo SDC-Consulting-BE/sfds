@@ -1,11 +1,12 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
-import "package:project_h/app/_model/member.dart";
 import "package:project_h/app/_provider/member_provider.dart";
 import "package:project_h/app/dashboard/_widget/member_selector.dart";
 import "package:project_h/app/dashboard/_widget/overdue_task_card.dart";
+import "package:project_h/app_constants.dart";
 import "package:project_h/l10n/generated/app_localizations.dart";
 import "package:sfds/widget.dart";
+import "package:sliver_tools/sliver_tools.dart";
 
 class DashboardScreen extends ConsumerWidget {
   const DashboardScreen({super.key});
@@ -25,17 +26,20 @@ class DashboardScreen extends ConsumerWidget {
         ],
       ),
       slivers: [
-        if (activeMember != null) ..._personalTasksSegment(activeMember),
+        SliverAnimatedSwitcher(
+          duration: durationMs300,
+          child: activeMember != null
+              ? MultiSliver(children: _personalTasksSegment(localization)) //
+              : const SliverToBoxAdapter(),
+        ),
         ..._overdueTasksSegment(localization),
         ..._taskSummarySegment(localization),
       ],
     );
   }
 
-  List<Widget> _personalTasksSegment(
-    Member member,
-  ) => [
-    SteveSliverTitle(title: "${member.displayName}'s tasks"),
+  List<Widget> _personalTasksSegment(Localization localization) => [
+    SteveSliverTitle(title: localization.dashboard_personally_assigned_tasks),
     const _OverdueTasksGrid(),
   ];
 

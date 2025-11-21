@@ -1,7 +1,6 @@
 Backlog:
 
-- Personal tasks use i10n to properly translate with name!
-- Animate personal tasks coming into view
+- 
 
 Next steps:
 
