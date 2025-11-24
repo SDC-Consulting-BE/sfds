@@ -48,7 +48,7 @@ dependencies:
 ```
 
 > [!IMPORTANT]
-> SFDS makes use of Flutter 3.38.1, which comes with Dart 3.10.0
+> SFDS makes use of Flutter 3.38.3, which comes with Dart 3.10.1
 
 ## Project configuration
 

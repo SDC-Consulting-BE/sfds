@@ -21,8 +21,6 @@ class DashboardScreen extends ConsumerWidget {
         showBackNavigation: true,
         actions: const [
           MemberSelector(),
-          SteveSliverViewAppBarActionLocaleSwitcher(supportedLocales: Localization.supportedLocales),
-          SteveSliverViewAppBarActionThemeSwitcher(),
         ],
       ),
       slivers: [

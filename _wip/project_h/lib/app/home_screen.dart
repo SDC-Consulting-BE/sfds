@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
       appBar: SteveSliverViewAppBar(
         title: localization.title,
         actions: const [
-          // SteveSliverViewAppBarActionLocaleSwitcher(supportedLocales: Localization.supportedLocales),
+          SteveSliverViewAppBarActionLocaleSwitcher(supportedLocales: Localization.supportedLocales),
           SteveSliverViewAppBarActionThemeSwitcher(),
         ],
       ),
