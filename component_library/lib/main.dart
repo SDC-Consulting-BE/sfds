@@ -8,7 +8,7 @@ void main() async {
     title: (context) => Localization.of(context).title,
     lightColorScheme: lightColorScheme,
     darkColorScheme: darkColorScheme,
-    router: router,
+    router: (_) => router,
     delegates: Localization.localizationsDelegates,
     locales: Localization.supportedLocales,
   ).start();

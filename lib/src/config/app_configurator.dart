@@ -24,7 +24,7 @@ class SteveAppConfigurator {
   final String Function(BuildContext) title;
   final ColorScheme lightColorScheme;
   final ColorScheme darkColorScheme;
-  final GoRouter router;
+  final GoRouter Function(WidgetRef) router;
   final List<LocalizationsDelegate<dynamic>> delegates;
   final List<Locale> locales;
 

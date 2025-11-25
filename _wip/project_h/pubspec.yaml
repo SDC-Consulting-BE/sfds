@@ -14,6 +14,7 @@ dependencies:
     sdk: flutter
   sfds:
     path: ../../
+  cloud_firestore: ^6.1.0
   firebase_core: ^4.2.1
   flutter_riverpod: ^3.0.3
   go_router: ^17.0.0
