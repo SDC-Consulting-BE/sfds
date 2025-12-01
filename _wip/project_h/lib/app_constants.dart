@@ -6,6 +6,7 @@ const iconDataHousehold = Icons.house;
 const iconDataMember = Icons.account_box_rounded;
 
 const iconHousehold = Icon(iconDataHousehold);
+const iconMember = Icon(iconDataMember);
 
 const sizedBoxW8 = SizedBox(width: 8);
 

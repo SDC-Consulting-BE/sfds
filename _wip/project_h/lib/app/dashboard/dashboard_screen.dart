@@ -14,7 +14,7 @@ class DashboardScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var localization = Localization.of(context);
-    var activeMember = ref.watch(activeMemberProvider);
+    var selectedMember = ref.watch(selectedMemberProvider);
     return SteveSliverView(
       appBar: SteveSliverViewAppBar(
         title: localization.dashboard,
@@ -26,7 +26,7 @@ class DashboardScreen extends ConsumerWidget {
       slivers: [
         SliverAnimatedSwitcher(
           duration: durationMs300,
-          child: activeMember != null
+          child: selectedMember != null
               ? MultiSliver(children: _personalTasksSegment(localization)) //
               : const SliverToBoxAdapter(),
         ),

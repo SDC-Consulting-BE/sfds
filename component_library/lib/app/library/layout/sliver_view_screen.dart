@@ -25,6 +25,24 @@ class SliverViewLibraryScreen extends StatelessWidget {
           showBackNavigation: true,
           actions: [
             Tooltip(
+              message: "SteveSliverViewAppBarDropDown (shimmer)",
+              child: SteveSliverViewAppBarDropDown(
+                key: GlobalKey(),
+                shimmer: true,
+                visual: const Icon(Icons.account_circle),
+                items: [
+                  SteveSliverViewAppBarDropDownTile(
+                    dense: true,
+                    shimmer: true,
+                    onTap: () {},
+                    leading: const Icon(Icons.account_circle),
+                    title: "SteveSliverViewAppBarDropDownTile (selected)",
+                    subtitle: "Subtitle",
+                  ),
+                ],
+              ),
+            ),
+            Tooltip(
               message: "SteveSliverViewAppBarDropDown",
               child: SteveSliverViewAppBarDropDown(
                 key: GlobalKey(),

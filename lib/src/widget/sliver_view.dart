@@ -2,6 +2,9 @@ import "package:flutter/material.dart";
 import "package:sfds/src/constants.dart";
 import "package:sfds/src/util/collection_util.dart";
 import "package:sfds/src/util/text_style_util.dart";
+import "package:sfds/src/widget/shimmer.dart";
+import "package:sfds/src/widget/text.dart";
+import "package:sfds/src/widget/utility.dart";
 
 class SteveSliverView extends StatelessWidget {
   const SteveSliverView({
@@ -98,10 +101,12 @@ class SteveSliverViewAppBarAction extends StatelessWidget {
 class SteveSliverViewAppBarDropDown extends StatelessWidget {
   const SteveSliverViewAppBarDropDown({
     super.key,
+    this.shimmer = false,
     required this.visual,
     required this.items,
   });
 
+  final bool shimmer;
   final Widget visual;
   final Iterable<SteveSliverViewAppBarDropDownTile> items;
 
@@ -111,7 +116,11 @@ class SteveSliverViewAppBarDropDown extends StatelessWidget {
     return _SteveSliverViewAppBarAction(
       boxKey: key,
       onPressed: () => _showSelectionDialog(context, key),
-      child: visual,
+      child: SteveConditionalWidgetWrapper(
+        condition: shimmer,
+        widgetWrapper: (child) => SteveShimmer(child: child),
+        child: visual,
+      ),
     );
   }
 
@@ -137,6 +146,7 @@ class SteveSliverViewAppBarDropDownTile extends StatelessWidget {
     super.key,
     this.dense = false,
     this.selected = false,
+    this.shimmer = false,
     required this.onTap,
     required this.leading,
     required this.title,
@@ -145,25 +155,30 @@ class SteveSliverViewAppBarDropDownTile extends StatelessWidget {
 
   final bool dense;
   final bool selected;
+  final bool shimmer;
   final VoidCallback? onTap;
   final Widget leading;
   final String title;
   final String? subtitle;
 
   @override
-  Widget build(BuildContext context) => ListTile(
-    dense: dense,
-    enabled: !selected,
-    leading: leading,
-    onTap: onTap,
-    title: Text(title),
-    subtitle: subtitle != null ? Text(subtitle!) : null,
-    trailing: selected
-        ? const Icon(
-            iconDataSelected,
-            size: _steveSliverViewAppBarDropDownTileSelectedIconSize,
-          )
-        : null,
+  Widget build(BuildContext context) => SteveConditionalWidgetWrapper(
+    condition: shimmer,
+    widgetWrapper: (child) => SteveShimmer(child: child),
+    child: ListTile(
+      dense: dense,
+      enabled: !selected,
+      leading: leading,
+      onTap: onTap,
+      title: shimmer ? const SteveTextPlaceholder() : Text(title),
+      subtitle: subtitle != null ? (shimmer ? const SteveTextPlaceholder() : Text(subtitle!)) : null,
+      trailing: selected
+          ? const Icon(
+              iconDataSelected,
+              size: _steveSliverViewAppBarDropDownTileSelectedIconSize,
+            )
+          : null,
+    ),
   );
 }
 
