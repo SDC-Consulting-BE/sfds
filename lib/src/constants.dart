@@ -21,8 +21,10 @@ const paddingH24V12 = EdgeInsets.symmetric(horizontal: 24, vertical: 12);
 const sizedBoxZero = SizedBox();
 const sizedBoxW8 = SizedBox(width: 8);
 
+const radiusC8 = Radius.circular(8);
 const radiusC12 = Radius.circular(12);
 
+const borderRadiusC8 = BorderRadius.all(radiusC8);
 const borderRadiusC12 = BorderRadius.all(radiusC12);
 
 const roundedRectangleBorderC12 = RoundedRectangleBorder(borderRadius: borderRadiusC12);

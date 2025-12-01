@@ -438,6 +438,10 @@ The source code can be found [here](lib/src/util).
 
 __intersperse:__ Inserts a given element between each element of the given iterable
 
+### Color Util
+
+__colorFromHexString:__ Converts a given hex String (both #AARRGGBB and RRGGBB) to a Color
+
 ### Log Util
 
 __info:__ Logs the given message as log level info (value 800)

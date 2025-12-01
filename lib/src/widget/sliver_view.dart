@@ -2,8 +2,9 @@ import "package:flutter/material.dart";
 import "package:sfds/src/constants.dart";
 import "package:sfds/src/util/collection_util.dart";
 import "package:sfds/src/util/text_style_util.dart";
+import "package:sfds/src/widget/shimmer.dart";
+import "package:sfds/src/widget/text.dart";
 import "package:sfds/src/widget/utility.dart";
-import "package:shimmer/shimmer.dart";
 
 class SteveSliverView extends StatelessWidget {
   const SteveSliverView({
@@ -100,10 +101,12 @@ class SteveSliverViewAppBarAction extends StatelessWidget {
 class SteveSliverViewAppBarDropDown extends StatelessWidget {
   const SteveSliverViewAppBarDropDown({
     super.key,
+    this.shimmer = false,
     required this.visual,
     required this.items,
   });
 
+  final bool shimmer;
   final Widget visual;
   final Iterable<SteveSliverViewAppBarDropDownTile> items;
 
@@ -113,7 +116,11 @@ class SteveSliverViewAppBarDropDown extends StatelessWidget {
     return _SteveSliverViewAppBarAction(
       boxKey: key,
       onPressed: () => _showSelectionDialog(context, key),
-      child: visual,
+      child: SteveConditionalWidgetWrapper(
+        condition: shimmer,
+        widgetWrapper: (child) => SteveShimmer(child: child),
+        child: visual,
+      ),
     );
   }
 
@@ -157,18 +164,14 @@ class SteveSliverViewAppBarDropDownTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) => SteveConditionalWidgetWrapper(
     condition: shimmer,
-    widgetWrapper: (child) => Shimmer.fromColors(
-      baseColor: Colors.grey,
-      highlightColor: Colors.grey[200]!,
-      child: child,
-    ),
+    widgetWrapper: (child) => SteveShimmer(child: child),
     child: ListTile(
       dense: dense,
       enabled: !selected,
       leading: leading,
       onTap: onTap,
-      title: Text(title),
-      subtitle: subtitle != null ? Text(subtitle!) : null,
+      title: shimmer ? const TextPlaceholder() : Text(title),
+      subtitle: subtitle != null ? (shimmer ? const TextPlaceholder() : Text(subtitle!)) : null,
       trailing: selected
           ? const Icon(
               iconDataSelected,

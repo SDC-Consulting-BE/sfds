@@ -9,7 +9,7 @@ void main() async {
       title: (context) => Localization.of(context).title,
       lightColorScheme: lightColorScheme,
       darkColorScheme: darkColorScheme,
-      router: (ref) => ref.watch(goRouterProvider),
+      router: router,
       delegates: Localization.localizationsDelegates,
       locales: Localization.supportedLocales,
     )

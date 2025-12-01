@@ -18,7 +18,7 @@ class SteveApp extends ConsumerWidget {
   final String Function(BuildContext context) appTitle;
   final ColorScheme lightColorScheme;
   final ColorScheme darkColorScheme;
-  final GoRouter Function(WidgetRef) router;
+  final GoRouter router;
   final Iterable<LocalizationsDelegate> delegates;
   final Iterable<Locale> locales;
 
@@ -32,7 +32,7 @@ class SteveApp extends ConsumerWidget {
       themeMode: themeMode,
       theme: themeData(lightColorScheme),
       darkTheme: themeData(darkColorScheme),
-      routerConfig: router.call(ref),
+      routerConfig: router,
       localizationsDelegates: delegates,
       supportedLocales: locales,
       locale: locale,
