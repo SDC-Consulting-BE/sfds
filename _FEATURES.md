@@ -1,6 +1,6 @@
 Backlog:
 
-- 
+- make textplaceholder smaller for shimmering, replace factor
 
 Next steps:
 

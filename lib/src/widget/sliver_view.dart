@@ -170,8 +170,8 @@ class SteveSliverViewAppBarDropDownTile extends StatelessWidget {
       enabled: !selected,
       leading: leading,
       onTap: onTap,
-      title: shimmer ? const TextPlaceholder() : Text(title),
-      subtitle: subtitle != null ? (shimmer ? const TextPlaceholder() : Text(subtitle!)) : null,
+      title: shimmer ? const SteveTextPlaceholder() : Text(title),
+      subtitle: subtitle != null ? (shimmer ? const SteveTextPlaceholder() : Text(subtitle!)) : null,
       trailing: selected
           ? const Icon(
               iconDataSelected,
