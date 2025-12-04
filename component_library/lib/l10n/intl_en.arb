@@ -12,6 +12,8 @@
   "library_widgets_form_elements": "Form Elements",
   "library_widgets_rich_text": "Rich text",
   "library_widgets_shimmer": "Shimmer",
+  "library_widgets_shimmer_description": "By wrapping your widget with this widget, a `loading in progress` effect can be achieved.",
+  "library_widgets_shimmer_textplaceholder_description": "And by using the SteveTextPlaceholder, a true loading effect can be achieved.",
   "library_widgets_text": "Text",
   "library_widgets_text_centered_text": "Centers text within its view.",
   "library_widgets_text_style": "Text Style",

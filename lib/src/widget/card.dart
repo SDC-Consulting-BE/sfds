@@ -8,10 +8,12 @@ class SteveCard extends StatelessWidget {
     super.key,
     required this.child,
     this.onTap,
+    this.scrollable = false,
   });
 
   final Widget child;
   final VoidCallback? onTap;
+  final bool scrollable;
 
   @override
   Widget build(BuildContext context) => Card(
@@ -23,8 +25,8 @@ class SteveCard extends StatelessWidget {
           child: child,
         ),
         child: Padding(
-          padding: paddingH12V8,
-          child: child,
+        padding: scrollable ? paddingH12 : paddingH12V8,
+        child: child,
         ),
       ),
     );

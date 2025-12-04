@@ -20,7 +20,7 @@ class SteveCenteredText extends StatelessWidget {
   );
 }
 
-const _textPlaceholderScaleFactor = 0.8;
+const _textPlaceholderScaleFactor = 0.7;
 
 class SteveTextPlaceholder extends StatelessWidget {
   const SteveTextPlaceholder({
@@ -38,11 +38,14 @@ class SteveTextPlaceholder extends StatelessWidget {
     var height = _calculateTextHeight(context);
     return SizedBox(
       width: width ?? double.infinity,
-      height: height * _textPlaceholderScaleFactor,
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          color: theme.colorScheme.outline,
-          borderRadius: borderRadiusC8,
+      height: height,
+      child: Padding(
+        padding: .symmetric(vertical: height * (1 - _textPlaceholderScaleFactor) / 2),
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            color: theme.colorScheme.outline,
+            borderRadius: borderRadiusC8,
+          ),
         ),
       ),
     );

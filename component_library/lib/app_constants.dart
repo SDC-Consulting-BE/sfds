@@ -12,5 +12,6 @@ const iconDataText = Icons.abc_outlined;
 const iconDataTextStyle = Icons.font_download_outlined;
 const iconDataUtilityWidgets = Icons.assistant_outlined;
 
+const sizedBoxH8 = SizedBox(height: 8);
 const sizedBoxW4 = SizedBox(width: 4);
 const sizedBoxW8 = SizedBox(width: 8);

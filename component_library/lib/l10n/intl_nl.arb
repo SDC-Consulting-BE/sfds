@@ -12,6 +12,8 @@
   "library_widgets_form_elements": "Form Elements",
   "library_widgets_rich_text": "Rich Text",
   "library_widgets_shimmer": "Shimmer",
+  "library_widgets_shimmer_description": "Door uw widget met deze widget te omhullen, kan een `laden bezig`-effect worden bereikt.",
+  "library_widgets_shimmer_textplaceholder_description": "En door gebruik te maken van SteveTextPlaceholder kan een echt laadeffect worden bereikt.",
   "library_widgets_text": "Text",
   "library_widgets_text_centered_text": "Centreert tekst binnen het weergavegebied.",
   "library_widgets_text_style": "Text Style",

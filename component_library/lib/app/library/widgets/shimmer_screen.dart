@@ -17,72 +17,95 @@ class ShimmerLibraryScreen extends StatelessWidget {
           SteveSliverViewAppBarActionThemeSwitcher(),
         ],
       ),
-      slivers: const [
-        SteveSliverBreadcrumbs(),
-        SteveSliverTitle(
+      slivers: [
+        const SteveSliverBreadcrumbs(),
+        const SteveSliverTitle(
           title: "SteveShimmer",
           type: .subtitle,
         ),
-        SteveSliverToBoxAdapter(
-          child: _SteveShimmerExample(),
+        SteveSliverText(
+          text: localization.library_widgets_shimmer_description,
+        ),
+        const SteveSliverGrid(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 4,
+            crossAxisSpacing: 15,
+            mainAxisSpacing: 10,
+            childAspectRatio: 4,
+          ),
+          children: [
+            _SteveShimmerExample(),
+            _SteveShimmerExample(shimmer: true),
+          ],
+        ),
+        SteveSliverText(
+          text: localization.library_widgets_shimmer_textplaceholder_description,
+        ),
+        const SteveSliverGrid(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 4,
+            crossAxisSpacing: 15,
+            mainAxisSpacing: 10,
+            childAspectRatio: 4.5,
+          ),
+          children: [
+            _SteveShimmerExample(),
+            _SteveShimmerExample(
+              shimmer: true,
+              textPlaceholder: true,
+            ),
+          ],
         ),
       ],
     );
   }
 }
 
-class _SteveShimmerExample extends StatefulWidget {
-  const _SteveShimmerExample();
+class _SteveShimmerExample extends StatelessWidget {
+  const _SteveShimmerExample({
+    this.shimmer = false,
+    this.textPlaceholder = false,
+  });
 
-  @override
-  State<_SteveShimmerExample> createState() => _SteveShimmerExampleState();
-}
-
-class _SteveShimmerExampleState extends State<_SteveShimmerExample> {
-  bool _shimmer = true;
+  final bool shimmer;
+  final bool textPlaceholder;
 
   @override
   Widget build(BuildContext context) {
-    var width = 100.0;
-    return Row(
-      children: [
-        Switch(
-          value: _shimmer,
-          onChanged: _flipShimmer,
-        ),
-        sizedBoxW4,
-        SteveCard(
-          onTap: () {},
-          child: SteveConditionalWidgetWrapper(
-            condition: _shimmer,
-            widgetWrapper: (child) => SteveShimmer(
-              child: child,
+    var localization = Localization.of(context);
+    var theme = Theme.of(context);
+    var titleTextStyle = theme.textTheme.titleLarge;
+    var bodyTextStyle = theme.textTheme.bodyMedium;
+    return SteveCard(
+      onTap: () {},
+      scrollable: true,
+      child: SteveConditionalWidgetWrapper(
+        condition: shimmer,
+        widgetWrapper: (child) => SteveShimmer(child: child),
+        child: Row(
+          children: [
+            const Icon(Icons.account_circle, size: 50),
+            sizedBoxW8,
+            Expanded(
+              child: ListView(
+                children: [
+                  sizedBoxH8,
+                  if (!textPlaceholder) ...[
+                    Text("Shimmer", style: titleTextStyle),
+                    Text(localization.lorem_ipsum, style: bodyTextStyle),
+                  ],
+                  if (textPlaceholder) ...[
+                    SteveTextPlaceholder(textStyle: titleTextStyle),
+                    SteveTextPlaceholder(textStyle: bodyTextStyle),
+                    SteveTextPlaceholder(textStyle: bodyTextStyle),
+                    SteveTextPlaceholder(textStyle: bodyTextStyle),
+                  ],
+                ],
+              ),
             ),
-            child: Row(
-              children: [
-                const Icon(Icons.account_circle),
-                sizedBoxW8,
-                if (_shimmer)
-                  Tooltip(
-                    message: "SteveTextPlaceholder",
-                    child: SteveTextPlaceholder(width: width),
-                  )
-                else
-                  SizedBox(
-                    width: width,
-                    child: const Text("Lorem ipsum"),
-                  ),
-              ],
-            ),
-          ),
+          ],
         ),
-      ],
+      ),
     );
-  }
-
-  void _flipShimmer(_) {
-    setState(() {
-      _shimmer = !_shimmer;
-    });
   }
 }

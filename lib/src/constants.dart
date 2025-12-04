@@ -11,6 +11,7 @@ const colorTransparant = Colors.transparent;
 const paddingZero = EdgeInsets.zero;
 const paddingA6 = EdgeInsets.all(6);
 const paddingH8 = EdgeInsets.symmetric(horizontal: 8);
+const paddingH12 = EdgeInsets.symmetric(horizontal: 12);
 const paddingH18 = EdgeInsets.symmetric(horizontal: 18);
 const paddingH20 = EdgeInsets.symmetric(horizontal: 20);
 const paddingH12V8 = EdgeInsets.symmetric(horizontal: 12, vertical: 8);
