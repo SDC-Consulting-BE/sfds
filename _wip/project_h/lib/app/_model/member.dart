@@ -1,6 +1,9 @@
 import "package:cloud_firestore/cloud_firestore.dart";
 import "package:flutter/material.dart";
+import "package:riverpod_annotation/riverpod_annotation.dart";
 import "package:sfds/util.dart";
+
+part "member.g.dart";
 
 class Member {
   Member({
@@ -18,3 +21,9 @@ class Member {
   final String displayName;
   final Color color;
 }
+
+@riverpod
+Stream<List<Member>> membersStream(Ref ref) => FirebaseFirestore.instance
+    .collection("members") //
+    .snapshots()
+    .map((snapshot) => snapshot.docs.map(Member.fromFirestore).toList());

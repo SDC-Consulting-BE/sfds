@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
-import "package:project_h/app/_mockdata/household.dart";
+import "package:project_h/app/_model/household.dart";
 import "package:project_h/app/_model/member.dart";
 import "package:project_h/app/_provider/member_provider.dart";
 import "package:project_h/app_constants.dart";
@@ -11,11 +11,18 @@ class MemberSelector extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    var householdStream = ref.watch(householdStreamProvider);
     var membersStream = ref.watch(membersStreamProvider);
-    return membersStream.when(
-      loading: () => const _MemberSelector.loading(),
-      data: (members) => _MemberSelector.data(members: {for (var member in members) member.id: member}),
-      error: (error, stackTrace) => const _MemberSelector.loading(), // TODO(sdecleene): Toaster implementation (ERROR level)
+    if (householdStream is AsyncError || membersStream is AsyncError) {
+      // TODO(sdecleene): toaster implementation!
+      return const _MemberSelector.loading();
+    }
+    if (householdStream is AsyncLoading || membersStream is AsyncLoading) {
+      return const _MemberSelector.loading();
+    }
+    return _MemberSelector.data(
+      household: householdStream.value!,
+      members: {for (var member in membersStream.value!) member.id: member},
     );
   }
 }
@@ -23,6 +30,7 @@ class MemberSelector extends ConsumerWidget {
 class _MemberSelector extends ConsumerWidget {
   const _MemberSelector._({
     this.loading = false,
+    this.household,
     this.members,
   });
 
@@ -32,12 +40,15 @@ class _MemberSelector extends ConsumerWidget {
       );
 
   const _MemberSelector.data({
+    required Household household,
     required Map<String, Member> members,
   }) : this._(
+         household: household,
          members: members,
        );
 
   final bool loading;
+  final Household? household;
   final Map<String, Member>? members;
 
   @override
@@ -70,6 +81,7 @@ class _MemberSelector extends ConsumerWidget {
               _MemberTile.household(
                 onTap: () => _onHouseholdSelected(selectedMemberNotifier, navigator),
                 selected: selectedMember == null,
+                household: household!,
               ),
               ...members!.values
                   .where((member) => member.id != selectedMember)
@@ -157,6 +169,7 @@ class _MemberTile extends SteveSliverViewAppBarDropDownTile {
     Key? key,
     required VoidCallback onTap,
     required bool selected,
+    required Household household,
   }) : this._(
          key: key,
          onTap: onTap,
