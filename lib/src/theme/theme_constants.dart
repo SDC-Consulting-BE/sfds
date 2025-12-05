@@ -3,6 +3,7 @@ import "package:sfds/src/constants.dart";
 
 const themeDefaultTextDirection = TextDirection.ltr;
 const themeDefaultElevation = 0.0;
+const themeDefaultBorderRadius = borderRadiusC12;
 const themeDefaultShape = roundedRectangleBorderC12;
 const themeDefaultButtonHeight = 42.0;
 const themeDefaultBorderWidth = 1.5;

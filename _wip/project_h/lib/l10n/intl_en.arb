@@ -1,8 +1,10 @@
 {
   "title": "Project H",
   "dashboard": "Dashboard",
-  "dashboard_personally_assigned_tasks": "My assigned tasks",
+  "dashboard_error_load_household": "Failed to fetch household metadata",
+  "dashboard_error_load_members": "Failed to fetch member data",
   "dashboard_overdue_tasks": "Overdue tasks",
+  "dashboard_personally_assigned_tasks": "My assigned tasks",
   "dashboard_task_summary": "Task overview",
   "overview": "Overview"
 }

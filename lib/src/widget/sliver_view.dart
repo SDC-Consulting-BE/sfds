@@ -115,7 +115,7 @@ class SteveSliverViewAppBarDropDown extends StatelessWidget {
     var key = GlobalKey();
     return _SteveSliverViewAppBarAction(
       boxKey: key,
-      onPressed: () => _showSelectionDialog(context, key),
+      onPressed: items.isEmpty ? () {} : () => _showSelectionDialog(context, key),
       child: SteveConditionalWidgetWrapper(
         condition: shimmer,
         widgetWrapper: (child) => SteveShimmer(child: child),

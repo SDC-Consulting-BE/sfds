@@ -1,9 +1,13 @@
+import "dart:async";
+
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:project_h/app/_model/household.dart";
 import "package:project_h/app/_model/member.dart";
 import "package:project_h/app/_provider/member_provider.dart";
 import "package:project_h/app_constants.dart";
+import "package:project_h/l10n/generated/app_localizations.dart";
+import "package:sfds/util.dart";
 import "package:sfds/widget.dart";
 
 class MemberSelector extends ConsumerWidget {
@@ -11,11 +15,17 @@ class MemberSelector extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    var localization = Localization.of(context);
     var householdStream = ref.watch(householdStreamProvider);
     var membersStream = ref.watch(membersStreamProvider);
     if (householdStream is AsyncError || membersStream is AsyncError) {
-      // TODO(sdecleene): toaster implementation!
-      return const _MemberSelector.loading();
+      if (householdStream is AsyncError) {
+        unawaited(SteveTaskSchedulingUtil.scheduleMicrotask(context, () => SteveToast.showToast(context, .error, localization.dashboard_error_load_household)));
+      }
+      if (membersStream is AsyncError) {
+        unawaited(SteveTaskSchedulingUtil.scheduleMicrotask(context, () => SteveToast.showToast(context, .error, localization.dashboard_error_load_members)));
+      }
+      return const _MemberSelector.error();
     }
     if (householdStream is AsyncLoading || membersStream is AsyncLoading) {
       return const _MemberSelector.loading();
@@ -30,6 +40,7 @@ class MemberSelector extends ConsumerWidget {
 class _MemberSelector extends ConsumerWidget {
   const _MemberSelector._({
     this.loading = false,
+    this.error = false,
     this.household,
     this.members,
   });
@@ -37,6 +48,11 @@ class _MemberSelector extends ConsumerWidget {
   const _MemberSelector.loading()
     : this._(
         loading: true,
+      );
+
+  const _MemberSelector.error()
+    : this._(
+        error: true,
       );
 
   const _MemberSelector.data({
@@ -48,6 +64,7 @@ class _MemberSelector extends ConsumerWidget {
        );
 
   final bool loading;
+  final bool error;
   final Household? household;
   final Map<String, Member>? members;
 
@@ -60,39 +77,42 @@ class _MemberSelector extends ConsumerWidget {
       shimmer: loading,
       visual: _MemberSelectorVisual(
         loading: loading,
+        error: error,
         member: members?[selectedMember],
       ),
-      items: loading
-          ? [
-              SteveSliverViewAppBarDropDownTile(
-                shimmer: true,
-                leading: iconMember,
-                onTap: () {},
-                title: "",
-              ),
-            ]
-          : [
-              if (selectedMember != null)
-                _MemberTile.member(
-                  onTap: () {},
-                  selected: true,
-                  member: members![selectedMember]!,
+      items: [
+        if (error)
+          ...[]
+        else if (loading) ...[
+          SteveSliverViewAppBarDropDownTile(
+            shimmer: true,
+            leading: iconMember,
+            onTap: () {},
+            title: "",
+          ),
+        ] else ...[
+          if (selectedMember != null)
+            _MemberTile.member(
+              onTap: () {},
+              selected: true,
+              member: members![selectedMember]!,
+            ),
+          _MemberTile.household(
+            onTap: () => _onHouseholdSelected(selectedMemberNotifier, navigator),
+            selected: selectedMember == null,
+            household: household!,
+          ),
+          ...members!.values
+              .where((member) => member.id != selectedMember)
+              .map(
+                (member) => _MemberTile.member(
+                  onTap: () => _onMemberSelected(selectedMemberNotifier, member, navigator),
+                  selected: false,
+                  member: member,
                 ),
-              _MemberTile.household(
-                onTap: () => _onHouseholdSelected(selectedMemberNotifier, navigator),
-                selected: selectedMember == null,
-                household: household!,
               ),
-              ...members!.values
-                  .where((member) => member.id != selectedMember)
-                  .map(
-                    (member) => _MemberTile.member(
-                      onTap: () => _onMemberSelected(selectedMemberNotifier, member, navigator),
-                      selected: false,
-                      member: member,
-                    ),
-                  ),
-            ],
+        ],
+      ],
     );
   }
 
@@ -116,17 +136,26 @@ class _MemberSelector extends ConsumerWidget {
 
 class _MemberSelectorVisual extends StatelessWidget {
   const _MemberSelectorVisual({
-    required this.loading,
+    this.loading = false,
+    this.error = false,
     this.member,
   });
 
   final bool loading;
+  final bool error;
   final Member? member;
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     if (loading) {
       return iconMember;
+    }
+    if (error) {
+      return SteveIconOverlay(
+        icon: Icon(iconDataMember, color: theme.disabledColor),
+        overlayIcon: Icon(iconDataX, color: theme.colorScheme.error),
+      );
     }
     if (member == null) {
       return iconHousehold;

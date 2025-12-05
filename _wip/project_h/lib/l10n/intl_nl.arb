@@ -1,8 +1,10 @@
 {
   "title": "Project H",
   "dashboard": "Dashboard",
-  "dashboard_personally_assigned_tasks": "Mijn toegewezen taken",
+  "dashboard_error_load_household": "Kan metadata van huishouden niet ophalen",
+  "dashboard_error_load_members": "Kan geen lidgegevens ophalen",
   "dashboard_overdue_tasks": "Achterstallige taken",
+  "dashboard_personally_assigned_tasks": "Mijn toegewezen taken",
   "dashboard_task_summary": "Takenoverzicht",
   "overview": "Overzicht"
 }

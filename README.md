@@ -460,6 +460,10 @@ __openUrlInNewTab:__ Opens the given URL in a new browser tab
 
 __capitalize:__ Capitalizes the first character of the given input and leaves all other characters as lower case
 
+### Task Scheduling Util
+
+__scheduleMicroTask:__ Schedule a VoidCallback function to be called after the build phase
+
 ### Text Style Util
 
 __getTrueHeight:__ Calculates the height of the given text style
