@@ -6,11 +6,12 @@ const iconDataSliverView = Icons.view_day_outlined;
 const iconDataButtons = Icons.smart_button_outlined;
 const iconDataCards = Icons.credit_card_outlined;
 const iconDataFormElements = Icons.check_box_outlined;
+const iconDataIcons = Icons.circle_outlined;
 const iconDataRichText = Icons.format_italic_outlined;
 const iconDataShimmer = Icons.downloading_outlined;
 const iconDataText = Icons.abc_outlined;
 const iconDataTextStyle = Icons.font_download_outlined;
-const iconDataToast = Icons.info_outlined;
+const iconDataToasts = Icons.info_outlined;
 const iconDataUtilityWidgets = Icons.assistant_outlined;
 
 const sizedBoxH8 = SizedBox(height: 8);

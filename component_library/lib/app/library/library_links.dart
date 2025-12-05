@@ -30,10 +30,11 @@ final Map<LibraryLinkGroup, List<LibraryLink>> _libraryLinks = {
     LibraryLink((localization) => localization.library_widgets_buttons, iconDataButtons, routeLibraryButtons),
     LibraryLink((localization) => localization.library_widgets_cards, iconDataCards, routeLibraryCards),
     LibraryLink((localization) => localization.library_widgets_form_elements, iconDataFormElements, routeLibraryFormElements),
+    LibraryLink((localization) => localization.library_widgets_icons, iconDataIcons, routeLibraryIcons),
     LibraryLink((localization) => localization.library_widgets_rich_text, iconDataRichText, routeLibraryRichText),
     LibraryLink((localization) => localization.library_widgets_shimmer, iconDataShimmer, routeLibraryShimmer),
     LibraryLink((localization) => localization.library_widgets_text, iconDataText, routeLibraryText),
-    LibraryLink((localization) => localization.library_widgets_toast, iconDataToast, routeLibraryToast),
+    LibraryLink((localization) => localization.library_widgets_toasts, iconDataToasts, routeLibraryToasts),
     LibraryLink((localization) => localization.library_widgets_utility_widgets, iconDataUtilityWidgets, routeLibraryUtilityWidgets),
   ],
 };

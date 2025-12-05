@@ -1,4 +1,5 @@
 export "src/widget/card.dart";
+export "src/widget/icon.dart";
 export "src/widget/inline_span.dart";
 export "src/widget/shimmer.dart";
 export "src/widget/sliver.dart";

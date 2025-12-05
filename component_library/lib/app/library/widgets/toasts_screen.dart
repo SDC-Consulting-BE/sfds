@@ -3,8 +3,8 @@ import "package:flutter/material.dart";
 import "package:sfds/util.dart";
 import "package:sfds/widget.dart";
 
-class ToastScreen extends StatelessWidget {
-  const ToastScreen({super.key});
+class ToastsLibraryScreen extends StatelessWidget {
+  const ToastsLibraryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class ToastScreen extends StatelessWidget {
     var theme = Theme.of(context);
     return SteveSliverView(
       appBar: SteveSliverViewAppBar(
-        title: localization.library_widgets_toast,
+        title: localization.library_widgets_toasts,
         showBackNavigation: true,
         actions: const [
           SteveSliverViewAppBarActionThemeSwitcher(),
@@ -21,7 +21,7 @@ class ToastScreen extends StatelessWidget {
       slivers: [
         const SteveSliverBreadcrumbs(),
         const SteveSliverTitle(
-          title: "SteveToast",
+          title: "SteveToast.showToast",
           type: .subtitle,
         ),
         SteveSliverText(
