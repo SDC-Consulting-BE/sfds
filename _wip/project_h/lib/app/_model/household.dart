@@ -9,7 +9,7 @@ class Household {
   });
 
   Household.fromFirestore(DocumentSnapshot doc) //
-    : name = doc.get("name") as String;
+    : name = doc.get("namex") as String;
 
   final String name;
 }

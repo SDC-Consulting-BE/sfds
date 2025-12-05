@@ -20,7 +20,7 @@ class SteveIconOverlay extends StatelessWidget {
         child: Icon(
           overlayIcon.icon,
           color: overlayIcon.color,
-          size: icon.size! / 2,
+          size: icon.size ?? IconTheme.of(context).size! / 2,
         ),
       ),
     ],
