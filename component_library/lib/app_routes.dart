@@ -1,3 +1,4 @@
+import "package:component_library/app/library/design/text_style_screen.dart";
 import "package:component_library/app/library/layout/sliver_view_screen.dart";
 import "package:component_library/app/library/library_screen.dart";
 import "package:component_library/app/library/widgets/buttons_screen.dart";
@@ -6,12 +7,14 @@ import "package:component_library/app/library/widgets/form_elements_screen.dart"
 import "package:component_library/app/library/widgets/rich_text_screen.dart";
 import "package:component_library/app/library/widgets/shimmer_screen.dart";
 import "package:component_library/app/library/widgets/text_screen.dart";
-import "package:component_library/app/library/widgets/text_style_screen.dart";
+import "package:component_library/app/library/widgets/toast_screen.dart";
 import "package:component_library/app/library/widgets/utility_widgets_screen.dart";
 import "package:go_router/go_router.dart";
 
 const _subRouteHome = "/";
 const _subRouteLibrary = "/library";
+// Design subroutes
+const _subRouteTextStyle = "/text_style";
 // Layout subroutes
 const _subRouteSliverView = "/sliver_view";
 // Widget subroutes
@@ -21,10 +24,12 @@ const _subRouteFormElements = "/form_elements";
 const _subRouteRichText = "/rich_text";
 const _subRouteShimmer = "/shimmer";
 const _subRouteText = "/text";
-const _subRouteTextStyle = "/text_style";
+const _subRouteToast = "/toast";
 const _subRouteUtilityWidgets = "/utility_widgets";
 
 const routeLibrary = _subRouteLibrary;
+// Design routes
+const routeLibraryTextStyle = "$_subRouteLibrary$_subRouteTextStyle";
 // Layout routes
 const routeLibrarySliverView = "$_subRouteLibrary$_subRouteSliverView";
 // Widget routes
@@ -34,7 +39,7 @@ const routeLibraryFormElements = "$_subRouteLibrary$_subRouteFormElements";
 const routeLibraryRichText = "$_subRouteLibrary$_subRouteRichText";
 const routeLibraryShimmer = "$_subRouteLibrary$_subRouteShimmer";
 const routeLibraryText = "$_subRouteLibrary$_subRouteText";
-const routeLibraryTextStyle = "$_subRouteLibrary$_subRouteTextStyle";
+const routeLibraryToast = "$_subRouteLibrary$_subRouteToast";
 const routeLibraryUtilityWidgets = "$_subRouteLibrary$_subRouteUtilityWidgets";
 
 final router = GoRouter(
@@ -45,6 +50,8 @@ final router = GoRouter(
       path: _subRouteLibrary,
       builder: (_, _) => const LibraryScreen(),
       routes: [
+        // Design GoRoutes
+        GoRoute(path: _subRouteTextStyle, builder: (_, _) => const TextStyleLibraryScreen()),
         // Layout GoRoutes
         GoRoute(path: _subRouteSliverView, builder: (_, _) => const SliverViewLibraryScreen()),
         // Widget GoRoutes
@@ -54,7 +61,7 @@ final router = GoRouter(
         GoRoute(path: _subRouteRichText, builder: (_, _) => const RichTextLibraryScreen()),
         GoRoute(path: _subRouteShimmer, builder: (_, _) => const ShimmerLibraryScreen()),
         GoRoute(path: _subRouteText, builder: (_, _) => const TextLibraryScreen()),
-        GoRoute(path: _subRouteTextStyle, builder: (_, _) => const TextStyleLibraryScreen()),
+        GoRoute(path: _subRouteToast, builder: (_, _) => const ToastScreen()),
         GoRoute(path: _subRouteUtilityWidgets, builder: (_, _) => const UtilityWidgetsLibraryScreen()),
       ],
     ),

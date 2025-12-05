@@ -71,6 +71,11 @@ ThemeData themeData(ColorScheme colorScheme) => ThemeData(
       }),
     ),
   ),
+  snackBarTheme: const SnackBarThemeData(
+    elevation: themeDefaultElevation,
+    behavior: .floating,
+    shape: themeDefaultShape,
+  ),
   switchTheme: SwitchThemeData(
     splashRadius: 0,
     trackOutlineWidth: const WidgetStatePropertyAll(themeDefaultBorderWidth),

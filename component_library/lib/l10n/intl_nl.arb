@@ -3,6 +3,8 @@
   "description_line1_preLink": "De componentenbibliotheek bevat een gecategoriseerde visuele weergave van alle widgets in Steve's Flutter Design System, samen met extra uitleg waar nodig. Bekijk de readme op de ",
   "description_line1_postLink": " voor een gedetailleerde handleiding over hoe je dit systeem in je project(en) kunt opzetten.",
   "description_line2": "Informatie over utility classes en andere code-gerelateerde onderwerpen is ook te vinden in de readme.",
+  "library_design": "Design",
+  "library_design_text_style": "Text Style",
   "library_layout": "Layout",
   "library_layout_sliverView": "Sliver View",
   "library_widgets": "Widgets",
@@ -16,7 +18,8 @@
   "library_widgets_shimmer_textplaceholder_description": "En door gebruik te maken van SteveTextPlaceholder kan een echt laadeffect worden bereikt.",
   "library_widgets_text": "Text",
   "library_widgets_text_centered_text": "Centreert tekst binnen het weergavegebied.",
-  "library_widgets_text_style": "Text Style",
+  "library_widgets_toast": "Toast",
+  "library_widgets_toast_description": "Tik op een van de onderstaande knoppen om een toast van het aangegeven type weer te geven.",
   "library_widgets_utility_widgets": "Utility Widgets",
   "library_widgets_utility_conditional_tooltip": "Voorbeeld: Voegt voorwaardelijk een tooltip toe",
   "lorem_ipsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."

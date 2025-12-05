@@ -3,6 +3,8 @@
   "description_line1_preLink": "Die Komponentenbibliothek enthält eine kategorisierte visuelle Darstellung aller Widgets, die in Steves Flutter Design System enthalten sind, zusammen mit zusätzlichen Erklärungen, wo nötig. In der Readme-Datei im ",
   "description_line1_postLink": " Sie eine ausführliche Anleitung, wie Sie dieses System in Ihrem Projekt einrichten können.",
   "description_line2": "Informationen zu Utility-Klassen und anderen codebezogenen Themen finden Sie auch in der Readme-Datei.",
+  "library_design": "Design",
+  "library_design_text_style": "Text Style",
   "library_layout": "Layout",
   "library_layout_sliverView": "Sliver View",
   "library_widgets": "Widgets",
@@ -16,7 +18,8 @@
   "library_widgets_shimmer_textplaceholder_description": "Und durch die Verwendung von SteveTextPlaceholder kann ein echter Ladeeffekt erzielt werden.",
   "library_widgets_text": "Text",
   "library_widgets_text_centered_text": "Zentriert den Text innerhalb seiner Ansicht.",
-  "library_widgets_text_style": "Text Style",
+  "library_widgets_toast": "Toast",
+  "library_widgets_toast_description": "Tippen Sie auf eine der Schaltflächen unten, um einen Toast des angegebenen Typs anzuzeigen.",
   "library_widgets_utility_widgets": "Utility Widgets",
   "library_widgets_utility_conditional_tooltip": "Beispiel: Fügt bedingt einen Tooltip hinzu",
   "lorem_ipsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."

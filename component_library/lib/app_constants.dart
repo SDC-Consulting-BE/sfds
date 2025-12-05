@@ -10,6 +10,7 @@ const iconDataRichText = Icons.format_italic_outlined;
 const iconDataShimmer = Icons.downloading_outlined;
 const iconDataText = Icons.abc_outlined;
 const iconDataTextStyle = Icons.font_download_outlined;
+const iconDataToast = Icons.info_outlined;
 const iconDataUtilityWidgets = Icons.assistant_outlined;
 
 const sizedBoxH8 = SizedBox(height: 8);

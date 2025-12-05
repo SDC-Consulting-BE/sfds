@@ -3,6 +3,8 @@
   "description_line1_preLink": "La bibliothèque de composants contient une représentation visuelle catégorisée de tous les widgets contenus dans le système de conception Flutter de Steve, ainsi que des clarifications supplémentaires si nécessaire. Consultez le readme sur le ",
   "description_line1_postLink": " pour un guide détaillé sur la façon de mettre en place ce système dans votre (vos) projet(s).",
   "description_line2": "Des informations concernant les classes utilitaires et d'autres sujets liés au code peuvent également être trouvées dans le fichier readme.",
+  "library_design": "Design",
+  "library_design_text_style": "Text Style",
   "library_layout": "Layout",
   "library_layout_sliverView": "Sliver View",
   "library_widgets": "Widgets",
@@ -16,7 +18,8 @@
   "library_widgets_shimmer_textplaceholder_description": "Et en utilisant SteveTextPlaceholder, il est possible d'obtenir un véritable effet de chargement.",
   "library_widgets_text": "Text",
   "library_widgets_text_centered_text": "Centre le texte dans sa vue.",
-  "library_widgets_text_style": "Text Style",
+  "library_widgets_toast": "Toast",
+  "library_widgets_toast_description": "Appuyez sur l'un des boutons ci-dessous pour afficher une notification du type indiqué.",
   "library_widgets_utility_widgets": "Utility Widgets",
   "library_widgets_utility_conditional_tooltip": "Exemple: Ajoute conditionnellement une info-bulle",
   "lorem_ipsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."

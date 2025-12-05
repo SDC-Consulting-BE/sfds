@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:sfds/src/theme/theme.dart";
 
 extension SteveColorSchemeExtensionForBrightness on Brightness {
-  SteveColorSchemeExtension get colorSchemeExtension => switch(this) {
+  SteveColorSchemeExtension get colorSchemeExtension => switch (this) {
     .light => _colorSchemeExtensionLight,
     .dark => _colorSchemeExtensionDark,
   };
@@ -37,10 +37,10 @@ const _successDark = SteveExtendedColor(
 
 // Seed: ffa500
 const _warningLight = SteveExtendedColor(
-    color: Color(0xff815512),
-    onColor: Color(0xffffffff),
-    container: Color(0xffffddb7),
-    onContainer: Color(0xff653e00),
+  color: Color(0xff815512),
+  onColor: Color(0xffffffff),
+  container: Color(0xffffddb7),
+  onContainer: Color(0xff653e00),
 );
 const _warningDark = SteveExtendedColor(
   color: Color(0xfff7bb70),

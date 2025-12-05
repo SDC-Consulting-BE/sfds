@@ -3,6 +3,9 @@ import "package:flutter/material.dart";
 const iconDataLightMode = Icons.light_mode;
 const iconDataDarkMode = Icons.dark_mode;
 const iconDataSelected = Icons.check_circle_outlined;
+const iconDataInfo = Icons.info;
+const iconDataWarning = Icons.warning;
+const iconDataError = Icons.error;
 
 const divider = Divider(height: 0.75, thickness: 0.75);
 

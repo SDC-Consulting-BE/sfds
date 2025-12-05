@@ -10,7 +10,7 @@ class TextStyleLibraryScreen extends StatelessWidget {
     var localization = Localization.of(context);
     return SteveSliverView(
       appBar: SteveSliverViewAppBar(
-        title: localization.library_widgets_text_style,
+        title: localization.library_design_text_style,
         showBackNavigation: true,
         actions: const [
           SteveSliverViewAppBarActionThemeSwitcher(),

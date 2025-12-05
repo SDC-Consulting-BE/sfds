@@ -3,6 +3,8 @@
   "description_line1_preLink": "The component library contains a categorized visual representation of all widgets contained in Steve's Flutter Design System, along with additional clarification where needed. Check out the readme at the ",
   "description_line1_postLink": " for a detailed guide on how to set up this system in your project(s).",
   "description_line2": "Information regarding utility classes and other code related subjects can also be found in the readme.",
+  "library_design": "Design",
+  "library_design_text_style": "Text Style",
   "library_layout": "Layout",
   "library_layout_sliverView": "Sliver View",
   "library_widgets": "Widgets",
@@ -16,7 +18,8 @@
   "library_widgets_shimmer_textplaceholder_description": "And by using the SteveTextPlaceholder, a true loading effect can be achieved.",
   "library_widgets_text": "Text",
   "library_widgets_text_centered_text": "Centers text within its view.",
-  "library_widgets_text_style": "Text Style",
+  "library_widgets_toast": "Toast",
+  "library_widgets_toast_description": "Tap one of the buttons below to show a toast of the indicated type",
   "library_widgets_utility_widgets": "Utility Widgets",
   "library_widgets_utility_conditional_tooltip": "Example: Conditionally adds a tooltip",
   "lorem_ipsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
